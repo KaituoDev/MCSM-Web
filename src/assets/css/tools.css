@@ -1,0 +1,145 @@
+/*
+  Copyright (C) 2022 Suwings(https://github.com/Suwings)
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+
+  版权所有 (C) 2022 Suwings(https://github.com/Suwings)
+
+  本程序为自由软件，你可以依据 GPL 的条款（第三版或者更高），再分发和/或修改它。
+  该程序以具有实际用途为目的发布，但是并不包含任何担保，
+  也不包含基于特定商用或健康用途的默认担保。具体细节请查看 GPL 协议。
+*/
+/* 字体 */
+/*
+@font-face {
+  font-family:MiSans;
+  src:url(../../../public/static/MiSans.ttf)
+}
+*/
+
+/* 工具类 */
+.row-mb {
+  margin-bottom: 10px;
+}
+
+.row-mb-12 {
+  margin-bottom: 20px;
+}
+
+.row-mt {
+  margin-top: 10px;
+}
+
+.row-mt-20 {
+  margin-top: 20px;
+}
+
+.row-mt-40 {
+  margin-top: 40px;
+}
+
+.row {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+/* 公共文字颜色 */
+
+.color-red {
+  color: #f56c6c;
+}
+
+.color-red-2 {
+  color: #ed3d3d;
+}
+
+.color-green {
+  color: #67c23a;
+}
+
+.color-yellow {
+  color: #e6a23c;
+}
+
+.color-gray {
+  /*color: #909399;*/
+  color: #f7f7f7;
+}
+
+.color-blue {
+  color: #409eff;
+}
+/* Flex 左右布局 */
+.flex {
+  display: flex;
+}
+
+.flex-space-between {
+  justify-content: space-between;
+}
+
+.flex-space-center {
+  justify-content: center;
+}
+
+.flex-align-items-center {
+  align-items: center;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.font-size-12 {
+  font-size: 12px;
+}
+
+.font-size-14 {
+  font-size: 14px;
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+.margin-4 {
+  margin: 4px;
+}
+
+.margin-8 {
+  margin: 8px;
+}
+
+.margin-2-4 {
+  margin: 2px 4px;
+}
+
+.instance-table-warpper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-center {
+  text-align: center;
+}

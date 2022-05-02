@@ -1,0 +1,32 @@
+name: Test
+
+on:
+  push:
+    paths-ignore:
+      - '**.md'
+      - '!.github/workflows/test.yml'
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Install Node.js, NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Lint code
+        run: yarn lint
+
+      - name: Build with Yarn
+        run: yarn build

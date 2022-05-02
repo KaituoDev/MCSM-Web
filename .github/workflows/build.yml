@@ -1,0 +1,54 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release Tag'
+        required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Get short commit sha
+        id: short_sha
+        run: |
+          short_sha=$(echo ${GITHUB_SHA} | cut -c1-7)
+          echo "::set-output name=short_sha::$short_sha"
+
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install Node.js, NPM
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install Yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: Build with Yarn
+        run: yarn build
+
+      - name: Remove unnecessary legacy files
+        run: rm ./dist/js/*-legacy.js
+
+      - name: Remove legacy Javascript references from index.html
+        run:  python3 Helper.py
+
+      - uses: actions/upload-artifact@v2
+        name: Upload Artifact
+        with:
+          name: MCSM-Web-v${{ github.event.inputs.tag }}-${{ steps.short_sha.outputs.short_sha }}
+          path: dist
+          if-no-files-found: ignore

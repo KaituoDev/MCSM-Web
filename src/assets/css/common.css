@@ -1,0 +1,404 @@
+/*
+  Copyright (C) 2022 Suwings(https://github.com/Suwings)
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+
+  版权所有 (C) 2022 Suwings(https://github.com/Suwings)
+
+  本程序为自由软件，你可以依据 GPL 的条款（第三版或者更高），再分发和/或修改它。
+  该程序以具有实际用途为目的发布，但是并不包含任何担保，
+  也不包含基于特定商用或健康用途的默认担保。具体细节请查看 GPL 协议。
+*/
+::selection {
+  background: var(--selection-background-color);
+  backdrop-filter: blur(5px);
+  color: var(--selection-color);
+}
+
+body {
+  font-family: MiSans;
+}
+
+a {
+  color: var(--a-color)
+}
+
+a:hover {
+  color: var(--a-hover-color);
+  transition: color .5s;
+}
+
+.app {
+  height: 100%;
+  background: var(--background-image)!important;
+  background-repeat: no-repeat;
+  background-size: cover!important;
+}
+
+/* 菜单 */
+#app-menu {
+  height: 100%;
+  transition: all 1s;
+}
+
+.el-drawer {
+  background-color: var(--drawer-bg-color);
+}
+
+.is-active {
+  background-color: var(--cd-bg-color)!important;
+  border-left: var(--cd-border-left);
+  color: var(--cd-color)!important;
+}
+
+.el-aside {
+	box-shadow: var(--cd-box-shadow)!important 
+}
+
+.el-menu {
+	background-color: var(--menu-bg-color);
+}
+
+.el-tabs__nav>.is-active {
+  background-color: transparent!important;
+  border: 0!important;
+}
+
+.el-tabs__item {
+  color: var(--tab-color);
+}
+
+.el-menu-item {
+  border-radius: 0!important;
+}
+
+.el-menu-item:hover {
+  background-color: var(--cd-bg-hover-color);
+}
+
+.el-menu-item-group__title {
+  color: var(--cd-title-color)!important;
+}
+
+/* 动画 */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* 标题和子标题组件 */
+.sub-title {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--overview-info-title);
+}
+
+.sub-title-title {
+  font-size: 14px;
+  color: var(--subtitle-color);
+  margin: 0px;
+}
+.sub-title-info {
+  font-size: 13px;
+  color: var(--subtitle-info-color);
+  margin: 0px;
+}
+
+.select-tag {
+  background-color: #f0f0f0;
+  border: 1px solid #e0e0e0;
+  padding: 16px;
+  display: inline-block;
+  border-radius: 4px;
+  margin: 8px;
+  padding: 12px;
+  cursor: pointer;
+}
+
+.select-tag:hover {
+  border: 1px solid rgb(11, 78, 165);
+}
+
+.alink {
+  text-decoration: underline;
+}
+
+.input-label {
+  font-size: 14px;
+  margin: 8px 0px;
+  display: inline-block;
+}
+
+/* 列表项目栏 */
+.list-item {
+  margin: 2px 0px;
+  padding: 8px;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.list-item:hover {
+  background-color: #dfdfdf;
+  border-radius: 4px;
+}
+
+.drawer-body {
+  margin: 0px 20px;
+  overflow-y: auto;
+}
+
+/* 首页的项目数值表格 */
+.overview-info-title {
+  /* text-align: center; */
+  color: var(--overview-info-title);
+  font-size: 12px;
+  margin-top: 0px;
+}
+.overview-info-value {
+  /* text-align: center; */
+  font-size: 14px;
+}
+.overview-info-hr {
+  line-height: normal;
+  margin-bottom: 16px;
+  font-weight: 800;
+  font-size: 12px;
+  color: rgb(122, 122, 122);
+}
+
+/* 常见问题栏目链接属性集合 */
+.manualLink {
+  display: block;
+  color: var(--a-color);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  box-sizing: border-box;
+  text-decoration: none;
+}
+.manualLink:hover {
+  color: var(--a-hover-color);
+  transition: color .5s;
+}
+
+.manual-link-block-wrapper {
+  margin: 4px;
+  text-align: center;
+}
+
+.manual-link-block {
+  background-color: var(--manual-link-bg-color);
+  display: block;
+  padding: 8px;
+  line-height: 1.5;
+  transition: all 0.4s;
+}
+
+.manual-link-block:hover {
+  background-color: var(--manual-link-bg-hover-color);
+}
+
+.CodeMirror {
+  font-family: "Courier New", Courier, monospace;
+  height: 100%;
+}
+
+/* 卡片 CSS 标题元素 */
+.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+  background: var(--card-bg-color);
+}
+
+.box-card-title-more {
+  font-weight: 800;
+  margin-bottom: 12px;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.line-info {
+  color: #e9fffa!important;
+}
+
+.el-card {
+  background-color: var(--card-bg-color);
+  box-shadow: var(--card-box-shadow)!important;
+  border: 0!important;
+  color: var(--card-color)!important;
+  border-radius: 0!important;
+  backdrop-filter: var(--card-blur);
+}
+
+/* 表格 */
+.el-table--enable-row-hover .el-table__body tr:hover>td {
+	background-color: var(--td-bg-hover-color)!important
+}
+
+.el-table {
+  color: var(--table-color)!important;
+  background-color: transparent!important;
+}
+
+.el-table th {
+	color: var(--th-color)!important;
+	background-color: var(--th-bg-color)!important
+}
+
+.el-table tr {
+  background-color: var(--tr-bg-color)!important;
+}
+
+.el-table td, .el-table th.is-leaf {
+  border-bottom: 1px solid #68879e!important;
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td {
+  background: var(--td-2bg-color)!important;
+}
+
+
+/* 输入框 */
+.el-input--small .el-input__inner, .el-input__inner {
+  background: var(--input-bg-color);
+  color: var(--input-color);
+}
+
+.el-input__inner:focus {
+	border-color: var(--input-focus-border-color);
+}
+
+/* 按钮 */
+.el-button.el-button--default,.el-button--small {
+  background: var(--btn-default-bg-color);
+  color: var(--btn-default-color);
+}
+
+.el-button.el-button--default:hover {
+  color: var(--btn-default-hover-color);
+  background-color: var(--btn-default-bg-hover-color);
+}
+
+.el-button--default.el-button--small:hover {
+  color: var(--btn-default-hover-color);
+  background-color:  var(--btn-default-bg-hover-color);
+}
+
+.el-button--success {
+  background-color: var(--btn-success-bg-color);
+}
+
+.el-button--danger {
+  background-color: var(--btn-danger-bg-color);
+  border-color: var(--btn-danger-color);
+}
+
+.el-button--danger.is-plain {
+  background-color: var(--btn-q-danger-color);
+}
+
+.el-button--warning.is-plain {
+  background-color: var(--btn-q-warning-color);
+}
+
+button[disabled] {
+    filter: var(--btn-disabled-filter);
+}
+
+/* 对话框 */
+.component-dialog-overflow {
+  backdrop-filter: var(--dl-blur);
+}
+
+.el-message-box {
+  background-color: var(--msgbox-bg-color)!important;
+  backdrop-filter: var(--msgbox-blur);
+  border: var(--msgbox-border)!important;
+}
+
+.el-message-box__title {
+  color: var(--msgbox-title-color)!important;
+}
+
+.el-message-box__content {
+  color: var(--msgbox-content-color)!important;
+}
+
+.HeaderTitle {
+  color: var(--header-title-color);
+  font-weight: var(--header-title-font-weight);
+  text-decoration: none;
+}
+
+.HeaderInfo {
+  color: var(--header-info-color);
+}
+
+/* 下拉选择 */
+.el-select .el-input.is-focus .el-input__inner {
+  border-color: var(--select-border-color);
+  box-shadow: var(--select-shadow1);
+}
+
+.el-dropdown-link {
+  color: #b1ffe9!important;
+}
+
+.el-select__popper.el-popper[role=tooltip],.el-dropdown__popper.el-popper[role=tooltip] {
+  background: var(--select-bg-color);
+  backdrop-filter: var(--select-blur);
+  border: 1px solid var(--select-border-color);
+  box-shadow: var(--select-shadow1);
+}
+
+.el-select-dropdown__item.hover, .el-select-dropdown__item:hover,.el-dropdown-menu__item:not(.is-disabled):hover {
+    background: var(--select-bg-hover-color);
+    color: var(--select-hover-color);
+}
+
+.el-select-dropdown__item.selected {
+  color: var(--selected-color);
+}
+
+.el-select-dropdown__item,.el-dropdown-menu__item {
+  color: var(--select-color);
+}
+
+.el-dropdown-menu {
+  background-color: unset;
+}
+
+.el-timeline-item__timestamp {
+  color: #eaebed;
+}
+
+.el-alert--info.is-light {
+	background-color: var(--alert-info-bg-color);
+	color: var(--alert-info-color);
+}
+
+.el-alert--info.is-light .el-alert__description {
+	color: var(--alert-desc-color);
+}
+
+.el-alert--error.is-light {
+	background-color: var(--alert-error-bg-color);
+}
+
+.blur {
+  backdrop-filter: var(--terminal-backdrop-filter);
+}

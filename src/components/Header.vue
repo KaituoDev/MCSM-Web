@@ -1,0 +1,202 @@
+<!--
+  Copyright (C) 2022 Suwings(https://github.com/Suwings)
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+  
+  According to the GPL, it is forbidden to delete all copyright notices, 
+  and if you modify the source code, you must open source the
+  modified source code.
+
+  版权所有 (C) 2022 Suwings(https://github.com/Suwings)
+
+  本程序为自由软件，你可以依据 GPL 的条款（第三版或者更高），再分发和/或修改它。
+  该程序以具有实际用途为目的发布，但是并不包含任何担保，
+  也不包含基于特定商用或健康用途的默认担保。具体细节请查看 GPL 协议。
+
+  根据协议，您必须保留所有版权声明，如果修改源码则必须开源修改后的源码。
+  前往 https://mcsmanager.com/ 申请闭源开发授权或了解更多。
+-->
+
+<template>
+  <el-card
+    v-if="isTopPermission"
+    class="box-card"
+    body-style="padding: 12px;"
+    style="margin-bottom: 20px; border-radius: 4px"
+  >
+    <el-row>
+      <el-col :span="12">
+        <!-- 手机端只显示扩展按钮 -->
+        <div class="only-phone-display header-left-buttion" @click="toAside">
+          <i class="el-icon-s-operation"></i>
+        </div>
+        <div
+          style="font-size: 14px; font-weight: 700; line-height: 28px"
+          class="only-pc-display"
+          v-for="(item, index) in breadcrumbsList"
+          :to="{ path: item.path }"
+          :key="index"
+        >
+          <span class="only-pc-display"><a href="./" class="HeaderTitle">控制面板</a>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="HeaderInfo">{{ item.title }}</span></span>
+        </div>
+        <!-- 电脑端显示全部内容 -->
+        <!-- <el-breadcrumb separator="/" style="line-height: 28px" class="only-pc-display">
+          <el-breadcrumb-item :to="{ path: '/overview' }">控制面板</el-breadcrumb-item>
+          <el-breadcrumb-item
+            v-for="(item, index) in breadcrumbsList"
+            :to="{ path: item.path }"
+            :key="index"
+          >
+            {{ item.title }}
+          </el-breadcrumb-item>
+        </el-breadcrumb> -->
+      </el-col>
+      <el-col :span="12" style="text-align: right; line-height: 28px">
+        <el-dropdown style="margin: 0px 10px">
+          <span class="el-dropdown-link">
+            {{ userInfo.userName }}
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="toPrivate">个人资料</el-dropdown-item>
+              <el-dropdown-item @click="logout">退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <!-- <el-tooltip content="消息" class="only-pc-display">
+          <el-button size="mini" icon="el-icon-bell" circle></el-button>
+        </el-tooltip>
+        <el-tooltip content="使用文档" class="only-pc-display">
+          <el-button size="mini" icon="el-icon-help" circle></el-button>
+        </el-tooltip> -->
+      </el-col>
+    </el-row>
+  </el-card>
+
+  <el-card
+    v-if="!isTopPermission"
+    class="box-card page-header-img"
+    body-style="padding: 12px;"
+    style="margin-bottom: 20px; border-radius: 4px; color: white"
+  >
+    <div class="flex flex-space-between">
+      <router-link to="/home">
+        <div style="height: 33px; line-height: 33px">
+          <div>
+            <Logo style="vertical-align: text-top" margin="0px"></Logo>
+          </div>
+        </div>
+      </router-link>
+      <div style="height: 36px; line-height: 36px">
+        <el-dropdown style="margin: 0px 10px">
+          <span class="el-dropdown-link">
+            欢迎您，{{ userInfo.userName }}
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item @click="toPrivate">个人资料</el-dropdown-item>
+              <el-dropdown-item @click="logout">退出</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
+    </div>
+  </el-card>
+</template>
+
+<script>
+import router from "../app/router";
+import { API_USER_LOGOUT } from "../app/service/common";
+import { request } from "../app/service/protocol";
+import Logo from "./Logo.vue";
+
+export default {
+  props: {
+    breadcrumbsList: Array,
+    breadcrumbs: String,
+    aside: Function
+  },
+  data: function () {
+    return {};
+  },
+  computed: {
+    userInfo() {
+      return this.$store.state.userInfo;
+    },
+    isTopPermission() {
+      return this.$store.state.userInfo.permission >= 10;
+    }
+  },
+  methods: {
+    toAside() {
+      this.$props.aside();
+    },
+    toPrivate() {
+      router.push({ path: "/private" });
+    },
+    async logout() {
+      try {
+        await request({
+          method: "GET",
+          url: API_USER_LOGOUT
+        });
+        window.location.href = "/";
+        this.$notify({
+          title: "退出成功",
+          message: "欢迎下次使用",
+          type: "success"
+        });
+      } catch (error) {
+        this.$notify({
+          title: "退出失败",
+          message: error.message,
+          type: "error",
+          duration: 0
+        });
+      }
+    }
+  },
+  components: { Logo }
+};
+</script>
+
+<style scoped>
+.el-dropdown-link {
+  cursor: pointer;
+  color: #409eff;
+  font-weight: 400;
+}
+.el-icon-arrow-down {
+  font-size: 12px;
+}
+
+.header-left-buttion {
+  line-height: 28px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.page-header-img {
+  background-position-y: 40px;
+  transition: all 1s;
+}
+
+.page-header-img:hover {
+  background-position-y: 100px;
+}
+
+.header-a {
+  color: #caffff;
+  font-weight: 400;
+}
+</style>

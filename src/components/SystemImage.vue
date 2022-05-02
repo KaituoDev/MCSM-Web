@@ -39,7 +39,7 @@
 
 <script>
 export default {
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {},
@@ -53,26 +53,31 @@ export default {
   justify-content: flex-start;
   align-items: center;
 }
+
 .component-system-img-wrapper {
   margin: 0px;
   overflow: hidden;
   border-radius: 2px;
 }
+
+/*
 .component-system-img {
   background: url("/static/images/index.png") no-repeat;
   background-size: cover;
   background-position: center;
   height: 80px;
   width: 120px;
-}
+}*/
 .component-system-content {
   margin-left: 18px;
 }
+
 .component-system-title {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 0px;
 }
+
 .component-system-subtitle {
   font-size: 12px;
 }

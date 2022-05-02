@@ -32,9 +32,9 @@
       <div class="flex flex-space-between flex-align-items-center">
         <div>
           <ItemGroup>
-            <el-button type="success" size="small" @click="toNewImage"> 新建镜像 </el-button>
-            <el-button type="" size="small" @click="refresh"> 刷新 </el-button>
-            <el-button type="" size="small" @click="back"> 返回 </el-button>
+            <el-button type="success" size="small" @click="toNewImage"> 新建镜像</el-button>
+            <el-button type="" size="small" @click="refresh"> 刷新</el-button>
+            <el-button type="" size="small" @click="back"> 返回</el-button>
           </ItemGroup>
         </div>
         <span class="color-gray hidden-md-and-down">新建镜像可能需要一定时间。&nbsp;&nbsp;</span>
@@ -127,7 +127,7 @@
         <el-alert :closable="false" title="Windows 系统暂时无法使用" type="error" show-icon>
           <template #default>
             <span
-              >很抱歉，因为 Windows 下的虚拟化使用较为复杂且安装繁琐，所以 MCSManager
+            >很抱歉，因为 Windows 下的虚拟化使用较为复杂且安装繁琐，所以 MCSManager
               面板暂时无法兼容 Docker for Windows 版本。<br />相信在不久后的将来会逐渐支持此功能。</span
             >
           </template>
@@ -148,7 +148,7 @@ import Dialog from "../../components/Dialog";
 
 export default {
   components: { Panel, Dialog },
-  data: function () {
+  data: function() {
     return {
       serviceUuid: this.$route.params.serviceUuid,
       images: [],

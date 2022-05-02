@@ -44,7 +44,8 @@
               size="mini"
               @click="toImagesPanel(scope.row)"
               :disabled="!scope.row.available"
-              >环境镜像管理</el-button
+            >环境镜像管理
+            </el-button
             >
             <!-- <el-button size="mini" @click="deleteImage(scope.row)" :disabled="!scope.row.available">主机本地环境</el-button> -->
           </template>
@@ -73,8 +74,8 @@
             </SelectBlock>
           </ItemGroup>
         </el-col>
-        <el-col :md="6" :offset="0"> </el-col>
-        <el-col :md="6" :offset="0"> </el-col>
+        <el-col :md="6" :offset="0"></el-col>
+        <el-col :md="6" :offset="0"></el-col>
       </el-row>
     </template>
   </Panel>
@@ -89,7 +90,7 @@ import SelectBlock from "../../components/SelectBlock";
 
 export default {
   components: { Panel, SelectBlock },
-  data: function () {
+  data: function() {
     return {
       services: []
     };

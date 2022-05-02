@@ -177,10 +177,12 @@
           <div style="text-align: right">
             <ItemGroup>
               <el-button size="small" class="row-mt" @click="changeApi(true)"
-                >生成 API 密钥</el-button
+              >生成 API 密钥
+              </el-button
               >
               <el-button size="small" class="row-mt" @click="changeApi(false)"
-                >关闭 API 接口</el-button
+              >关闭 API 接口
+              </el-button
               >
             </ItemGroup>
           </div>
@@ -226,7 +228,8 @@ export default {
     }
   },
 
-  async mounted() {},
+  async mounted() {
+  },
   methods: {
     async update(type) {
       await this.$confirm("确定要更改此信息吗？", "警告", {

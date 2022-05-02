@@ -61,9 +61,9 @@
         <el-table-column label="备注" width="210">
           <template #default="scope">
             <span
-              >{{ scope.row.remarks }}
+            >{{ scope.row.remarks }}
               <i style="cursor: pointer" class="el-icon-edit" @click="updateRemarks(scope.row)"></i
-            ></span>
+              ></span>
             <!-- <el-input size="small" v-model="scope.row.remarks"></el-input> -->
           </template>
         </el-table-column>
@@ -130,7 +130,8 @@
             </el-button>
             <el-button size="mini" @click="updateKey(scope.row, true)">修改密钥</el-button>
             <el-button size="mini" type="danger" plain @click="deleteService(scope.row.uuid)"
-              >删除</el-button
+            >删除
+            </el-button
             >
           </template>
         </el-table-column>
@@ -181,7 +182,7 @@
         <div class="row-mt">
           <ItemGroup>
             <el-button type="success" size="small" @click="toNewService(false)">新增</el-button>
-            <el-button @click="isNewService = !isNewService" size="small"> 取消 </el-button>
+            <el-button @click="isNewService = !isNewService" size="small"> 取消</el-button>
           </ItemGroup>
         </div>
       </div>
@@ -218,7 +219,8 @@
         <ItemGroup>
           <el-button type="danger" size="small" @click="toNewService(true)">强制执行</el-button>
           <el-button @click="isNewServiceWarning = !isNewServiceWarning" size="small"
-            >取消执行</el-button
+          >取消执行
+          </el-button
           >
         </ItemGroup>
       </div>

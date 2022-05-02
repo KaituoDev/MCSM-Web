@@ -45,7 +45,9 @@
       <div class="sub-title">
         <div class="sub-title">什么是最终用户许可协议</div>
         <div class="sub-title-info">
-          最终用户许可协议是软件应用程序作者或者发布者与应用程序使用者之间的合法合同。最终用户许可协议 ( EULA ), 通常是指“软件许可”, 它与租赁协议类似; 用户同意支付软件的使用费用, 并且向软件作者或者发行者承诺遵守EULA中规定的所有约束条件。用户被告知, 当他们打开软件包的包装、打开 CD 盒的封条、将卡片寄回给软件发行者、安装应用程序、执行下载文件或者简单的使用应用程序的时候就意味着他们已经“接受”了 EULA 中的条款。
+          最终用户许可协议是软件应用程序作者或者发布者与应用程序使用者之间的合法合同。最终用户许可协议 ( EULA ), 通常是指“软件许可”, 它与租赁协议类似; 用户同意支付软件的使用费用,
+          并且向软件作者或者发行者承诺遵守EULA中规定的所有约束条件。用户被告知, 当他们打开软件包的包装、打开 CD
+          盒的封条、将卡片寄回给软件发行者、安装应用程序、执行下载文件或者简单的使用应用程序的时候就意味着他们已经“接受”了 EULA 中的条款。
         </div>
       </div>
     </template>
@@ -66,7 +68,7 @@
 </template>
 
 <script>
-import { getDescriptionByTitle, jsonToMap } from "../../app/service/common";
+import { getDescriptionByTitle, jsonToMap } from "@/app/service/common";
 import LineOption from "../LineOption";
 import LineOptionList from "../LineOptionList";
 

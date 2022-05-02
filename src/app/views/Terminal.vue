@@ -36,7 +36,7 @@
               <i class="el-icon-tickets"></i> 类型: {{ typeToText(instanceInfo.config.type) }}
             </LineInfo>
             <LineInfo
-              ><i class="el-icon-finished"></i> 状态:
+            ><i class="el-icon-finished"></i> 状态:
               <span v-if="instanceInfo.status === -1" class="color-red">维护中</span>
               <span v-else-if="instanceInfo.status === 0" class="color-gray">未运行</span>
               <span v-else-if="instanceInfo.status === 1" class="color-yellow">停止中</span>
@@ -82,7 +82,7 @@
                       style="width: 100%"
                       size="small"
                       class="row-mt"
-                      >关闭实例
+                    >关闭实例
                     </el-button>
                   </template>
                 </el-popconfirm>
@@ -111,7 +111,7 @@
                       style="width: 100%"
                       size="small"
                       class="row-mt"
-                      >强制终止实例
+                    >强制终止实例
                     </el-button>
                   </template>
                 </el-popconfirm>
@@ -126,7 +126,7 @@
                       style="width: 100%"
                       size="small"
                       class="row-mt"
-                      >终止正在运行的任务
+                    >终止正在运行的任务
                     </el-button>
                   </template>
                 </el-popconfirm>
@@ -143,7 +143,7 @@
                       style="width: 100%"
                       size="small"
                       class="row-mt"
-                      >更新/安装实例
+                    >更新/安装实例
                     </el-button>
                   </template>
                 </el-popconfirm>
@@ -167,7 +167,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toProcessConfig"
-                >特定配置
+              >特定配置
               </el-button>
             </el-col>
             <el-col :lg="12" :offset="0" class="row-mb">
@@ -177,7 +177,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toTerminalSettingPanel"
-                >终端设置
+              >终端设置
               </el-button>
             </el-col>
 
@@ -188,7 +188,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toSchedule"
-                >计划任务
+              >计划任务
               </el-button>
             </el-col>
             <el-col :lg="12" :offset="0" class="row-mb">
@@ -198,7 +198,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toPingPanel"
-                >状态查询
+              >状态查询
               </el-button>
             </el-col>
             <el-col :lg="12" :offset="0" class="row-mb">
@@ -208,7 +208,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toEventPanel"
-                >事件任务
+              >事件任务
               </el-button>
             </el-col>
             <el-col :lg="12" :offset="0" class="row-mb">
@@ -218,7 +218,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toFileManager"
-                >文件管理
+              >文件管理
               </el-button>
             </el-col>
             <el-col :lg="24" :offset="0" v-if="isTopPermission">
@@ -228,7 +228,7 @@
                 style="width: 100%"
                 size="small"
                 @click="toInstanceDetail"
-                >实例设置
+              >实例设置
               </el-button>
             </el-col>
           </el-row>
@@ -273,7 +273,7 @@
             </LineInfo>
             <!-- <LineInfo><i class="el-icon-document"></i> 标签: {{ instanceInfo.tag }}</LineInfo> -->
             <LineInfo
-              ><i class="el-icon-document"></i> 输入编码: {{ instanceInfo.config.ie }} 输出编码:
+            ><i class="el-icon-document"></i> 输入编码: {{ instanceInfo.config.ie }} 输出编码:
               {{ instanceInfo.config.oe }}
             </LineInfo>
           </div>
@@ -281,7 +281,8 @@
       </Panel>
     </el-col>
     <el-col :md="18">
-      <Panel v-loading="!available" element-loading-text="连接中" element-loading-background="rgba(0, 0, 0, 0.5)" class="blur">
+      <Panel v-loading="!available" element-loading-text="连接中" element-loading-background="rgba(0, 0, 0, 0.5)"
+             class="blur">
         <template #title>实例操作终端</template>
         <template #default>
           <div class="terminal-wrapper">
@@ -452,7 +453,7 @@
           <li>
             前往
             <a href="https://docs.mcsmanager.com" target="_blank" rel="noopener noreferrer"
-              >https://docs.mcsmanager.com</a
+            >https://docs.mcsmanager.com</a
             >
             了解更多
           </li>
@@ -491,7 +492,7 @@ import { initTerminalWindow, textToTermText } from "../service/term";
 import { getPlayersOption } from "../service/chart_option";
 
 export default {
-  data: function () {
+  data: function() {
     return {
       serviceUuid: this.$route.params.serviceUuid,
       instanceUuid: this.$route.params.instanceUuid,
@@ -975,7 +976,7 @@ export default {
 
 <style scoped>
 .terminal-wrapper {
-  background-color: rgb(30, 30, 30,0);
+  background-color: rgb(30, 30, 30, 0);
   padding: 4px;
   border-radius: 4px;
   /* overflow: hidden; */
@@ -997,6 +998,7 @@ export default {
   color: #55ff62;
   max-width: 25%;
 }
+
 .cmdhistory:hover {
   border: 1px solid #4eff42;
   box-shadow: 0 0 5px #42ff85;

@@ -43,7 +43,7 @@ export default {
   props: {
     style: String
   },
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {}
@@ -62,7 +62,7 @@ export default {
 
 .select-block:hover {
   border: 1px solid #d9dd8c;
-  background: rgba(79,114,78,0.5);
+  background: rgba(79, 114, 78, 0.5);
   backdrop-filter: blur(3px);
 }
 </style>

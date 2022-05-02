@@ -47,10 +47,12 @@ const app = createApp(App);
 
 // Vuex https://next.vuex.vuejs.org/zh/
 import store from "./store";
+
 app.use(store);
 
 // Vue-Router
 import router from "./router";
+
 app.use(router);
 
 // Install element-plus
@@ -59,5 +61,6 @@ app.use(elementIcons);
 
 // 全局组件
 import ItemGroup from "../components/ItemGroup";
+
 app.component("ItemGroup", ItemGroup);
 app.mount("#app");

@@ -38,7 +38,7 @@
           <el-col :md="8" :offset="0">
             <SelectBlock @click="selectTypeA(1)" style="min-height: 120px">
               <template #title>Java 版 Minecraft 服务端</template>
-              <template #info> 适用于类似于 Spigot, Bungeecord 等 Jar 格式文件的服务端 </template>
+              <template #info> 适用于类似于 Spigot, Bungeecord 等 Jar 格式文件的服务端</template>
             </SelectBlock>
           </el-col>
           <el-col :md="8" :offset="0">
@@ -52,7 +52,7 @@
           <el-col :md="8" :offset="0">
             <SelectBlock @click="selectTypeA(3)" style="min-height: 120px">
               <template #title>自定义命令程序</template>
-              <template #info> 适用于类似于 bash, cmd.exe 和其他任何可用命令启动的程序 </template>
+              <template #info> 适用于类似于 bash, cmd.exe 和其他任何可用命令启动的程序</template>
             </SelectBlock>
           </el-col>
         </el-row>
@@ -219,7 +219,7 @@
             <p class="sub-title-title">从已存在的文件选择服务端</p>
             <p class="sub-title-info">文件必须已经存在远程主机（非面板机器）</p>
           </div>
-          <el-input placeholder="实例名，尽可能确保唯一性" v-model="form.nickname"> </el-input>
+          <el-input placeholder="实例名，尽可能确保唯一性" v-model="form.nickname"></el-input>
         </div>
         <div class="row-mt">
           <div class="sub-title">
@@ -251,7 +251,8 @@
         <div class="row-mt" style="text-align: center">
           <ItemGroup>
             <el-button @click="up" size="small">回退</el-button>
-            <el-button @click="createInstance" size="small">创建实例</el-button></ItemGroup
+            <el-button @click="createInstance" size="small">创建实例</el-button>
+          </ItemGroup
           >
         </div>
       </div>
@@ -304,7 +305,7 @@ import { parseforwardAddress, request } from "../service/protocol";
 
 export default {
   components: { Panel, SelectBlock, CommandAssist },
-  data: function () {
+  data: function() {
     return {
       title: "新建实例引导程序",
       page: 0,
@@ -482,6 +483,7 @@ export default {
       this.form.startCommand = cmd;
     }
   },
-  async mounted() {}
+  async mounted() {
+  }
 };
 </script>

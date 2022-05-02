@@ -59,8 +59,9 @@
             <SelectBlock style="min-height: 120px" @click="selectType(1)">
               <template #title>创建 OpenJDK 8 环境镜像</template>
               <template #info
-                >适用于需要 Java 8 的服务端软件，属于经典的 Java 运行时版本，适用于 Minecraft 1.17
-                以下的所有版本</template
+              >适用于需要 Java 8 的服务端软件，属于经典的 Java 运行时版本，适用于 Minecraft 1.17
+                以下的所有版本
+              </template
               >
             </SelectBlock>
           </el-col>
@@ -74,7 +75,8 @@
             <SelectBlock style="min-height: 120px" @click="selectType(5)">
               <template #title>创建 OpenJDK 17 环境镜像</template>
               <template #info
-                >内置 Java 17 运行时环境，适用于 Minecraft 1.18 版本以上的服务端</template
+              >内置 Java 17 运行时环境，适用于 Minecraft 1.18 版本以上的服务端
+              </template
               >
             </SelectBlock>
           </el-col>
@@ -90,7 +92,8 @@
             <SelectBlock style="min-height: 120px" @click="selectType(4)">
               <template #title>使用 DockerFile 自定义创建</template>
               <template #info
-                >使用 DockerFile 自定义创建任何环境镜像，此操作建议技术人员进行</template
+              >使用 DockerFile 自定义创建任何环境镜像，此操作建议技术人员进行
+              </template
               >
             </SelectBlock>
           </el-col>
@@ -187,7 +190,7 @@ import { request } from "../service/protocol";
 
 export default {
   components: { Panel, SelectBlock, LineOption },
-  data: function () {
+  data: function() {
     return {
       dockerFile: `FROM ubuntu:latest\nRUN mkdir -p /workspace\nWORKDIR /workspace\n`,
       step: 1,

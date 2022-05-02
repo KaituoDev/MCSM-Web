@@ -173,7 +173,7 @@ export default {
 <style scoped>
 .editor-code-font {
   font-family: "Monaco", "Menlo", "Ubuntu Mono", "Consolas", "source-code-pro", "Droid Sans Mono",
-    monospace;
+  monospace;
   font-size: 12px;
   white-space: pre-wrap;
 }

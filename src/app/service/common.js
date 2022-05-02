@@ -115,6 +115,7 @@ export function sleep(t) {
 
 export function getDescriptionByTitle(description, title = "") {
   const arr = title.split("/");
+
   function _exec(keys = [], _description) {
     if (!_description) return null;
     const title = keys.shift();
@@ -124,6 +125,7 @@ export function getDescriptionByTitle(description, title = "") {
       return _description[title];
     }
   }
+
   return _exec(arr, description);
 }
 
@@ -174,8 +176,8 @@ export function jsonToMap(json, topTitle = "", map = {}) {
 }
 
 export function toUnicode(str) {
-  var value = "";
-  for (var i = 0; i < str.length; i++) {
+  let value = "";
+  for (let i = 0; i < str.length; i++) {
     if (/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g.test(str[i])) {
       value += "\\u" + leftZero4(parseInt(str.charCodeAt(i)).toString(16));
     } else {
@@ -184,6 +186,7 @@ export function toUnicode(str) {
   }
   return value;
 }
+
 function leftZero4(str) {
   if (str != null && str != "" && str != "undefined") {
     if (str.length == 2) {

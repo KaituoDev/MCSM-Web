@@ -45,7 +45,8 @@
           :to="{ path: item.path }"
           :key="index"
         >
-          <span class="only-pc-display"><a href="./" class="HeaderTitle">控制面板</a>&nbsp;&nbsp;/&nbsp;&nbsp;<span class="HeaderInfo">{{ item.title }}</span></span>
+          <span class="only-pc-display"><a href="./" class="HeaderTitle">控制面板</a>&nbsp;&nbsp;/&nbsp;&nbsp;<span
+            class="HeaderInfo">{{ item.title }}</span></span>
         </div>
         <!-- 电脑端显示全部内容 -->
         <!-- <el-breadcrumb separator="/" style="line-height: 28px" class="only-pc-display">
@@ -116,8 +117,8 @@
 
 <script>
 import router from "../app/router";
-import { API_USER_LOGOUT } from "../app/service/common";
-import { request } from "../app/service/protocol";
+import { API_USER_LOGOUT } from "@/app/service/common";
+import { request } from "@/app/service/protocol";
 import Logo from "./Logo.vue";
 
 export default {
@@ -126,7 +127,7 @@ export default {
     breadcrumbs: String,
     aside: Function
   },
-  data: function () {
+  data: function() {
     return {};
   },
   computed: {
@@ -176,6 +177,7 @@ export default {
   color: #409eff;
   font-weight: 400;
 }
+
 .el-icon-arrow-down {
   font-size: 12px;
 }

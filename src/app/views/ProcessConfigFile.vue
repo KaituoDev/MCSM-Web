@@ -56,10 +56,8 @@
       <div v-if="failure">
         <div class="text-center row-mb">
           <h3>
-            <p>
-              文件不存在或权限不正确，无法查看此文件的具体配置，您也许可以尝试到 “文件管理”
-              功能在线编辑此文件，或尝试重启实例刷新此文件。
-            </p>
+            文件不存在或权限不正确，无法查看此文件的具体配置，您也许可以尝试到 “文件管理”
+            功能在线编辑此文件，或尝试重启实例刷新此文件。
           </h3>
           <el-button class="row-mt" size="small" @click="back">回到配置文件列表</el-button>
         </div>
@@ -99,7 +97,7 @@ export default {
     "paper/paper.yml": paperYml,
     "geyser/config.yml": geyserYml
   },
-  data: function () {
+  data: function() {
     return {
       type: this.$route.query.type,
       serviceUuid: this.$route.params.serviceUuid,

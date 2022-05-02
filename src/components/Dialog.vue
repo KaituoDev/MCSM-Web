@@ -59,7 +59,7 @@ export default {
     }
   },
   emits: ["update:modelValue"],
-  data: function () {
+  data: function() {
     return {
       visible: false
     };
@@ -80,6 +80,7 @@ export default {
   max-width: 90%;
   overflow-y: auto;
 }
+
 .component-dialog-wrapper {
   position: fixed;
   top: 0;
@@ -93,15 +94,18 @@ export default {
   justify-content: center;
   transition: all 0.4s;
 }
+
 .component-dialog-body {
   word-break: break-all;
   overflow: hidden;
   width: 100%;
 }
+
 .component-dialog-close-button {
   cursor: pointer;
   font-size: 18px;
 }
+
 @media (max-width: 860px) {
   .component-dialog-overflow {
     max-height: 100%;

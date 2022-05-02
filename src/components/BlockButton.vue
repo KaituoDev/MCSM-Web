@@ -48,7 +48,7 @@ export default {
   props: {
     style: String
   },
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {}
@@ -61,7 +61,7 @@ export default {
   height: 100%;
   width: 100%;
   margin: auto;
-  background-color: rgba(28,70,57,0.5);
+  background-color: rgba(28, 70, 57, 0.5);
   transition: all 0.5s;
   border: 1px solid rgb(239, 239, 239);
 }

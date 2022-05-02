@@ -28,7 +28,7 @@
 <template>
   <div>
     <div class="logo-wrapper" :style="{ margin }">
-      <img class="logo-img" :src="require('../assets/logo.png')" width="172" />
+      <img class="logo-img" :src="require('../assets/logo.png')" width="172" alt="" />
     </div>
   </div>
 </template>
@@ -39,7 +39,7 @@ export default {
     style: String,
     margin: String
   },
-  data: function () {
+  data: function() {
     return {};
   }
 };
@@ -49,6 +49,7 @@ export default {
 .logo-img {
   vertical-align: middle;
 }
+
 .logo-wrapper {
   margin: 22px 0px;
   text-align: center;

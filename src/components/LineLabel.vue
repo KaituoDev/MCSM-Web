@@ -92,7 +92,7 @@ export default {
 .line-label-title {
   display: inline-block;
 
-  color: rgb(222,252,255);
+  color: rgb(222, 252, 255);
 }
 
 .line-label-text {

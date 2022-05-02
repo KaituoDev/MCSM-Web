@@ -50,11 +50,12 @@ import Panel from "./Panel";
 export default {
   components: { Panel },
   props: ["value", "title", "subTitle", "fontClass", "style"],
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {},
-  mounted() {}
+  mounted() {
+  }
 };
 </script>
 
@@ -63,11 +64,13 @@ export default {
   position: relative;
   overflow: hidden;
 }
+
 .guser-top-info > p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
 .guser-top-info-text > i {
   font-size: 100px;
   color: #d1d1d11c;

@@ -28,7 +28,7 @@ axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // axios.defaults.withCredentials = true;
 
 // axios 请求 token 必须携带
-axios.interceptors.request.use(async function (config) {
+axios.interceptors.request.use(async function(config) {
   let token = store.state.token;
   if (!token && !config.params?.__mcsm_init__) {
     console.log("Token 未获取，正在尝试初始化...");

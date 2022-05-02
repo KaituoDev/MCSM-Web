@@ -31,7 +31,7 @@
           </ItemGroup>
         </div>
         <span class="color-gray hidden-md-and-down"
-          >部分配置可能需要重启面板才能生效&nbsp;&nbsp;</span
+        >部分配置可能需要重启面板才能生效&nbsp;&nbsp;</span
         >
       </div>
     </template>
@@ -51,7 +51,7 @@
                 <p class="sub-title-title">面板访问端口</p>
                 <p class="sub-title-info">浏览器访问网页面板的端口，必须防火墙放行此端口。</p>
               </div>
-              <el-input placeholder="请必须填入数字" v-model="settings.httpPort"> </el-input>
+              <el-input placeholder="请必须填入数字" v-model="settings.httpPort"></el-input>
             </div>
             <!-- <div class="config-item">
               <div class="sub-title">
@@ -67,7 +67,7 @@
                 <p class="sub-title-title">面板绑定 IP</p>
                 <p class="sub-title-info">一般情况请保持默认值, 一般适用于多个 IP 的场景。</p>
               </div>
-              <el-input placeholder="默认 0.0.0.0 | 可不填" v-model="settings.httpIp"> </el-input>
+              <el-input placeholder="默认 0.0.0.0 | 可不填" v-model="settings.httpIp"></el-input>
             </div>
 
             <div class="config-item">
@@ -310,7 +310,7 @@
             <a
               target="black"
               href="https://github.com/MCSManager/MCSManager-Daemon/blob/master/LICENSE"
-              >GPL-3.0</a
+            >GPL-3.0</a
             >
             开源软件协议发行
           </p>
@@ -398,10 +398,11 @@ import SystemIndex from "../../components/SystemImage.vue";
 import { API_SETTINGS } from "../service/common";
 import { request } from "../service/protocol";
 import SelectBlock from "../../components/SelectBlock";
+
 export default {
   // eslint-disable-next-line vue/no-unused-components
   components: { Panel, SystemIndex, SelectBlock },
-  data: function () {
+  data: function() {
     return {
       settings: {},
       sponsorList: null
@@ -472,6 +473,7 @@ export default {
 .system-index-block {
   margin: 0px 0px 24px 0px;
 }
+
 .config-item {
   margin-top: 10px;
 }

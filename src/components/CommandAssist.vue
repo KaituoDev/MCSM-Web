@@ -182,7 +182,7 @@ export default {
     defaultProgramName: String
   },
   emits: ["update:modelValue"],
-  data: function () {
+  data: function() {
     return {
       activeName: "java",
       visible: false,

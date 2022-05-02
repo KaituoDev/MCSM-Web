@@ -61,7 +61,7 @@
 </template>
 
 <script>
-import { getDescriptionByTitle, jsonToMap } from "../../app/service/common";
+import { getDescriptionByTitle, jsonToMap } from "@/app/service/common";
 import LineOption from "../LineOption";
 import LineOptionList from "../LineOptionList";
 

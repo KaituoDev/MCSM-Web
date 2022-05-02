@@ -39,7 +39,7 @@ export default {
     style: String,
     lr: Boolean
   },
-  data: function () {
+  data: function() {
     return {
       classz: "item-responsive-group"
     };

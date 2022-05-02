@@ -40,7 +40,8 @@
             />
             <div style="text-align: right">
               <el-button size="small" class="row-mt" @click="submit()" type="danger" plain
-                >重置密码</el-button
+              >重置密码
+              </el-button
               >
             </div>
           </div>
@@ -51,9 +52,10 @@
 </template>
 
 <script>
-import { API_USER_UPDATE } from "../app/service/common";
-import { request } from "../app/service/protocol";
+import { API_USER_UPDATE } from "@/app/service/common";
+import { request } from "@/app/service/protocol";
 import Dialog from "./Dialog";
+
 export default {
   components: { Dialog },
   props: {
@@ -67,7 +69,8 @@ export default {
       passWord: ""
     };
   },
-  mounted() {},
+  mounted() {
+  },
   methods: {
     async submit() {
       await this.$confirm(`确定重设密码为：${this.passWord} 吗？`, "重置密码确认", {
@@ -101,6 +104,7 @@ export default {
 .content {
   max-width: 500px;
 }
+
 .title {
   margin: 8px 0px;
 }

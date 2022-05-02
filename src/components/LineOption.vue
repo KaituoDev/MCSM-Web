@@ -84,7 +84,7 @@
 <script>
 export default {
   props: ["optionValue", "optionKey", "custom"],
-  data: function () {
+  data: function() {
     return {
       type: 0
     };

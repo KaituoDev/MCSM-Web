@@ -42,7 +42,7 @@ export default {
     style: String,
     bodyStyle: String
   },
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {}

@@ -31,9 +31,10 @@
 import Panel from "../../components/Panel";
 import router from "../router";
 import { setupUserInfo } from "../service/protocol";
+
 export default {
   components: { Panel },
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {},
@@ -50,7 +51,7 @@ export default {
         console.log("辅助链接 - 导航跳转至普通界面");
         router.push({ path: "/home" });
       }
-      return;
+
     } catch (error) {
       console.log("App.vue setupUserInfo() ERROR:", error);
       router.push({ path: "/login" });

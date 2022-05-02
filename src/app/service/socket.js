@@ -27,8 +27,10 @@ import { ElNotification } from "element-plus";
 export function connectRemoteService(
   addr,
   password,
-  connectCallback = () => {},
-  errorCallbackCallback = () => {}
+  connectCallback = () => {
+  },
+  errorCallbackCallback = () => {
+  }
 ) {
   console.log("浏览器正在连接守护进程:", addr);
   console.log("临时密码:", password);

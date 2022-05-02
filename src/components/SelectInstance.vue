@@ -70,7 +70,7 @@
         <el-table-column prop="nickname" label="实例名称" min-width="240"></el-table-column>
         <el-table-column label="操作" style="text-align: right" width="180">
           <template #default="scope">
-            <el-button size="small" @click="callback(scope.row)"> 选择 </el-button>
+            <el-button size="small" @click="callback(scope.row)"> 选择</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -79,16 +79,16 @@
 </template>
 
 <script>
-import { API_SERVICE_INSTANCES, API_SERVICE_LIST } from "../app/service/common";
-import { statusCodeToText } from "../app/service/instance_tools";
-import { request } from "../app/service/protocol";
+import { API_SERVICE_INSTANCES, API_SERVICE_LIST } from "@/app/service/common";
+import { statusCodeToText } from "@/app/service/instance_tools";
+import { request } from "@/app/service/protocol";
 
 export default {
   props: {
     callback: Function
   },
 
-  data: function () {
+  data: function() {
     return {
       instances: [],
       serviceList: [],

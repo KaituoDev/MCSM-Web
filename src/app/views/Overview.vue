@@ -74,7 +74,7 @@
             >
             </ValueCard>
           </el-col>
-          <el-col :md="6" :xs="12" :offset="0" >
+          <el-col :md="6" :xs="12" :offset="0">
             <ValueCard
               title="用户登录次数"
               sub-title="登录失败次数 : 登录成功次数"
@@ -110,13 +110,13 @@
             面板端 {{ panelVersion }} 所需最低守护进程版本：{{ specifiedDaemonVersion }}
           </p>
           <el-table :data="servicesStatus" style="width: 100%" size="small">
-            <el-table-column prop="ip" label="地址" width="180"> </el-table-column>
-            <el-table-column prop="port" label="端口" > </el-table-column>
-            <el-table-column prop="remarks" label="备注" width="180"> </el-table-column>
-            <el-table-column prop="cpu" label="CPU"> </el-table-column>
-            <el-table-column prop="mem" label="内存"> </el-table-column>
-            <el-table-column prop="instance" label="已有实例"> </el-table-column>
-            <el-table-column prop="started" label="运行实例"> </el-table-column>
+            <el-table-column prop="ip" label="地址" width="180"></el-table-column>
+            <el-table-column prop="port" label="端口"></el-table-column>
+            <el-table-column prop="remarks" label="备注" width="180"></el-table-column>
+            <el-table-column prop="cpu" label="CPU"></el-table-column>
+            <el-table-column prop="mem" label="内存"></el-table-column>
+            <el-table-column prop="instance" label="已有实例"></el-table-column>
+            <el-table-column prop="started" label="运行实例"></el-table-column>
             <el-table-column prop="version" label="守护进程版本">
               <template #default="scope">
                 <span
@@ -238,6 +238,7 @@ import {
   getStatusChartOption2
 } from "../service/chart_option";
 import ValueCard from "../../components/ValueCard";
+
 export default {
   components: { Panel, ValueCard, UserInit },
   data() {
@@ -464,25 +465,25 @@ export default {
         source[key]["time"] = `${MAX_TIME - key * 1} 分前`;
       }
       this.systemChart3.setOption({
-        textStyle: {color:"#dad6a1"},
+        textStyle: { color: "#dad6a1" },
         dataset: {
           dimensions: ["time", "value"],
-          source,
+          source
         },
         //接口请求量
         color: [
-          '#fff493'
+          "#fff493"
         ]
       });
       this.systemChart4.setOption({
-        textStyle: {color:"#dad6a1"},
+        textStyle: { color: "#dad6a1" },
         dataset: {
           dimensions: ["time", "totalInstance", "runningInstance"],
           source
         },
         //总数，运行书
         color: [
-        '#99f5bd','#dbff95'
+          "#99f5bd", "#dbff95"
         ]
       });
     },
@@ -493,25 +494,25 @@ export default {
         source[key]["time"] = `${(MAX_TIME - key) * 10} 秒前`;
       }
       this.systemChart.setOption({
-        textStyle: {color:"#8ec7ff"},
+        textStyle: { color: "#8ec7ff" },
         dataset: {
           dimensions: ["time", "cpu"],
           source
         },
         //CPU
         color: [
-          '#87c2fe'
+          "#87c2fe"
         ]
       });
       this.systemChart2.setOption({
-        textStyle: {color:"#d79aff"},
+        textStyle: { color: "#d79aff" },
         dataset: {
           dimensions: ["time", "mem"],
           source
         },
         ///面板段内存使用率
         color: [
-          '#d58dff'
+          "#d58dff"
         ]
       });
     },

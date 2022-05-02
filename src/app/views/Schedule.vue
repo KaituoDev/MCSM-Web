@@ -68,7 +68,7 @@
         <el-table-column prop="time" label="触发时间" width="190px"></el-table-column>
         <el-table-column label="操作" style="text-align: center" width="120">
           <template #default="scope">
-            <el-button type="danger" size="mini" @click="deleteTask(scope.row)"> 删除 </el-button>
+            <el-button type="danger" size="mini" @click="deleteTask(scope.row)"> 删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -200,8 +200,8 @@
       ></el-input>
       <div class="row-mt">
         <ItemGroup>
-          <el-button type="success" size="small" @click="createTask"> 保存 </el-button>
-          <el-button type="danger" size="small" @click="newTask.is = !newTask.is"> 取消 </el-button>
+          <el-button type="success" size="small" @click="createTask"> 保存</el-button>
+          <el-button type="danger" size="small" @click="newTask.is = !newTask.is"> 取消</el-button>
         </ItemGroup>
       </div>
     </template>
@@ -213,9 +213,10 @@ import Panel from "../../components/Panel";
 import Dialog from "../../components/Dialog";
 import { request } from "../service/protocol";
 import { API_SCHEDULE } from "../service/common";
+
 export default {
   components: { Panel, Dialog },
-  data: function () {
+  data: function() {
     return {
       serviceUuid: this.$route.params.serviceUuid,
       instanceUuid: this.$route.params.instanceUuid,

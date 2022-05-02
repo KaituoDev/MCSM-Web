@@ -60,7 +60,8 @@ export default {
   props: {
     modelValue: Object
   },
-  async mounted() {},
+  async mounted() {
+  },
   methods: {},
   data() {
     return {

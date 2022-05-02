@@ -127,7 +127,7 @@
         </el-table-column>
 
         <el-table-column label="字节流编码">
-          <template #default="scope"> {{ scope.row.ie }}/{{ scope.row.oe }} </template>
+          <template #default="scope"> {{ scope.row.ie }}/{{ scope.row.oe }}</template>
         </el-table-column>
         <el-table-column prop="lastDatetime" label="最后启动"></el-table-column>
         <el-table-column label="到期时间">
@@ -165,7 +165,8 @@
     <div>
       <span>MCSManager is released under the GPL-3.0 License</span>
       <br />
-      <span>Copyright © 2022 Suwings | Modify by <a target="black" href="https://github.com/MSDNicrosoft"> MSDNicrosoft</a></span>
+      <span>Copyright © 2022 Suwings | Modify by <a target="black"
+                                                    href="https://github.com/MSDNicrosoft"> MSDNicrosoft</a></span>
     </div>
   </div>
 
@@ -208,9 +209,10 @@ import LineLabel from "../../components/LineLabel";
 import { request, requestUserInfo } from "../service/protocol";
 import { API_INSTANCE_LOW_PERMISSION_PUT } from "../service/common";
 import { statusCodeToText } from "../service/instance_tools";
+
 export default {
   components: { Panel, LineLabel, Dialog, ValueCard },
-  data: function () {
+  data: function() {
     return {
       editInstance: {
         is: false,

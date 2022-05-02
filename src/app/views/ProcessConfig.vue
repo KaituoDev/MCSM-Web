@@ -49,7 +49,7 @@
       <div v-for="(item, index) in configs" :key="index" class="row-mb">
         <BlockButton v-if="item.check" style="padding: 8px 0px">
           <template #title
-            >{{ item.fileName }}
+          >{{ item.fileName }}
             <el-tag size="mini" type="warning" v-if="item.conflict">存在同名文件</el-tag>
           </template>
           <template #default>
@@ -60,7 +60,7 @@
               <span>{{ item.info }}</span>
               <br />
               <span class="color-red" v-if="item.conflict"
-                >面板无法得知此配置文件是否兼容，请您自行根据类型进入相应配置文件界面。</span
+              >面板无法得知此配置文件是否兼容，请您自行根据类型进入相应配置文件界面。</span
               >
             </div>
           </template>
@@ -69,7 +69,8 @@
               type="text"
               icon="el-icon-right"
               @click="toProcessConfig(item.redirect, item.path, item.type)"
-              >浏览</el-button
+            >浏览
+            </el-button
             >
           </template>
         </BlockButton>
@@ -87,7 +88,7 @@ import { API_PROCESS_CONFIG_LIST } from "../service/common";
 
 export default {
   components: { Panel, BlockButton },
-  data: function () {
+  data: function() {
     return {
       serviceUuid: this.$route.params.serviceUuid,
       instanceUuid: this.$route.params.instanceUuid,

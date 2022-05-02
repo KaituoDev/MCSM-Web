@@ -87,7 +87,7 @@ export function encodeConsoleColor(text) {
     //蓝色
     ["Loading libraries, please wait...", "\\d{1,3}%", "true", "false"],
     //绿色
-    ["INFO", "EULA", "----", "\\(", "\\)", "\\{", "\\}", '\\"', "&lt;", "&gt;"],
+    ["INFO", "EULA", "----", "\\(", "\\)", "\\{", "\\}", "\\\"", "&lt;", "&gt;"],
     //红色
     ["Error", "Caused by"],
     //黄色

@@ -61,7 +61,7 @@ import router from "./router";
 export default {
   name: "App",
   components: { Aside, Header },
-  data: function () {
+  data: function() {
     return {
       breadCrumbs: [],
       mode: 1,

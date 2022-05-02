@@ -38,7 +38,7 @@ export default {
   props: {
     isButton: Boolean
   },
-  data: function () {
+  data: function() {
     return {};
   },
   methods: {}
@@ -62,9 +62,11 @@ export default {
   /* user-select: none; */
   transition: all 0.4s;
 }
+
 .line-info-button {
   cursor: pointer;
 }
+
 .line-info-button:hover {
   color: rgb(126, 123, 123);
 }

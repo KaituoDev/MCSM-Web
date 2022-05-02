@@ -50,7 +50,7 @@ import LineOption from "./LineOption";
 export default {
   components: { LineOption },
   props: ["options", "optionKey", "topTitle", "description"],
-  data: function () {
+  data: function() {
     return {};
   },
   computed: {

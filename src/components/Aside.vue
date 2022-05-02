@@ -110,7 +110,7 @@ import Logo from "../components/Logo.vue";
 
 export default {
   components: { Logo },
-  data: function () {
+  data: function() {
     return {};
   },
   watch: {},
@@ -127,7 +127,8 @@ export default {
       router.push({ path });
     }
   },
-  mounted() {}
+  mounted() {
+  }
 };
 </script>
 
@@ -136,6 +137,7 @@ export default {
   margin: 22px 0px;
   text-align: center;
 }
+
 .page-el-menu {
   backdrop-filter: var(--cd-blur);
   transition: all 1s;

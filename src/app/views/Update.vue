@@ -33,7 +33,7 @@
     </template>
   </Panel>
   <Panel>
-    <template #title>分布式服务版本列表 </template>
+    <template #title>分布式服务版本列表</template>
     <template #default>
       <el-table :data="services" stripe style="width: 100%" size="small">
         <el-table-column prop="ip" label="地址" width="140px"></el-table-column>
@@ -47,7 +47,7 @@
         <el-table-column label="软件版本">
           <!-- eslint-disable-next-line vue/no-unused-vars -->
           <template #default="scope">
-            <el-tag type="info" size="small" effect="plain"> 1.0.0 </el-tag>
+            <el-tag type="info" size="small" effect="plain"> 1.0.0</el-tag>
           </template>
         </el-table-column>
         <el-table-column label="操作" style="text-align: center" width="240px">
@@ -70,7 +70,7 @@ import { request } from "../service/protocol";
 
 export default {
   components: { Panel },
-  data: function () {
+  data: function() {
     return {
       services: []
     };

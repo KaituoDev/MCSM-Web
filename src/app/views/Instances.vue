@@ -61,7 +61,8 @@
               plain
               @click="changeView(1)"
               v-show="showTableList"
-              >简单视图</el-button
+            >简单视图
+            </el-button
             >
             <el-button
               type=""
@@ -69,7 +70,8 @@
               plain
               @click="changeView(2)"
               v-show="!showTableList"
-              >批量操作视图</el-button
+            >批量操作视图
+            </el-button
             >
             <el-button size="small" type="success" @click="toNewInstance">
               <i class="el-icon-plus"></i> 新建实例
@@ -173,16 +175,20 @@
                   <el-dropdown-item>重启实例</el-dropdown-item>
                   <el-dropdown-item>终止实例</el-dropdown-item> -->
                   <el-dropdown-item @click="editInstance(item.serviceUuid, item.instanceUuid)"
-                    >编辑配置</el-dropdown-item
+                  >编辑配置
+                  </el-dropdown-item
                   >
                   <el-dropdown-item @click="toInstance(item.serviceUuid, item.instanceUuid)"
-                    >控制面板</el-dropdown-item
+                  >控制面板
+                  </el-dropdown-item
                   >
                   <el-dropdown-item @click="unlinkInstance(item.instanceUuid)"
-                    >移除实例</el-dropdown-item
+                  >移除实例
+                  </el-dropdown-item
                   >
                   <el-dropdown-item @click="unlinkInstance(item.instanceUuid, true)"
-                    >删除实例</el-dropdown-item
+                  >删除实例
+                  </el-dropdown-item
                   >
                 </el-dropdown-menu>
               </template>
@@ -244,7 +250,7 @@
             @selection-change="selectionChange"
             v-show="!notAnyInstance && currentRemoteUuid && showTableList"
           >
-            <el-table-column type="selection" width="55"> </el-table-column>
+            <el-table-column type="selection" width="55"></el-table-column>
             <el-table-column prop="nickname" label="实例名称" min-width="240">
               <template #default="scope">
                 <div
@@ -316,6 +322,7 @@
 .instanceTitle:hover {
   color: rgb(20, 128, 230);
 }
+
 .notAnyInstanceTip {
   text-align: center;
   margin: 100px 0px;
@@ -335,10 +342,12 @@
   transition: all 1s;
   height: 146px;
 }
+
 .CradInstance:hover {
   background: var(--card-instance-bg-hover);
   box-shadow: var(--card-instance-shadow-hover);
 }
+
 .instanceInfoArea > * {
   margin-bottom: 6px;
 }
@@ -354,6 +363,7 @@ import { API_INSTANCE, API_SERVICE_INSTANCES, API_SERVICE_LIST, API_URL } from "
 import router from "../router";
 import { request } from "../service/protocol";
 import { typeTextToReadableText } from "../service/instance_tools";
+
 export default {
   // eslint-disable-next-line vue/no-unused-components
   components: { Panel, CircleCheckFilled, CircleCloseFilled },
@@ -383,10 +393,11 @@ export default {
   },
   async mounted() {
     // 初始化数据读取
-    this.showTableList = Number(localStorage.getItem("InstanceView")) === 2 ? true : false;
+    this.showTableList = Number(localStorage.getItem("InstanceView")) === 2;
     await this.render();
   },
-  beforeUnmount() {},
+  beforeUnmount() {
+  },
   methods: {
     // 获取分布式服务列表（不包括具体实例列表）
     async displayRemoteServiceList() {
@@ -428,7 +439,7 @@ export default {
           if (v.available) {
             // 默认取第一个开启的实例
             this.currentRemoteUuid = v.value;
-            return;
+
           }
         });
         this.remoteSelectHandle();
@@ -479,11 +490,7 @@ export default {
         localStorage.setItem("pageSelectedRemoteUuid", this.currentRemoteUuid);
 
         // 无任何实例时，显示快速创建界面
-        if (this.instances.length === 0) {
-          this.notAnyInstance = true;
-        } else {
-          this.notAnyInstance = false;
-        }
+        this.notAnyInstance = this.instances.length === 0;
       } catch (error) {
         this.$notify({
           title: "访问远程守护进程异常",
@@ -504,8 +511,7 @@ export default {
     },
     // 表格多选函数
     selectionChange(v) {
-      if (v.length == 0) this.canInterval = true;
-      else this.canInterval = false;
+      this.canInterval = v.length == 0;
       this.multipleSelection = v;
     },
     editInstance(serviceUuid, instanceUuid) {
@@ -574,7 +580,7 @@ export default {
         params: {
           remote_uuid: this.currentRemoteUuid
         },
-        data: { uuids, deleteFile: type === 1 ? false : true }
+        data: { uuids, deleteFile: type !== 1 }
       });
       this.$notify({
         title: "批量删除成功",

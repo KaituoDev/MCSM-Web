@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import { getDescriptionByTitle, jsonToMap } from "../../app/service/common";
+import { getDescriptionByTitle, jsonToMap } from "@/app/service/common";
 import LineOption from "../LineOption";
 import LineOptionList from "../LineOptionList";
 
@@ -203,7 +203,7 @@ export default {
               "hopper-transfer":
                 "漏斗推/拉/接收物品与漏斗推/拉更多物品之间的时间，在服务器每个 Tick 中更新 8 个行为",
               "hopper-check":
-                '自上次尝试后，漏斗尝试推/拉物品。例如, 值 8 表示空料斗每隔8个刻度查找上方的物料实体、上方的库存等。值0或1反映香草行为。当 HOPPER-ALT-TICKING 设置为"是"时，此选项被禁用'
+                "自上次尝试后，漏斗尝试推/拉物品。例如, 值 8 表示空料斗每隔8个刻度查找上方的物料实体、上方的库存等。值0或1反映香草行为。当 HOPPER-ALT-TICKING 设置为\"是\"时，此选项被禁用"
             },
             growth: {
               "cactus-modifier": "仙人掌生长速度",

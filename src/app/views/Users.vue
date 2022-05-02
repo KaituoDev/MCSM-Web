@@ -75,7 +75,7 @@
               ref="multipleTable"
               @selection-change="selectionChange"
             >
-              <el-table-column type="selection" width="55"> </el-table-column>
+              <el-table-column type="selection" width="55"></el-table-column>
               <el-table-column prop="uuid" label="UUID" width="240"></el-table-column>
               <el-table-column prop="userName" label="用户名"></el-table-column>
               <el-table-column prop="permission" label="权限等级"></el-table-column>
@@ -138,7 +138,7 @@
                 href="https://docs.mcsmanager.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                >具体信息参考</a
+              >具体信息参考</a
               >
             </p>
           </div>
@@ -193,6 +193,7 @@ import Panel from "../../components/Panel";
 import Dialog from "../../components/Dialog";
 import { request } from "../service/protocol";
 import { API_SERVICE, API_USER, API_SEARCH } from "../service/common";
+
 export default {
   components: { Panel, Dialog },
   data() {

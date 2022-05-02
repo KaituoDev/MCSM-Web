@@ -1,4 +1,3 @@
-
 <!--
   Copyright (C) 2022 Suwings <Suwings@outlook.com>
 
@@ -100,7 +99,7 @@
         ref="multipleTable"
         @selection-change="selectionChange"
       >
-        <el-table-column type="selection" width="55"> </el-table-column>
+        <el-table-column type="selection" width="55"></el-table-column>
         <el-table-column prop="name" label="文件命令" min-width="240">
           <template #default="scope">
             <div
@@ -126,13 +125,13 @@
         <el-table-column label="文件大小" width="140">
           <template #default="scope">
             <span v-if="scope.row.size > 1024 * 1024"
-              >{{ Number(Number(scope.row.size) / 1024 / 1024).toFixed(0) }} MB</span
+            >{{ Number(Number(scope.row.size) / 1024 / 1024).toFixed(0) }} MB</span
             >
             <span v-else-if="scope.row.size > 1024"
-              >{{ Number(Number(scope.row.size) / 1024).toFixed(0) }} KB</span
+            >{{ Number(Number(scope.row.size) / 1024).toFixed(0) }} KB</span
             >
             <span v-else-if="scope.row.size > 0"
-              >{{ Number(Number(scope.row.size)).toFixed(0) }} B</span
+            >{{ Number(Number(scope.row.size)).toFixed(0) }} B</span
             >
           </template>
         </el-table-column>
@@ -213,7 +212,8 @@ export default {
     }
     await this.render();
   },
-  unmounted() {},
+  unmounted() {
+  },
   methods: {
     back() {
       this.$router.push({ path: `/terminal/${this.serviceUuid}/${this.instanceUuid}/` });
@@ -615,12 +615,15 @@ export default {
   text-decoration: underline;
   cursor: pointer;
 }
+
 .filemanager-item-file {
   font-size: 14px;
 }
+
 .filemanager-item-dir span {
   margin-left: 4px;
 }
+
 .filemanager-item-file span {
   margin-left: 4px;
 }
@@ -638,7 +641,6 @@ export default {
   font-size: 14px;
   letter-spacing: normal;
   line-height: 1.5;
-  padding: 5px;
   overflow-x: hidden;
   tab-size: 4;
   padding: 4px;
@@ -652,6 +654,7 @@ export default {
   bottom: 20px;
   padding-left: 8px;
 }
+
 .page-pagination {
   display: flex;
   justify-content: right;

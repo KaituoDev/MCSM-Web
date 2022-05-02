@@ -102,7 +102,7 @@
       </Panel>
     </el-col>
   </el-row>
-  
+
 </template>
 
 <script>
@@ -111,7 +111,7 @@ import LineLabel from "../../components/LineLabel";
 
 export default {
   components: { Panel, LineLabel },
-  data: function () {
+  data: function() {
     return {
       activities: null,
       notice: null,

@@ -164,7 +164,7 @@
   >
     <div>
       <span>MCSManager is released under the GPL-3.0 License</span>
-      <br />
+      <br>
       <span>Copyright © 2022 Suwings | Modify by <a target="black"
                                                     href="https://github.com/MSDNicrosoft"> MSDNicrosoft</a></span>
     </div>

@@ -106,6 +106,7 @@
                     <strong>Powered by
                     <a target="black" href="https://github.com/Suwings">MCSManager</a>
                     </strong>
+                    <br>
                     <strong>Modified by
                     <a target="black" href="https://github.com/MSDNicrosoft"> MSDNicrosoft</a>
                     </strong>

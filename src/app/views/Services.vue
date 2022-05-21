@@ -157,13 +157,13 @@
         </div>
         <el-input
           v-model="newServiceInfo.ip"
-          placeholder="必填，列如 mcsmanager.com, 43.123.211.12"
+          placeholder="必填，例如 mcsmanager.com, 43.123.211.12"
           size="small"
         ></el-input>
         <div class="sub-title row-mt">守护进程端口</div>
         <el-input
           v-model="newServiceInfo.port"
-          placeholder="必填，列如 24444"
+          placeholder="必填，例如 24444"
           size="small"
         ></el-input>
         <div class="sub-title row-mt">
@@ -176,7 +176,7 @@
         </div>
         <el-input
           v-model="newServiceInfo.apiKey"
-          placeholder="必填，列如 6ff0fa1ef9a943f3c6f2fe0e4564a2fa383d35c4b78ccb5"
+          placeholder="必填，例如 6ff0fa1ef9a943f3c6f2fe0e4564a2fa383d35c4b78ccb5"
           size="small"
         ></el-input>
         <div class="row-mt">

@@ -184,7 +184,7 @@
         </div>
         <div class="sub-title row-mt">
           <p class="sub-title-title">输入/输出编码</p>
-          <p class="sub-title-info">当控制台出现乱码时可以尝试调整，列如: GBK, UTF-8 等</p>
+          <p class="sub-title-info">当控制台出现乱码时可以尝试调整，例如: GBK, UTF-8 等</p>
         </div>
         <div class="flex">
           <ItemGroup :lr="true">

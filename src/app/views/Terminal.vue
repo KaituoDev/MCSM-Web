@@ -356,7 +356,7 @@
           必填, 支持域名与 IP 地址，不填写则不会查询服务端信息，人数，版本等。
         </p>
       </div>
-      <el-input v-model="pingConfigForm.ip" placeholder="列如: localhost" size="small"></el-input>
+      <el-input v-model="pingConfigForm.ip" placeholder="例如: localhost" size="small"></el-input>
       <div class="sub-title row-mt">
         <p class="sub-title-title">服务端访问端口</p>
         <p class="sub-title-info">必填，仅可输入数字端口号</p>

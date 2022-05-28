@@ -31,7 +31,7 @@
           </ItemGroup>
         </div>
         <span class="color-gray hidden-md-and-down"
-        >部分配置可能需要重启面板才能生效&nbsp;&nbsp;</span
+          >部分配置可能需要重启面板才能生效&nbsp;&nbsp;</span
         >
       </div>
     </template>
@@ -49,9 +49,11 @@
             <div class="config-item">
               <div class="sub-title">
                 <p class="sub-title-title">面板访问端口</p>
-                <p class="sub-title-info">浏览器访问网页面板的端口，必须防火墙放行此端口。</p>
+                <p class="sub-title-info">
+                  浏览器访问网页面板的端口，必须防火墙放行此端口，重启面板生效。
+                </p>
               </div>
-              <el-input placeholder="请必须填入数字" v-model="settings.httpPort"></el-input>
+              <el-input placeholder="请必须填入数字" v-model="settings.httpPort"> </el-input>
             </div>
             <!-- <div class="config-item">
               <div class="sub-title">
@@ -65,9 +67,12 @@
             <div class="config-item">
               <div class="sub-title">
                 <p class="sub-title-title">面板绑定 IP</p>
-                <p class="sub-title-info">一般情况请保持默认值, 一般适用于多个 IP 的场景。</p>
+                <p class="sub-title-info">
+                  一般情况请保持默认值，一般适用于多个 IP，网卡绑定的场景。
+                </p>
               </div>
-              <el-input placeholder="默认 0.0.0.0 | 可不填" v-model="settings.httpIp"></el-input>
+              <el-input placeholder="默认 0.0.0.0 | 默认情况无需填写" v-model="settings.httpIp">
+              </el-input>
             </div>
 
             <div class="config-item">
@@ -78,7 +83,7 @@
                 </p>
               </div>
               <el-input
-                placeholder="请输入文案, 例如: 京 ICP 备 00001 号"
+                placeholder="请输入文案，例如：京 ICP 备00000001号"
                 v-model="settings.loginInfo"
               >
               </el-input>
@@ -138,7 +143,7 @@
               <div class="sub-title">
                 <p class="sub-title-title">同 IP 登录次数限制</p>
                 <p class="sub-title-info">
-                  此功能将保护您的面板不被单个主机暴力破解密码, 每个 IP 只有 10 次密码错误次数。
+                  此功能将保护您的面板不被单个主机暴力破解密码，每个 IP 只有 10 次密码错误次数。
                 </p>
               </div>
               <el-select v-model="settings.loginCheckIp" placeholder="请选择">
@@ -304,82 +309,86 @@
     <Panel>
       <template #title>关于</template>
       <template #default>
-        <div class="sub-title">
-          <p class="sub-title-title">
-            软件根据
-            <a
-              target="black"
-              href="https://github.com/MCSManager/MCSManager-Daemon/blob/master/LICENSE"
-            >GPL-3.0</a
-            >
-            开源软件协议发行
-          </p>
-          <p class="sub-title-info">
-            此协议准许每个人都可以复制和分发代码副本，并且可以对使用者收取服务费用。<br />
-            若对代码任何修改，则必须无偿提供软件的完整源代码下载。
-          </p>
-        </div>
-
-        <div class="sub-title">
-          <p class="sub-title-title">闭源商业许可证</p>
-          <p class="sub-title-info">
-            若您想二次开发并且闭源使用于任何活动（包括但不限于商业，个人）。<br />
-            请参考:
-            <a href="https://mcsmanager.com/" target="_blank" rel="noopener noreferrer">
-              相关许可证
-            </a>
-          </p>
-          <p class="sub-title-info"></p>
-        </div>
-
-        <div class="sub-title">
-          <p class="sub-title-title">项目赞助者</p>
-          <p class="sub-title-info">没有以下名单的重点支持，就不会有 MCSManager 的长期维护。</p>
-          <p class="sub-title-info"></p>
-        </div>
-
-        <div class="contributors">
-          <el-row :gutter="10" v-if="sponsorList">
-            <el-col :md="4" v-for="(item, index) in sponsorList" :key="index">
-              <a
-                :href="item.link || 'https://mcsmanager.com'"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <el-card
-                  shadow="hover"
-                  :body-style="{ padding: '16px' }"
-                  style="height: 70px; margin-bottom: 10px"
+        <el-row :gutter="20">
+          <el-col :md="12">
+            <div class="sub-title">
+              <p class="sub-title-title">
+                软件根据
+                <a
+                  target="black"
+                  href="https://github.com/MCSManager/MCSManager-Daemon/blob/master/LICENSE"
+                  >AGPL-3.0</a
                 >
-                  <p style="margin: 0px; font-size: 13px">
-                    <b>{{ item.name }}</b>
-                  </p>
-                  <p style="margin: 0px; font-size: 12px; color: gray">
-                    {{ item.message ? item.message : "--" }}
-                  </p>
-                </el-card>
-              </a>
-            </el-col>
-            <el-col :span="24">
-              <p class="color-gray text-center">
-                只含前 30 名赞助者，查看完整赞助名单或进行赞助支持请前往
-                <a href="https://mcsmanager.com/" target="_blank" rel="noopener noreferrer">
-                  MCSManager 官方网站
-                </a>
+                开源软件协议发行
               </p>
-            </el-col>
-          </el-row>
-          <div v-else>
-            <p>暂无数据</p>
-          </div>
-        </div>
+              <p class="sub-title-info">
+                此协议准许每个人都可以复制和分发代码副本，并且可以对使用者收取服务费用。<br />
+                若对代码任何修改，则必须无偿提供软件的完整源代码下载。
+              </p>
+            </div>
 
-        <div>
-          <p class="color-gray text-center">
-            版权所有
-            <a target="black" href="https://github.com/Suwings">Suwings</a>
-          </p>
-        </div>
+            <div class="sub-title">
+              <p class="sub-title-title">闭源商业许可证</p>
+              <p class="sub-title-info">
+                若您想二次开发并且闭源使用于任何活动（包括但不限于商业，个人）。
+              </p>
+            </div>
+            <div>
+              <ItemGroup>
+                <a
+                  href="https://mcsmanager.com/#app-download"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="display: inline-block"
+                >
+                  <el-button type="" size="default">了解更多</el-button>
+                </a>
+                <a
+                  href="https://mcsmanager.com/agreement.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style="display: inline-block"
+                >
+                  <el-button type="" size="default">用户协议</el-button>
+                </a>
+              </ItemGroup>
+            </div>
+
+            <div class="contributors" v-if="sponsorList">
+              <div class="sub-title">
+                <p class="sub-title-title">开源项目赞助名单</p>
+                <p class="sub-title-info">
+                  只含前 40 名赞助者，查看完整赞助名单或进行赞助支持请前往
+                  <a href="https://mcsmanager.com/" target="_blank" rel="noopener noreferrer">
+                    MCSManager 官方网站 </a
+                  >。
+                </p>
+                <p class="sub-title-info"></p>
+              </div>
+              <el-row :gutter="10">
+                <el-col :span="24">
+                  <div
+                    v-for="(item, index) in sponsorList"
+                    :key="index"
+                    style="margin: 0px 8px 4px 0px; display: inline-block"
+                  >
+                    <a
+                      :href="item.link || 'https://mcsmanager.com'"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style="text-decoration: underline"
+                    >
+                      <span style="margin: 0px; font-size: 13px">
+                        {{ item.name }}
+                      </span>
+                    </a>
+                  </div>
+                </el-col>
+              </el-row>
+            </div>
+          </el-col>
+          <el-col :md="4"></el-col>
+        </el-row>
       </template>
     </Panel>
   </div>
@@ -393,16 +402,16 @@
 </style>
 
 <script>
+
 import Panel from "../../components/Panel";
 import SystemIndex from "../../components/SystemImage.vue";
 import { API_SETTINGS } from "../service/common";
 import { request } from "../service/protocol";
 import SelectBlock from "../../components/SelectBlock";
-
 export default {
   // eslint-disable-next-line vue/no-unused-components
   components: { Panel, SystemIndex, SelectBlock },
-  data: function() {
+  data: function () {
     return {
       settings: {},
       sponsorList: null
@@ -443,7 +452,7 @@ export default {
             }
           }
         }
-        this.sponsorList = arr.slice(0, 30);
+        this.sponsorList = arr.slice(0, 40);
       } else {
         this.sponsorList = null;
       }
@@ -473,8 +482,10 @@ export default {
 .system-index-block {
   margin: 0px 0px 24px 0px;
 }
-
 .config-item {
   margin-top: 10px;
+}
+.contributors {
+  margin: 10px 0px;
 }
 </style>

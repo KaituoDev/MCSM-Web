@@ -9,6 +9,10 @@
 /**
  * @type {import("@vue/cli-service").ProjectOptions}
  */
+
+const CompressionPlugin = require('compression-webpack-plugin');
+const gzipExtensions = ['js', 'css', 'html'];
+
 module.exports = {
   devServer: {
     port: 8080,
@@ -26,6 +30,18 @@ module.exports = {
       template: "public/index.html",
       title: "MCSManager"
     }
+  },
+  configureWebpack: {
+    plugins: [
+      new CompressionPlugin({
+        algorithm: 'gzip', // 使用 gzip 压缩
+        test: new RegExp('\\.(' + gzipExtensions.join('|') + ')$'), // 匹配文件名
+        filename: '[path][base].gz', // 压缩后的文件名(保持原文件名，后缀加 .gz)
+        minRatio: 0.8, // 压缩率小于 0.8 才会压缩
+        threshold: 10240, // 对超过 10k 的数据压缩
+        deleteOriginalAssets: false, // 是否删除未压缩的源文件，谨慎设置，如果希望提供非 gzip 的资源，可不设置或者设置为 false（比如删除打包后的 gz 后还可以加载到原始资源文件）
+      })
+    ]
   },
   productionSourceMap: false
 };

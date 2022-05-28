@@ -41,7 +41,7 @@ jobs:
         run: yarn build
 
       - name: Remove unnecessary legacy files
-        run: rm ./dist/js/*-legacy.js
+        run: rm ./dist/js/*-legacy*
 
       - name: Remove legacy Javascript references from index.html
         run:  python3 Helper.py

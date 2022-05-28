@@ -45,7 +45,7 @@
                 <div class="sub-title row-mt">
                   <p class="sub-title-title">服务端软件文件名</p>
                   <p class="sub-title-info">
-                    即您文件目录下存在的服务端软件名字，必须真实存在，如 Paper.jar, Server.jar
+                    即您文件目录下存在的服务端软件名字，必须真实存在，如 Paper.jar，Server.jar
                   </p>
                 </div>
                 <el-input
@@ -57,7 +57,7 @@
               <el-col :md="12" :offset="0">
                 <div class="sub-title row-mt">
                   <p class="sub-title-title">最大内存</p>
-                  <p class="sub-title-info">Java 程序 -Xmx 参数, 必须填写单位, 如: 1024M, 2G 等</p>
+                  <p class="sub-title-info">Java 程序 -Xmx 参数，必须填写单位，如：1024M，2G 等</p>
                 </div>
                 <el-input
                   size="small"
@@ -68,7 +68,7 @@
               <el-col :md="12" :offset="0">
                 <div class="sub-title row-mt">
                   <p class="sub-title-title">最小内存</p>
-                  <p class="sub-title-info">Java 程序 -Xms 参数, 必须填写单位, 如： 1024M， 2G 等</p>
+                  <p class="sub-title-info">Java 程序 -Xms 参数，必须填写单位，如：1024M，2G 等</p>
                 </div>
                 <el-input
                   size="small"
@@ -138,7 +138,7 @@
                 <div class="sub-title row-mt">
                   <p class="sub-title-title">可执行程序文件名</p>
                   <p class="sub-title-info">
-                    程序必须已经存在实例文件目录或环境变量中，如 cmd.exe, bash, program.exe 等
+                    程序必须已经存在实例文件目录或环境变量中，如 cmd.exe，bash，program.exe 等
                   </p>
                 </div>
                 <el-input size="small" placeholder="必填" v-model="command.programName"></el-input>

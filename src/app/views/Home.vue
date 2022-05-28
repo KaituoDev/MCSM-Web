@@ -127,7 +127,7 @@
         </el-table-column>
 
         <el-table-column label="字节流编码">
-          <template #default="scope"> {{ scope.row.ie }}/{{ scope.row.oe }}</template>
+          <template #default="scope"> {{ scope.row.ie }}/{{ scope.row.oe }} </template>
         </el-table-column>
         <el-table-column prop="lastDatetime" label="最后启动"></el-table-column>
         <el-table-column label="到期时间">
@@ -160,13 +160,18 @@
   <!-- 版权信息 -->
   <div
     class="flex flex-space-center flex-align-items-center"
-    style="font-size: 12px; color: #cdcdcd; text-align: center; margin-top: 40px"
+    style="font-size: 12px; color: #e4ff8a; text-align: center; margin-top: 40px;text-shadow: 0px 0px 20px #000000;"
   >
     <div>
-      <span>MCSManager is released under the GPL-3.0 License</span>
-      <br>
-      <span>Copyright © 2022 Suwings | Modify by <a target="black"
-                                                    href="https://github.com/MSDNicrosoft"> MSDNicrosoft</a></span>
+      <span
+        >Powered by
+        <a
+          style="color: #b6ff6d; text-decoration: underline"
+          target="black"
+          href="https://github.com/MCSManager"
+          >MCSManager</a>
+        <br>
+        Modified by <a style="color: #b6ff6d; text-decoration: underline" target="black" href="https://github.com/MSDNicrosoft">MSDNicrosoft</a><br>Released under the AGPL-3.0 License</span>
     </div>
   </div>
 
@@ -184,7 +189,7 @@
         </div>
         <div class="sub-title row-mt">
           <p class="sub-title-title">输入/输出编码</p>
-          <p class="sub-title-info">当控制台出现乱码时可以尝试调整，例如: GBK, UTF-8 等</p>
+          <p class="sub-title-info">当控制台出现乱码时可以尝试调整，例如: GBK，UTF-8 等</p>
         </div>
         <div class="flex">
           <ItemGroup :lr="true">
@@ -200,6 +205,8 @@
     </template>
   </Dialog>
 </template>
+
+<style></style>
 
 <script>
 import Dialog from "../../components/Dialog";

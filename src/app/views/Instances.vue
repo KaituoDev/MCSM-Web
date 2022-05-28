@@ -61,8 +61,7 @@
               plain
               @click="changeView(1)"
               v-show="showTableList"
-            >简单视图
-            </el-button
+              >简单视图</el-button
             >
             <el-button
               type=""
@@ -70,8 +69,7 @@
               plain
               @click="changeView(2)"
               v-show="!showTableList"
-            >批量操作视图
-            </el-button
+              >批量操作视图</el-button
             >
             <el-button size="small" type="success" @click="toNewInstance">
               <i class="el-icon-plus"></i> 新建实例
@@ -118,7 +116,6 @@
         <!-- 未选择守护进程时显示 -->
         <div v-show="!currentRemoteUuid">
           <div class="notAnyInstanceTip">
-            <i class="el-icon-guide" style="font-size: 190px"></i>
             <div class="sub-title">
               <div class="sub-title-title">请在左上方的下拉框中选择远程守护进程</div>
               <div class="sub-title-info">
@@ -175,20 +172,16 @@
                   <el-dropdown-item>重启实例</el-dropdown-item>
                   <el-dropdown-item>终止实例</el-dropdown-item> -->
                   <el-dropdown-item @click="editInstance(item.serviceUuid, item.instanceUuid)"
-                  >编辑配置
-                  </el-dropdown-item
+                    >编辑配置</el-dropdown-item
                   >
                   <el-dropdown-item @click="toInstance(item.serviceUuid, item.instanceUuid)"
-                  >控制面板
-                  </el-dropdown-item
+                    >控制面板</el-dropdown-item
                   >
                   <el-dropdown-item @click="unlinkInstance(item.instanceUuid)"
-                  >移除实例
-                  </el-dropdown-item
+                    >移除实例</el-dropdown-item
                   >
                   <el-dropdown-item @click="unlinkInstance(item.instanceUuid, true)"
-                  >删除实例
-                  </el-dropdown-item
+                    >删除实例</el-dropdown-item
                   >
                 </el-dropdown-menu>
               </template>
@@ -396,8 +389,7 @@ export default {
     this.showTableList = Number(localStorage.getItem("InstanceView")) === 2;
     await this.render();
   },
-  beforeUnmount() {
-  },
+  beforeUnmount() {},
   methods: {
     // 获取分布式服务列表（不包括具体实例列表）
     async displayRemoteServiceList() {
@@ -439,7 +431,6 @@ export default {
           if (v.available) {
             // 默认取第一个开启的实例
             this.currentRemoteUuid = v.value;
-
           }
         });
         this.remoteSelectHandle();

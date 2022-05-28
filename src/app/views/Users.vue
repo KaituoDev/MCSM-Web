@@ -100,7 +100,7 @@
         <div>
           <div class="sub-title">
             <p class="sub-title-title">用户名</p>
-            <p class="sub-title-info">必填, 6 到 12 个字符, 支持中文, 英文和字符</p>
+            <p class="sub-title-info">必填，6-12 个字符，支持中文，英文和字符</p>
           </div>
           <el-input
             v-model="newUserInfo.userName"
@@ -109,11 +109,11 @@
           ></el-input>
           <div class="sub-title row-mt">
             <p class="sub-title-title">密码</p>
-            <p class="sub-title-info">必填, 6 到 18 个字符, 不支持中文, 只限于字母, 数字和符号</p>
+            <p class="sub-title-info">必填，9-18 个字符，不支持中文，只限于字母，数字和符号</p>
           </div>
           <el-input
             v-model="newUserInfo.password"
-            placeholder="请输入密码, 6 到 18 位"
+            placeholder="请输入密码，9-18 位"
             size="small"
             type="text"
           ></el-input>
@@ -157,7 +157,7 @@
         <div>
           <div class="sub-title">
             <p class="sub-title-title require-field">用户名</p>
-            <p class="sub-title-info">必填, 6 到 12 个字符, 支持中文, 英文和字符</p>
+            <p class="sub-title-info">必填，6-12 个字符，支持中文，英文和字符</p>
           </div>
           <el-input
             v-model="editUserInfo.userName"

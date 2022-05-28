@@ -38,7 +38,7 @@
           <el-col :md="8" :offset="0">
             <SelectBlock @click="selectTypeA(1)" style="min-height: 120px">
               <template #title>Java 版 Minecraft 服务端</template>
-              <template #info> 适用于类似于 Spigot, Bungeecord 等 Jar 格式文件的服务端</template>
+              <template #info> 适用于类似于 Spigot，Bungeecord 等 Jar 格式文件的服务端 </template>
             </SelectBlock>
           </el-col>
           <el-col :md="8" :offset="0">
@@ -52,7 +52,7 @@
           <el-col :md="8" :offset="0">
             <SelectBlock @click="selectTypeA(3)" style="min-height: 120px">
               <template #title>自定义命令程序</template>
-              <template #info> 适用于类似于 bash, cmd.exe 和其他任何可用命令启动的程序</template>
+              <template #info> 适用于类似于 bash，cmd.exe 和其他任何可用命令启动的程序 </template>
             </SelectBlock>
           </el-col>
         </el-row>
@@ -142,7 +142,7 @@
           <div class="sub-title">
             <p class="sub-title-title">上传服务端软件</p>
             <p class="sub-title-info">
-              服务端软件指 JAR/EXE 格式或其他可执行程序（如 Spigot.jar, Paper.jar 等）
+              服务端软件指 JAR/EXE 格式或其他可执行程序（如 Spigot.jar，Paper.jar 等）
             </p>
           </div>
           <el-button @click="uploadFile(1)" :disabled="assist.creating">上传服务端软件</el-button>
@@ -219,7 +219,7 @@
             <p class="sub-title-title">从已存在的文件选择服务端</p>
             <p class="sub-title-info">文件必须已经存在远程主机（非面板机器）</p>
           </div>
-          <el-input placeholder="实例名，尽可能确保唯一性" v-model="form.nickname"></el-input>
+          <el-input placeholder="实例名，尽可能确保唯一性" v-model="form.nickname"> </el-input>
         </div>
         <div class="row-mt">
           <div class="sub-title">
@@ -229,7 +229,7 @@
           <div class="flex">
             <el-input
               v-model="form.startCommand"
-              placeholder="如 java -jar server.jar, cmd.exe 等等"
+              placeholder="如 java -jar server.jar，cmd.exe 等等"
             ></el-input>
             <el-button @click="openCommandAssistCall(2)">命令助手</el-button>
           </div>
@@ -252,8 +252,7 @@
           <ItemGroup>
             <el-button @click="up" size="small">回退</el-button>
             <el-button @click="createInstance" size="small">创建实例</el-button>
-          </ItemGroup
-          >
+            </ItemGroup>
         </div>
       </div>
 
@@ -483,7 +482,6 @@ export default {
       this.form.startCommand = cmd;
     }
   },
-  async mounted() {
-  }
+  async mounted() {}
 };
 </script>

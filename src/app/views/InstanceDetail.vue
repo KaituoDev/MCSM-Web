@@ -29,8 +29,8 @@
               <div class="sub-title">
                 <div class="sub-title-title">使用须知</div>
                 <div class="sub-title-info">
-                  实例功能将涉及到远程命令执行, MCSManager
-                  会尽可能的保护您的宿主机安全, 但是如果需要出售给陌生用户, 则必须使用 Linux Docker
+                  实例功能将涉及到远程命令执行，MCSManager
+                  会尽可能的保护您的宿主机安全，但是如果需要出售给陌生用户，则必须使用 Linux Docker
                   的虚拟化隔离功能才可以完成安全风险控制。
                 </div>
               </div>
@@ -224,11 +224,11 @@
               <el-col :lg="8" class="row-mt">
                 <div class="sub-title">
                   <div class="sub-title-title require-field">进程启动方式</div>
-                  <div class="sub-title-info">可选择 Docker, 默认等</div>
+                  <div class="sub-title-info">可选择 Docker，默认等</div>
                 </div>
                 <el-select v-model="instanceInfo.config.processType" style="width: 100%">
                   <el-option label="默认类型" value="general"></el-option>
-                  <el-option label="虚拟化容器 ( Linux Docker ) " value="docker"></el-option>
+                  <el-option label="虚拟化容器（Linux Docker）" value="docker"></el-option>
                 </el-select>
               </el-col>
             </el-row>
@@ -359,8 +359,8 @@
               <el-row :gutter="20">
                 <el-col :md="8" class="row-mt">
                   <div class="sub-title">
-                    <div class="sub-title-title">最大内存 ( 单位 MB )</div>
-                    <div class="sub-title-info">例如 1024, 2048 等，请勿加单位</div>
+                    <div class="sub-title-title">最大内存（单位 MB）</div>
+                    <div class="sub-title-info">例如 1024，2048 等，请勿加单位</div>
                   </div>
 
                   <el-input
@@ -384,7 +384,7 @@
                     <el-input
                       v-model="instanceInfo.config.docker.cpuUsage"
                       type="text"
-                      placeholder="选填, 0 到 无限大"
+                      placeholder="选填，0-无限大"
                     >
                     </el-input>
                   </el-tooltip>
@@ -397,7 +397,7 @@
                   <el-tooltip
                     class="box-item"
                     effect="dark"
-                    content="指定进程在某些核心上运行，合理分配可以更好的利用您的系统硬件资源，例如 0,1 代表在第1, 2核心上运作, 逗号隔开"
+                    content="指定进程在某些核心上运行，合理分配可以更好的利用您的系统硬件资源，例如 0,1 代表在第1，2核心上运作，逗号隔开"
                     placement="bottom"
                   >
                     <el-input
@@ -567,7 +567,7 @@ export default {
         });
       } catch (error) {
         this.$message({
-          message: "无法获得远程主机网络列表, 建议检查 Docker 配置",
+          message: "无法获得远程主机网络列表，建议检查 Docker 配置",
           type: "error"
         });
       } finally {

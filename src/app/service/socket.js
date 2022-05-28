@@ -27,10 +27,8 @@ import { ElNotification } from "element-plus";
 export function connectRemoteService(
   addr,
   password,
-  connectCallback = () => {
-  },
-  errorCallbackCallback = () => {
-  }
+  connectCallback = () => {},
+  errorCallbackCallback = () => {}
 ) {
   console.log("浏览器正在连接守护进程:", addr);
   console.log("临时密码:", password);
@@ -120,9 +118,9 @@ export function connectRemoteService(
   socket.on("forward/instance", (packet) => {
     const data = packet.data;
     if (data === true) {
-      console.log("Websocket 成功请求转发( 或取消 )实例 IO 流");
+      console.log("Websocket 成功请求转发（或取消）实例 IO 流");
     } else {
-      console.log("Websocket 请求转发( 或取消 )实例 IO 流失败, 错误: ", data);
+      console.log("Websocket 请求转发（或取消）实例 IO 流失败，错误：", data);
     }
   });
 

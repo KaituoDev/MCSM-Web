@@ -43,7 +43,7 @@
         远程守护进程（在任何物理主机上）必须确保全部在线且互相网络畅通，面板连接需公开放行守护进程端口与配置密钥。
         <br />
         网页需要能直接连接远程守护进程（上传，下载与控制台），避免使用除 localhost
-        外的局域网段任何 IP, 必须使用外网IP或域名进行连接。
+        外的局域网段任何 IP，必须使用外网 IP 或域名进行连接。
         <br />
         面板端对应的守护进程版本：{{ specifiedDaemonVersion }}
       </p>
@@ -130,8 +130,7 @@
             </el-button>
             <el-button size="mini" @click="updateKey(scope.row, true)">修改密钥</el-button>
             <el-button size="mini" type="danger" plain @click="deleteService(scope.row.uuid)"
-            >删除
-            </el-button
+              >删除</el-button
             >
           </template>
         </el-table-column>
@@ -157,7 +156,7 @@
         </div>
         <el-input
           v-model="newServiceInfo.ip"
-          placeholder="必填，例如 mcsmanager.com, 43.123.211.12"
+          placeholder="必填，例如 mcsmanager.com，43.123.211.12"
           size="small"
         ></el-input>
         <div class="sub-title row-mt">守护进程端口</div>
@@ -201,10 +200,10 @@
         </div>
       </div>
       <div class="sub-title">
-        <div class="sub-title-title">为什么必须使用外网IP连接远程节点</div>
+        <div class="sub-title-title">为什么必须使用外网 IP 连接远程节点</div>
         <div class="sub-title-info">
-          为了减轻中心控制端 ( Web 面板端 ) 的流量压力，我们必须将流量分流到各自的远程主机，<br />
-          这样就必须保证每个远程主机均要能够使用外网访问, 所以您也必须使用外网 IP 地址来访问这个主机的实例
+          为了减轻中心控制端（Web 面板端）的流量压力，我们必须将流量分流到各自的远程主机，<br />
+          这样就必须保证每个远程主机均要能够使用外网访问，所以您也必须使用外网 IP 地址来访问这个主机的实例
         </div>
       </div>
       <div class="sub-title">分布式服务数据传输工作原理</div>
@@ -212,15 +211,14 @@
         <img :src="require('../../assets/connect.png')" alt="" srcset="" style="height: 230px" />
       </div>
       <div class="sub-title row-mt">
-        <div class="sub-title-title">请问您是否依然要坚持使用内网 IP 连接 ?</div>
+        <div class="sub-title-title">请问您是否依然要坚持使用内网 IP 连接？</div>
         <div class="sub-title-info">如果强制使用，则实例的部分功能不可用。</div>
       </div>
       <div class="row-mt">
         <ItemGroup>
           <el-button type="danger" size="small" @click="toNewService(true)">强制执行</el-button>
           <el-button @click="isNewServiceWarning = !isNewServiceWarning" size="small"
-          >取消执行
-          </el-button
+            >取消执行</el-button
           >
         </ItemGroup>
       </div>
@@ -232,7 +230,7 @@
     <template #default>
       <div class="sub-title">
         <div class="sub-title-info">
-          为了减轻中心控制端( Web 面板端 )的流量压力与计算压力，我们采用 “数据走直连，指令走转发”
+          为了减轻中心控制端（Web 面板端）的流量压力与计算压力，我们采用 “数据走直连，指令走转发”
           的设计概念。<br />
           这样的设计会暴露各个守护进程，但您守护进程主机上的服务本应就会暴露，再加上可控的权限识别，无需担忧各个主机安全问题。
         </div>

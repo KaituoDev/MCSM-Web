@@ -39,7 +39,7 @@
             由于 Minecraft 或其他程序需要特定的运行环境，比如 Java/Python/.Net 等等，
             不同版本在同一台机器上安装管理十分复杂，使用不同的环境镜像可以很方便的管理不同版本不同类型的服务环境。
           </div>
-          <div class="sub-title row-mt">什么是 Docker ? 为什么需要它 ?</div>
+          <div class="sub-title row-mt">什么是 Docker？为什么需要它？</div>
           <div class="sub-title-info">
             Docker
             是一款轻量级虚拟化软件，能够利用环境镜像来创建容器（就像一个盒子）包裹你的实际应用程序，
@@ -53,9 +53,8 @@
             <SelectBlock style="min-height: 120px" @click="selectType(1)">
               <template #title>创建 OpenJDK 8 环境镜像</template>
               <template #info
-              >适用于需要 Java 8 的服务端软件，属于经典的 Java 运行时版本，适用于 Minecraft 1.17
-                以下的所有版本
-              </template
+                >适用于需要 Java 8 的服务端软件，属于经典的 Java 运行时版本，适用于 Minecraft 1.17
+                以下的所有版本</template
               >
             </SelectBlock>
           </el-col>
@@ -69,8 +68,7 @@
             <SelectBlock style="min-height: 120px" @click="selectType(5)">
               <template #title>创建 OpenJDK 17 环境镜像</template>
               <template #info
-              >内置 Java 17 运行时环境，适用于 Minecraft 1.18 版本以上的服务端
-              </template
+                >内置 Java 17 运行时环境，适用于 Minecraft 1.18 版本以上的服务端</template
               >
             </SelectBlock>
           </el-col>
@@ -86,8 +84,7 @@
             <SelectBlock style="min-height: 120px" @click="selectType(4)">
               <template #title>使用 DockerFile 自定义创建</template>
               <template #info
-              >使用 DockerFile 自定义创建任何环境镜像，此操作建议技术人员进行
-              </template
+                >使用 DockerFile 自定义创建任何环境镜像，此操作建议技术人员进行</template
               >
             </SelectBlock>
           </el-col>
@@ -103,7 +100,7 @@
         <div class="sub-title">
           <p class="sub-title-title">关于 DockerFile 文件</p>
           <p class="sub-title-info">
-            官方参考文档: https://docs.docker.com/engine/reference/builder/
+            官方参考文档：https://docs.docker.com/engine/reference/builder/
           </p>
         </div>
         <div class="sub-title">
@@ -111,8 +108,13 @@
           <p class="sub-title-info">必须创建 /workspace 目录，此目录将自动挂载到实例的文件根目录</p>
         </div>
         <div class="row-mt">
-          <el-input type="textarea" :rows="14" placeholder="必填，请输入内容" v-model="dockerFile">
-          </el-input>
+          <el-input 
+            type="textarea" 
+            :rows="14" 
+            placeholder="必填，请输入内容" 
+            v-model="dockerFile"
+            style="word-break: break-all"
+          ></el-input>
         </div>
         <div class="sub-title row-mt">
           <p class="sub-title-title">创建后的镜像名与版本标识</p>
@@ -210,7 +212,7 @@ ENV LC_ALL=zh_CN.UTF-8
 ENV TZ=Asia/Shanghai
 WORKDIR /workspace
 `;
-        this.name = "mopenjdk";
+        this.name = "mcsm-openjdk";
         this.version = "8";
       }
       if (type === 2) {
@@ -219,7 +221,7 @@ RUN mkdir -p /workspace
 ENV TZ=Asia/Shanghai
 WORKDIR /workspace
 `;
-        this.name = "mopenjdk";
+        this.name = "mcsm-openjdk";
         this.version = "16";
       }
       if (type === 3) {
@@ -228,7 +230,7 @@ RUN mkdir -p /workspace
 RUN apt update
 WORKDIR /workspace
 `;
-        this.name = "mubuntu";
+        this.name = "mcsm-ubuntu";
         this.version = "latest";
       }
       if (type === 5) {
@@ -240,7 +242,7 @@ ENV LC_ALL=zh_CN.UTF-8
 ENV TZ=Asia/Shanghai
 WORKDIR /workspace
 `;
-        this.name = "mopenjdk";
+        this.name = "mcsm-openjdk";
         this.version = "17";
       }
       this.step = 2;

@@ -117,3 +117,8 @@ yarn.lock
 package-lock.json
 
 .idea/
+public/static/editor/theme-*.js
+!public/static/editor/theme-dracula.js
+public*/static/editor/keybinding-*.js
+public/static/editor/ext-themelist.js
+public/static/editor/ext-keybinding_menu.js

@@ -112,8 +112,6 @@ typings/
 .tern-port
 workspace.code-workspace
 
-yarn.lock
-
 package-lock.json
 
 .idea/

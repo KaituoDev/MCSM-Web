@@ -24,12 +24,9 @@
     color: var(--selection-color);
 }
 
-/*
-
 body {
   font-family: MiSans;
 }
-*/
 
 a {
     color: var(--a-color)

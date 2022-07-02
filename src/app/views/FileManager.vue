@@ -321,7 +321,9 @@ export default {
         if (this.multipleSelection.length !== 1) throw new Error("必须选择一个文件进行重命名操作");
         const file = this.multipleSelection[0];
         let { value } = await this.$prompt("新的名字", "重命名", {
-          inputValue: file.name
+          inputValue: file.name,
+          confirmButtonText: "确定",
+          cancelButtonText: "取消"
         });
         if (!value) throw new Error("请输入一个有效值");
         const oldFilePath = path.join(this.currentDir, file.name);

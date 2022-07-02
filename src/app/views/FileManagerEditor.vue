@@ -90,19 +90,31 @@ export default {
     this.editor = window.ace.edit("editor");
     this.editor.setTheme("ace/theme/dracula");
     const extName = path.extname(this.target);
-    if (extName === ".js") this.editor.session.setMode("ace/mode/javascript");
-    if (extName === ".json") this.editor.session.setMode("ace/mode/json");
-    if (extName === ".yml" || extName === ".yaml") this.editor.session.setMode("ace/mode/yaml");
+    if (extName === ".bat") this.editor.session.setMode("ace/mode/batchfile");
+    if (extName === ".c" || extName === ".cpp") this.editor.session.setMode("ace/mode/c_cpp");
+    if (extName === ".css") this.editor.session.setMode("ace/mode/css");
+    if (extName === ".go") this.editor.session.setMode("ace/mode/golang");
+    if (extName === ".groovy" || extName === ".gradle") this.editor.session.setMode("ace/mode/groovy");
+    if (extName === ".html") this.editor.session.setMode("ace/mode/html");
     if (extName === ".ini") this.editor.session.setMode("ace/mode/ini");
     if (extName === ".java") this.editor.session.setMode("ace/mode/java");
-    if (extName === ".css") this.editor.session.setMode("ace/mode/css");
-    if (extName === ".html") this.editor.session.setMode("ace/mode/html");
+    if (extName === ".js") this.editor.session.setMode("ace/mode/javascript");
+    if (extName === ".json") this.editor.session.setMode("ace/mode/json");
+    if (extName === ".json5") this.editor.session.setMode("ace/mode/json5");
+    if (extName === ".kt") this.editor.session.setMode("ace/mode/kotlin");
+    if (extName === ".md" || extName === ".markdown") this.editor.session.setMode("ace/mode/markdown");
+    if (extName === ".php") this.editor.session.setMode("ace/mode/php");
+    if (extName === ".ps1") this.editor.session.setMode("ace/mode/powershell");
     if (extName === ".properties") this.editor.session.setMode("ace/mode/properties");
     if (extName === ".py") this.editor.session.setMode("ace/mode/python");
-    if (extName === ".txt") this.editor.session.setMode("ace/mode/text");
-    if (extName === ".bat") this.editor.session.setMode("ace/mode/batchfile");
     if (extName === ".sh") this.editor.session.setMode("ace/mode/sh");
-    if (extName === ".c" || extName === ".cpp") this.editor.session.setMode("ace/mode/c_cpp");
+    if (extName === ".sql") this.editor.session.setMode("ace/mode/mysql");
+    if (extName === ".ts") this.editor.session.setMode("ace/mode/typescript");
+    if (extName === ".txt") this.editor.session.setMode("ace/mode/text");
+    if (extName === ".toml") this.editor.session.setMode("ace/mode/toml");
+    if (extName === ".xml" || extName === ".xaml") this.editor.session.setMode("ace/mode/xml");
+    if (extName === ".yml" || extName === ".yaml") this.editor.session.setMode("ace/mode/yaml");
+
     this.editor.setValue(this.edit.text);
   },
   methods: {

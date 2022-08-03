@@ -21,14 +21,14 @@
 
 import axios from "axios";
 import store from "../store";
-import { API_USER, API_USER_TOKEN } from "./common";
+import { API_PANEL_STATUS, API_USER, API_USER_TOKEN } from "./common";
 
 // 每个请求必须携带 X-Requested-With: XMLHttpRequest 头
 axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 // axios.defaults.withCredentials = true;
 
 // axios 请求 token 必须携带
-axios.interceptors.request.use(async function(config) {
+axios.interceptors.request.use(async function (config) {
   let token = store.state.token;
   if (!token && !config.params?.__mcsm_init__) {
     console.log("Token 未获取，正在尝试初始化...");
@@ -97,6 +97,15 @@ export async function requestUserInfo(advanced = null) {
 
 export async function setupUserInfo() {
   await requestUserInfo();
+}
+
+export async function getPanelStatus() {
+  const statusInfo = await request({
+    method: "GET",
+    url: API_PANEL_STATUS
+  });
+  store.commit("setPanelStatus", statusInfo);
+  return statusInfo
 }
 
 export function parseforwardAddress(addr = "", require = "http") {

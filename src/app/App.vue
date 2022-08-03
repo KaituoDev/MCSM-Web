@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -55,13 +55,15 @@
 <script>
 import Aside from "../components/Aside";
 import Header from "../components/Header";
-import { setupUserInfo } from "./service/protocol.js";
+import { getPanelStatus, request, setupUserInfo } from "./service/protocol.js";
 import router from "./router";
+import { API_PANEL_STATUS } from "./service/common";
+import store from "./store";
 
 export default {
   name: "App",
   components: { Aside, Header },
-  data: function() {
+  data: function () {
     return {
       breadCrumbs: [],
       mode: 1,
@@ -79,9 +81,25 @@ export default {
   methods: {
     toAside() {
       this.drawer = !this.drawer;
+    },
+    async getPanelStatus() {
+      const statusInfo = await request({
+        method: "GET",
+        url: API_PANEL_STATUS
+      });
+      if (statusInfo?.isInstall === false) {
+        return router.push({ path: "/install" });
+      } else {
+        store.commit("setPanelStatus", statusInfo);
+      }
     }
   },
   async beforeCreate() {
+    // 获取当前面板状态信息
+    const statusInfo = await getPanelStatus();
+    if (statusInfo?.isInstall === false) {
+      return router.push({ path: "/install" });
+    }
     // 第一次刷新后，尝试获取一次用户数据
     // 如果失败，则导航至 / 视图进一步决定跳转路由
     try {

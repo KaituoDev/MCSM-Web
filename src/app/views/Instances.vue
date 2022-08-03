@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -48,25 +48,23 @@
               size="small"
               style="width: 160px"
             ></el-input>
-            <el-button size="small" @click="refresh">
-              <i class="el-icon-refresh"></i> 刷新
+            <el-button size="small" @click="refresh" type="primary">
+              <i class="el-icon-refresh"></i> 搜索 / 刷新
             </el-button>
           </ItemGroup>
         </el-col>
         <el-col :md="12" :offset="0">
           <ItemGroup style="text-align: right">
             <el-button
-              type=""
+              type="primary"
               size="small"
-              plain
               @click="changeView(1)"
               v-show="showTableList"
               >简单视图</el-button
             >
             <el-button
-              type=""
+              type="primary"
               size="small"
-              plain
               @click="changeView(2)"
               v-show="!showTableList"
               >批量操作视图</el-button
@@ -152,11 +150,14 @@
           instanceStatusGray: item.status !== 3,
           CradInstance: true
         }"
+        :tipType="0"
       >
         <template #title>
-          <div style="font-size: 13px" class="only-line-text">
+          <span style="font-size: 13px" class="only-line-text">
             {{ item.nickname }}
-          </div>
+          </span>
+        </template>
+        <template #rtitle>
           <div>
             <el-dropdown trigger="click">
               <span class="el-dropdown-link">
@@ -243,7 +244,7 @@
             @selection-change="selectionChange"
             v-show="!notAnyInstance && currentRemoteUuid && showTableList"
           >
-            <el-table-column type="selection" width="55"></el-table-column>
+            <el-table-column type="selection" width="55"> </el-table-column>
             <el-table-column prop="nickname" label="实例名称" min-width="240">
               <template #default="scope">
                 <div
@@ -321,11 +322,14 @@
   margin: 100px 0px;
 }
 
+/*
 .instanceStatusGreen {
-  /*border-left: 4px solid rgb(8, 166, 8);*/
+  border-left: 4px solid rgb(8, 166, 8);
 }
+*/
 
 .instanceStatusGray {
+  /*border-left: 4px solid rgb(175, 175, 175);*/
   filter: var(--card-instance-gray-filter);
 }
 
@@ -356,7 +360,6 @@ import { API_INSTANCE, API_SERVICE_INSTANCES, API_SERVICE_LIST, API_URL } from "
 import router from "../router";
 import { request } from "../service/protocol";
 import { typeTextToReadableText } from "../service/instance_tools";
-
 export default {
   // eslint-disable-next-line vue/no-unused-components
   components: { Panel, CircleCheckFilled, CircleCloseFilled },
@@ -431,6 +434,7 @@ export default {
           if (v.available) {
             // 默认取第一个开启的实例
             this.currentRemoteUuid = v.value;
+            return;
           }
         });
         this.remoteSelectHandle();
@@ -520,7 +524,7 @@ export default {
       router.push({ path: `/terminal/${serviceUuid}/${instanceUuid}/` });
     },
     async unlinkInstance(uuid, deleteFile = false) {
-      await this.$confirm("确定要进行移除/删除嘛？", "最终确认", {
+      await this.$confirm("确定要进行移除/删除吗？", "最终确认", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

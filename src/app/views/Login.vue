@@ -38,8 +38,7 @@
   ></div>
 
   <div id="login-panel-wrapper" :class="{ 'login-panel-wrapper-out': closeWindow }">
-    <Panel id="login-panel" body-style="padding:44px;" v-loading="loading"
-           element-loading-background="rgba(0, 0, 0, 0.5)">
+    <Panel id="login-panel" body-style="padding:44px;" v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.5)">
       <template #default>
         <form action="/login" method="post">
           <div style="font-size: 24px; font-weight: 600">身份验证</div>
@@ -90,7 +89,6 @@
                   @click="login"
                   :disabled="close"
                   :loading="loading"
-                  element-loading-background="rgba(0, 0, 0, 0.5)"
                 >
                   {{ loginText }}
                 </el-button>
@@ -102,7 +100,7 @@
               </div>
               <div class="login-info-wrapper row-mt">
                 <div>
-                  <span class="color-gray">
+                  <span class="color-gray" >
                     <strong>Powered by
                     <a target="black" href="https://github.com/Suwings">MCSManager</a>
                     </strong>
@@ -152,7 +150,7 @@ import { request, setupUserInfo } from "../service/protocol";
 
 export default {
   components: { Panel },
-  data: function() {
+  data: function () {
     return {
       form: {
         username: "",
@@ -343,10 +341,9 @@ export default {
 #login-layer-right,
 #login-layer-bottom {
   z-index: 998;
-  background-color: rgb(0, 0, 0);
+  background-color: rgb(0,0,0);
   position: fixed;
 }
-
 #login-layer-top {
   top: 0px;
   left: 0px;
@@ -358,13 +355,11 @@ export default {
   left: 0px;
   right: 0px;
 }
-
 #login-layer-left {
   top: 0px;
   right: 0px;
   bottom: 0px;
 }
-
 #login-layer-right {
   top: 0px;
   left: 0px;
@@ -378,9 +373,9 @@ export default {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  background: var(--background-login-image);
   display: flex;
   align-items: center;
+  background: var(--background-login-image);
   background-repeat: no-repeat;
   background-size: cover;
   transition-property: all;
@@ -435,7 +430,6 @@ export default {
     background-repeat: no-repeat;
     background-size: cover;
   }
-
   #login-panel {
     text-align: center;
     margin: 0;
@@ -448,11 +442,9 @@ export default {
     align-items: center;
     border-radius: 0px;
   }
-
   #login-panel:hover {
     border: none;
   }
-
   .login-btn-wrapper {
     display: flex;
     justify-content: flex-start;
@@ -460,12 +452,10 @@ export default {
     flex-direction: column-reverse;
     text-align: center;
   }
-
   #login-cause {
     margin-top: 12px;
     margin-right: 0px;
   }
-
   .login-info-wrapper {
     text-align: center;
     display: flex;

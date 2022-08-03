@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -56,8 +56,10 @@
       <div v-if="failure">
         <div class="text-center row-mb">
           <h3>
-            文件不存在或权限不正确，无法查看此文件的具体配置，您也许可以尝试到 “文件管理”
-            功能在线编辑此文件，或尝试重启实例刷新此文件。
+            <p>
+              文件不存在或权限不正确，无法查看此文件的具体配置，您也许可以尝试到 “文件管理”
+              功能在线编辑此文件，或尝试重启实例刷新此文件。
+            </p>
           </h3>
           <el-button class="row-mt" size="small" @click="back">回到配置文件列表</el-button>
         </div>
@@ -83,6 +85,8 @@ import bdsServerProperties from "../../components/mc_process_config/bds_server.p
 import mohistYml from "../../components/mc_process_config/mohist.yml";
 import paperYml from "../../components/mc_process_config/paper.yml";
 import geyserYml from "../../components/mc_process_config/geyser.yml";
+import mcdrConfigYml from "../../components/mc_process_config/mcdr_config.yml"
+import permissionYml from "../../components/mc_process_config/permission.yml"
 
 export default {
   components: {
@@ -95,9 +99,11 @@ export default {
     "bds/server.properties": bdsServerProperties,
     "mohist/mohist.yml": mohistYml,
     "paper/paper.yml": paperYml,
-    "geyser/config.yml": geyserYml
+    "geyser/config.yml": geyserYml,
+    "mcdr/config.yml": mcdrConfigYml,
+    "mcdr/permission.yml": permissionYml
   },
-  data: function() {
+  data: function () {
     return {
       type: this.$route.query.type,
       serviceUuid: this.$route.params.serviceUuid,

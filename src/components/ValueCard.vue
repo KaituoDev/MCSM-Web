@@ -6,8 +6,8 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
-  According to the AGPL, it is forbidden to delete all copyright notices, 
+
+  According to the AGPL, it is forbidden to delete all copyright notices,
   and if you modify the source code, you must open source the
   modified source code.
 
@@ -50,12 +50,11 @@ import Panel from "./Panel";
 export default {
   components: { Panel },
   props: ["value", "title", "subTitle", "fontClass", "style"],
-  data: function() {
+  data: function () {
     return {};
   },
   methods: {},
-  mounted() {
-  }
+  mounted() {}
 };
 </script>
 
@@ -64,13 +63,11 @@ export default {
   position: relative;
   overflow: hidden;
 }
-
 .guser-top-info > p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .guser-top-info-text > i {
   font-size: 100px;
   color: #d1d1d11c;

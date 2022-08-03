@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -31,7 +31,8 @@ import {
   TYPE_MINECRAFT_FORGE,
   TYPE_MINECRAFT_FABRIC,
   TYPE_MINECRAFT_SPONGE,
-  TYPE_MINECRAFT_MOHIST
+  TYPE_MINECRAFT_MOHIST,
+  TYPE_MINECRAFT_MCDR
 } from "./instance_type";
 
 export function getInstanceConfigByType(type) {
@@ -207,5 +208,25 @@ export const INSTANCE_CONFIGS = [
     author: "Lazy",
     github: "https://github.com/LazyCreeper",
     category: [TYPE_MINECRAFT_JAVA, TYPE_MINECRAFT_GEYSER]
+  },
+  {
+    fileName: "[MCDR] config.yml",
+    type: "yml",
+    info: "MCDReforged 服务端控制工具配置文件",
+    path: "config.yml",
+    redirect: "mcdr/config.yml",
+    author: "Huaji_MUR233",
+    github: "https://github.com/HuajiMUR233",
+    category: [TYPE_MINECRAFT_JAVA, TYPE_MINECRAFT_MCDR]
+  },
+  {
+    fileName: "[MCDR] permission.yml",
+    type: "yml",
+    info: "MCDReforged 服务端控制工具权限配置文件",
+    path: "permission.yml",
+    redirect: "mcdr/permission.yml",
+    author: "Huaji_MUR233",
+    github: "https://github.com/HuajiMUR233",
+    category: [TYPE_MINECRAFT_JAVA, TYPE_MINECRAFT_MCDR]
   }
 ];

@@ -28,8 +28,8 @@
         <div class="sub-title">
           <div class="sub-title-title require-field">重置最高级别账号密码</div>
           <div class="sub-title-info">
-            为确保面板安全，第一次登录必须重设密码，密码必须由大写字母，小写字母和数字组成，长度为
-            9-36 位
+            为确保面板安全，第一次登录必须重设密码，密码必须由大写字母，小写字母和数字组成，长度为 9
+            到 36 位
           </div>
           <div class="row-mt">
             <el-input
@@ -40,8 +40,7 @@
             />
             <div style="text-align: right">
               <el-button size="small" class="row-mt" @click="submit()" type="danger" plain
-              >重置密码
-              </el-button
+                >重置密码</el-button
               >
             </div>
           </div>
@@ -69,8 +68,7 @@ export default {
       passWord: ""
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
     async submit() {
       await this.$confirm(`确定重设密码为：${this.passWord} 吗？`, "重置密码确认", {
@@ -105,7 +103,6 @@ export default {
 .content {
   max-width: 500px;
 }
-
 .title {
   margin: 8px 0px;
 }

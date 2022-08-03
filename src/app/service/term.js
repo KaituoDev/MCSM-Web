@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -47,37 +47,33 @@ termColor.TERM_TEXT_UNDERLINE = "\x1B[4m"; // Underline §n
 termColor.TERM_TEXT_ITALIC = "\x1B[3m"; // Italic §o
 termColor.TERM_TEXT_B = "\x1B[1m";
 
-export function initTerminalWindow(elem, fontSize = 12) {
+export function initTerminalWindow(elem, { fontSize }) {
   const term = new Terminal({
     rendererType: "canvas",
     convertEol: true,
     disableStdin: false,
     cursorStyle: "underline",
     cursorBlink: true,
-    fontSize: fontSize,
+    fontSize,
     fontFamily: "Cascadia Code, Menlo, consolas, monospace",
     allowTransparency: true,
     theme: {
       background: "rgba(0,0,0,0)"
     }
   });
+
   const fitAddon = new FitAddon();
   term.loadAddon(fitAddon);
-  term.open(elem);
-
-  // 设置终端宽度，报险起见设置两次
   term.fitAddon = fitAddon;
 
+  term.open(elem);
   term.writeln(
-    `${termColor.TERM_TEXT_GOLD}MCSManager Terminal ${termColor.TERM_TEXT_DARK_AQUA}[Powered by Term.js]`
+    `${termColor.TERM_TEXT_GREEN}[TERM] ${termColor.TERM_TEXT_DARK_AQUA}[Powered by Term.js]`
   );
   term.info = (msg) => {
-    term.writeln(`\r\n[MCSManager] [INFO] ${msg}`);
+    term.writeln(`\r\n${termColor.TERM_TEXT_GREEN}[TERM] ${msg}${termColor.TERM_RESET}`);
   };
-  // term.prompt = () => {
-  //   term.write(`${termColor.TERM_RESET}\r\n$ `);
-  // };
-  //term.prompt();
+
   return term;
 }
 

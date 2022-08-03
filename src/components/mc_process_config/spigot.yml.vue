@@ -1,28 +1,22 @@
 <!--
-  Copyright (C) 2022 Suwings(https://github.com/Suwings)
+  Copyright (C) 2022 Suwings <Suwings@outlook.com>
 
   This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
+  it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-  
-  According to the GPL, it is forbidden to delete all copyright notices, 
+  According to the AGPL, it is forbidden to delete all copyright notices,
   and if you modify the source code, you must open source the
   modified source code.
 
-  版权所有 (C) 2022 Suwings(https://github.com/Suwings)
+  版权所有 (C) 2022 Suwings <Suwings@outlook.com>
 
-  本程序为自由软件，你可以依据 GPL 的条款（第三版或者更高），再分发和/或修改它。
-  该程序以具有实际用途为目的发布，但是并不包含任何担保，
-  也不包含基于特定商用或健康用途的默认担保。具体细节请查看 GPL 协议。
+  该程序是免费软件，您可以重新分发和/或修改据 GNU Affero 通用公共许可证的条款，
+  由自由软件基金会，许可证的第 3 版，或（由您选择）任何更高版本。
 
-  根据协议，您必须保留所有版权声明，如果修改源码则必须开源修改后的源码。
-  前往 https://mcsmanager.com/ 申请闭源开发授权或了解更多。
+  根据 AGPL 与用户协议，您必须保留所有版权声明，如果修改源代码则必须开源修改后的源代码。
+  可以前往 https://mcsmanager.com/ 阅读用户协议，申请闭源开发授权等。
 -->
 
 <template>
@@ -43,7 +37,7 @@
         <div class="sub-title">
           <div class="sub-title">关于配置兼容与翻译</div>
           <div class="sub-title-info">
-            此界面由开源社区开发者开发与翻译, 若翻译发现错误可前往开源社区进行反馈。Spigot
+            此界面由开源社区开发者开发与翻译，若翻译发现错误可前往开源社区进行反馈。Spigot
             服务端每个版本几乎都有修改过配置文件，导致适配难度极大，此文件部分配置可能不会如期显示翻译，但是依然可以工作。
           </div>
         </div>
@@ -51,7 +45,7 @@
           <div class="sub-title">关于配置文件</div>
           <div class="sub-title-info">
             此文件为 Spigot
-            服务端专用的配置文件, 可以进一步的设置服务端的一些高级参数, 比如实体 AI 范围, 玩家限制, 视距限制和区块限制等
+            服务端专用的配置文件，可以进一步的设置服务端的一些高级参数，比如实体 AI 范围，玩家限制，视距限制和区块限制等
           </div>
         </div>
       </template>
@@ -104,13 +98,13 @@ export default {
           "log-villager-deaths": "是否记载村民死亡",
           "timeout-time": "连接超时时间",
           "restart-on-crash": "崩溃时是否自动重启",
-          "restart-script": "重启时执行的脚本名 ( 如 ./start.sh)",
+          "restart-script": "重启时执行的脚本名（如 ./start.sh）",
           "sample-count":
             "控制将鼠标悬停在客户端服务器列表中的玩家计数上时显示的(随机选择的)样本玩家数量。",
           "user-cache-size": "用户缓存大小",
           "netty-threads": "Netty 通信线程数",
           "player-shuffle":
-            "每隔多少 Ticks (20ticks/1s)刷新玩家在数据遍历中的顺序,可以有效调整玩家在内存中顺序, 在 PvP 服务器上有些帮助, 低于 100 会导致性能问题",
+            "每隔多少 ticks（20ticks/1s）刷新玩家在数据遍历中的顺序，可以有效调整玩家在内存中顺序，在 PvP 服务器上有些帮助，低于100会导致性能问题",
           bungeecord: "是否开启集群模式（还需要更多辅助软件与配置结合使用）",
           attribute: {
             maxHealth: {
@@ -146,7 +140,7 @@ export default {
           "silent-commandblock-console": "屏蔽命令方块的控制台输出",
           log: "是否开启日志输出",
           "tab-complete":
-            "控制是否允许玩家按下 TAB 键来自动完成命令。-1 为关闭, 0 为立即, 1 为第一个字母, 以此类推",
+            "控制是否允许玩家按下 TAB 键来自动完成命令。-1 为关闭，0 为立即，1 为第一个字母，以此类推",
           "send-namespaced": "是否发送命令命令空间",
           "replace-commands":
             "禁用 Bukkit 对所列命令的实现，并启用它们的原始行为，支持多项且使用英文逗号分隔",
@@ -156,10 +150,10 @@ export default {
           default: {
             verbose:
               "是否在服务器启动时在控制台/日志中显示每个世界的详细报告和配置。可以全局禁用/启用，也可以按世界禁用/启用",
-            "item-despawn-rate": "控制在地面上的项目实体删除之前所需的 Ticks (20 Ticks/1s)",
+            "item-despawn-rate": "控制在地面上的项目实体删除之前所需的 Tick(s)（20 Ticks = 1s）",
             "enable-zombie-pigmen-portal-spawns": "是否启用僵尸猪人入口生成",
             "view-distance":
-              "控制所有玩家最远视距, 最低为 1, 最高为 15, 调整到 8 左右可以显著提升服务器性能",
+              "控制所有玩家最远视距，最低为 1，最高为 15，调整到 8 左右可以显著提升服务器性能",
             "hanging-tick-frequency": "每 Tick 的更新频率",
             "mob-spawn-range": "怪物生成范围",
             "hopper-amount":
@@ -184,16 +178,16 @@ export default {
             "seed-mansion": "生成宅邸的种子码",
             "seed-fossil": "生成化石的种子码",
             "seed-portal": "生成传送门的种子码",
-            "nerf-spawner-mobs": "启用后, 由怪物生成的新怪物将不会有任何 AI",
+            "nerf-spawner-mobs": "启用后，由怪物生成的新怪物将不会有任何 AI",
             "dragon-death-sound-radius": "末地龙死亡声音范围",
             "zombie-aggressive-towards-villager": "是否准许生成僵尸村民",
             "end-portal-sound-radius": "下界传送门声音范围",
             "entity-tracking-range": {
-              players: "实体 AI 追踪玩家的最大范围, 调小此值可轻微节约服务器计算资源",
-              animals: "实体 AI 追踪动物的最大范围, 调小此值可轻微节约服务器计算资源",
-              monsters: "实体 AI 追踪怪物的最大范围, 调小此值可轻微节约服务器计算资源",
-              misc: "实体 AI 追踪物品的最大范围, 调小此值可轻微节约服务器计算资源",
-              other: "实体 AI 追踪其他的最大范围, 调小此值可轻微节约服务器计算资源"
+              players: "实体AI追踪玩家的最大范围，调小此值可轻微节约服务器计算资源",
+              animals: "实体AI追踪动物的最大范围，调小此值可轻微节约服务器计算资源",
+              monsters: "实体AI追踪怪物的最大范围，调小此值可轻微节约服务器计算资源",
+              misc: "实体AI追踪物品的最大范围，调小此值可轻微节约服务器计算资源",
+              other: "实体AI追踪其他的最大范围，调小此值可轻微节约服务器计算资源"
             },
             "merge-radius": {
               item: "物品距离多少时会互相合并吸引",
@@ -203,7 +197,7 @@ export default {
               "hopper-transfer":
                 "漏斗推/拉/接收物品与漏斗推/拉更多物品之间的时间，在服务器每个 Tick 中更新 8 个行为",
               "hopper-check":
-                "自上次尝试后，漏斗尝试推/拉物品。例如, 值 8 表示空料斗每隔8个刻度查找上方的物料实体、上方的库存等。值0或1反映香草行为。当 HOPPER-ALT-TICKING 设置为\"是\"时，此选项被禁用"
+                '自上次尝试后，漏斗尝试推/拉物品。例如，值8表示空料斗每隔 8 个刻度查找上方的物料实体、上方的库存等。值 0 或 1 反映原版行为。当 HOPPER-ALT-TICKING 设置为"是"时，此选项被禁用'
             },
             growth: {
               "cactus-modifier": "仙人掌生长速度",
@@ -243,8 +237,8 @@ export default {
               min: "鱿鱼最小生成范围"
             },
             "max-tick-time": {
-              tile: "分配给 Tile 的最大 tick 时间",
-              entity: "分配给实体的最大 tick 时间"
+              tile: "分配给 Tile 的最大 Tick 时间",
+              entity: "分配给实体的最大 Tick 时间"
             }
           }
         }

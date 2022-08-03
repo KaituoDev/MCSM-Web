@@ -160,7 +160,7 @@
   <!-- 版权信息 -->
   <div
     class="flex flex-space-center flex-align-items-center"
-    style="font-size: 12px; color: #e4ff8a; text-align: center; margin-top: 40px;text-shadow: 0px 0px 20px #000000;"
+    style="font-size: 12px; color: #e4ff8a; text-align: center; margin-top: 40px; text-shadow: 0px 0px 20px #000000;"
   >
     <div>
       <span
@@ -216,10 +216,9 @@ import LineLabel from "../../components/LineLabel";
 import { request, requestUserInfo } from "../service/protocol";
 import { API_INSTANCE_LOW_PERMISSION_PUT } from "../service/common";
 import { statusCodeToText } from "../service/instance_tools";
-
 export default {
   components: { Panel, LineLabel, Dialog, ValueCard },
-  data: function() {
+  data: function () {
     return {
       editInstance: {
         is: false,

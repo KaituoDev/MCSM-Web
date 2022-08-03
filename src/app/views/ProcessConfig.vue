@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -69,8 +69,7 @@
               type="text"
               icon="el-icon-right"
               @click="toProcessConfig(item.redirect, item.path, item.type)"
-            >浏览
-            </el-button
+              >浏览</el-button
             >
           </template>
         </BlockButton>
@@ -88,7 +87,7 @@ import { API_PROCESS_CONFIG_LIST } from "../service/common";
 
 export default {
   components: { Panel, BlockButton },
-  data: function() {
+  data: function () {
     return {
       serviceUuid: this.$route.params.serviceUuid,
       instanceUuid: this.$route.params.instanceUuid,

@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -83,7 +83,7 @@
                 </p>
               </div>
               <el-input
-                placeholder="请输入文案，例如：京 ICP 备00000001号"
+                placeholder="请输入文案，例如：京ICP备00000001号"
                 v-model="settings.loginInfo"
               >
               </el-input>
@@ -128,6 +128,18 @@
             </div> -->
             <div class="config-item">
               <div class="sub-title">
+                <p class="sub-title-title">准许普通用户使用文件管理功能</p>
+                <p class="sub-title-info">
+                  文件管理是一个较为消耗资源且不易控制的功能，如果您的普通用户没有文件管理的任何需求，可以禁止用户使用文件管理。
+                </p>
+              </div>
+              <el-select v-model="settings.canFileManager" placeholder="请选择">
+                <el-option label="准许" :value="true"></el-option>
+                <el-option label="禁止" :value="false"></el-option>
+              </el-select>
+            </div>
+            <div class="config-item">
+              <div class="sub-title">
                 <p class="sub-title-title">跨域请求 API 接口</p>
                 <p class="sub-title-info">
                   HTTP 响应将会加入 access-control-allow-origin:
@@ -153,9 +165,9 @@
             </div>
             <!-- <div class="config-item">
               <div class="sub-title">
-                <p class="sub-title-title">使用 gzip 静态文件压缩</p>
+                <p class="sub-title-title">使用 Gzip 静态文件压缩</p>
                 <p class="sub-title-info">
-                  如果你使用反向代理或某 HTTP 服务自带的gzip，请关闭它，否则可以使用默认值。
+                  如果你使用反向代理或某 HTTP 服务自带的 Gzip，请关闭它，否则可以使用默认值。
                 </p>
               </div>
               <el-select v-model="settings.gzip" placeholder="请选择">
@@ -167,7 +179,7 @@
               <div class="sub-title">
                 <p class="sub-title-title">解压缩最大并发任务</p>
                 <p class="sub-title-info">
-                  对于机械硬盘请略调小此值，对于高性能硬盘和CPU可以适当提高。
+                  对于机械硬盘请略调小此值，对于高性能硬盘和 CPU 可以适当提高。
                 </p>
               </div>
               <el-select v-model="settings.maxCompress" placeholder="请选择">
@@ -239,13 +251,13 @@
               <!-- <div class="sub-title">
                 <p class="sub-title">常见概念</p>
               </div>
-              <a class="alink" href="https://cn.bing.com/">
+              <a class="alink" href="https://cn.bing.com/search?q=%E5%B9%B6%E5%8F%91">
                 <p>什么是并发？</p>
               </a>
-              <a class="alink" href="https://cn.bing.com/">
-                <p>什么是 gzip 压缩？</p>
+              <a class="alink" href="https://cn.bing.com/search?q=Gzip+%E5%8E%8B%E7%BC%A9">
+                <p>什么是 Gzip 压缩？</p>
               </a>
-              <a class="alink" href="https://cn.bing.com/">
+              <a class="alink" href="https://github.com/MCSManager/MCSManager/issues">
                 <p>反馈问题</p>
               </a> -->
             </div>
@@ -402,7 +414,6 @@
 </style>
 
 <script>
-
 import Panel from "../../components/Panel";
 import SystemIndex from "../../components/SystemImage.vue";
 import { API_SETTINGS } from "../service/common";

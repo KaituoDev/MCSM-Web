@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-  
+
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -21,6 +21,7 @@
 
 export const TYPE_UNIVERSAL = "universal"; // 通用输入输出程序
 export const TYPE_WEB_SHELL = "universal/web_shell"; // WebShell 程序
+export const TYPE_MINECRAFT_MCDR = "universal/mcdr";
 
 export const TYPE_MINECRAFT_JAVA = "minecraft/java";
 export const TYPE_MINECRAFT_BUKKIT = "minecraft/java/bukkit";
@@ -32,7 +33,6 @@ export const TYPE_MINECRAFT_BUNGEECORD = "minecraft/java/bungeecord";
 export const TYPE_MINECRAFT_GEYSER = "minecraft/java/geyser";
 export const TYPE_MINECRAFT_SPONGE = "minecraft/java/sponge";
 export const TYPE_MINECRAFT_MOHIST = "minecraft/java/mohist";
-
 export const TYPE_MINECRAFT_BEDROCK = "minecraft/bedrock";
 export const TYPE_MINECRAFT_BDS = "minecraft/bedrock/bds";
 export const TYPE_MINECRAFT_NUKKIT = "minecraft/bedrock/nukkit";
@@ -53,6 +53,7 @@ INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_FORGE] = "MC Forge";
 INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_FABRIC] = "MC Fabric";
 INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_BUKKIT] = "MC Bukkit";
 INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_GEYSER] = "MC Geyser";
+INSTANCE_TYPE_TRANSLATION[TYPE_MINECRAFT_MCDR] = "MC MCDR";
 INSTANCE_TYPE_TRANSLATION[TYPE_WEB_SHELL] = "Web Shell";
 
 // 不同类型的具体配置文件
@@ -98,6 +99,9 @@ const INSTANCE_TYPE_DEF_CONFIG = {
   },
   [TYPE_MINECRAFT_GEYSER]: {
     stopCommand: "geyser stop"
+  },
+  [TYPE_MINECRAFT_MCDR]: {
+    stopCommand: "stop"
   }
 };
 

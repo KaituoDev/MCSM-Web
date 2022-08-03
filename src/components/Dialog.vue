@@ -6,7 +6,7 @@
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  According to the AGPL, it is forbidden to delete all copyright notices, 
+  According to the AGPL, it is forbidden to delete all copyright notices,
   and if you modify the source code, you must open source the
   modified source code.
 
@@ -26,11 +26,11 @@
         <transition name="el-zoom-in-center">
           <Panel v-show="modelValue" style="margin-bottom: 0px">
             <template #title>
-              <div class="flex flex-space-between flex-align-items-center" style="width: 100%">
-                <slot name="title"></slot>
-                <div class="component-dialog-close-button" @click="close" v-if="canClose">
-                  <i class="el-icon-close"></i>
-                </div>
+              <slot name="title"></slot>
+            </template>
+            <template #rtitle>
+              <div class="component-dialog-close-button" @click="close" v-if="canClose">
+                <i class="el-icon-close"></i>
               </div>
             </template>
             <template #default>
@@ -59,7 +59,7 @@ export default {
     }
   },
   emits: ["update:modelValue"],
-  data: function() {
+  data: function () {
     return {
       visible: false
     };
@@ -80,7 +80,6 @@ export default {
   max-width: 90%;
   overflow-y: auto;
 }
-
 .component-dialog-wrapper {
   position: fixed;
   top: 0;
@@ -94,18 +93,15 @@ export default {
   justify-content: center;
   transition: all 0.4s;
 }
-
 .component-dialog-body {
   word-break: break-all;
   overflow: hidden;
   width: 100%;
 }
-
 .component-dialog-close-button {
   cursor: pointer;
   font-size: 18px;
 }
-
 @media (max-width: 860px) {
   .component-dialog-overflow {
     max-height: 100%;

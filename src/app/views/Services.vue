@@ -181,7 +181,7 @@
         <div class="row-mt">
           <ItemGroup>
             <el-button type="success" size="small" @click="toNewService(false)">新增</el-button>
-            <el-button @click="isNewService = !isNewService" size="small"> 取消</el-button>
+            <el-button @click="isNewService = !isNewService" size="small"> 取消 </el-button>
           </ItemGroup>
         </div>
       </div>
@@ -193,7 +193,7 @@
     <template #default>
       <div class="sub-title">
         <div class="sub-title-title">
-          检测到您的连接IP为 :{{ newServiceInfo.ip }}，似乎是一个内网地址？
+          检测到您的连接 IP 为 :{{ newServiceInfo.ip }}，似乎是一个内网地址？
         </div>
         <div class="sub-title-info">
           面板与守护进程端均要能够让用户访问，以此行为设计即可实现流量分流减轻中心面板端的压力。

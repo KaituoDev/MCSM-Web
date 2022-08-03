@@ -39,7 +39,7 @@
                   @focus="() => (readonly = false)"
                 ></el-input>
                 <el-button size="small" type="primary" @click="refresh">
-                  <i class="el-icon-refresh"></i> 刷新/搜索
+                  <i class="el-icon-refresh"></i> 搜索 / 刷新
                 </el-button>
               </el-col>
               <el-col :md="12" :offset="0" class="text-align-right col-md-responsive">
@@ -75,7 +75,7 @@
               ref="multipleTable"
               @selection-change="selectionChange"
             >
-              <el-table-column type="selection" width="55"></el-table-column>
+              <el-table-column type="selection" width="55"> </el-table-column>
               <el-table-column prop="uuid" label="UUID" width="240"></el-table-column>
               <el-table-column prop="userName" label="用户名"></el-table-column>
               <el-table-column prop="permission" label="权限等级"></el-table-column>
@@ -100,7 +100,7 @@
         <div>
           <div class="sub-title">
             <p class="sub-title-title">用户名</p>
-            <p class="sub-title-info">必填，6-12 个字符，支持中文，英文和字符</p>
+            <p class="sub-title-info">必填，6 到 12 个字符，支持中文，英文和字符</p>
           </div>
           <el-input
             v-model="newUserInfo.userName"
@@ -108,12 +108,12 @@
             size="small"
           ></el-input>
           <div class="sub-title row-mt">
-            <p class="sub-title-title">密码</p>
-            <p class="sub-title-info">必填，9-18 个字符，不支持中文，只限于字母，数字和符号</p>
+            <p class="sub-title-title">用户密码</p>
+            <p class="sub-title-info">必填，9 到 36 个字符，不支持中文，只限于字母，数字和符号</p>
           </div>
           <el-input
             v-model="newUserInfo.password"
-            placeholder="请输入密码，9-18 位"
+            placeholder="请输入密码"
             size="small"
             type="text"
           ></el-input>
@@ -138,7 +138,7 @@
                 href="https://docs.mcsmanager.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-              >具体信息参考</a
+                >具体信息参考</a
               >
             </p>
           </div>
@@ -157,7 +157,7 @@
         <div>
           <div class="sub-title">
             <p class="sub-title-title require-field">用户名</p>
-            <p class="sub-title-info">必填，6-12 个字符，支持中文，英文和字符</p>
+            <p class="sub-title-info">必填，6 到 12 个字符，支持中文，英文和字符</p>
           </div>
           <el-input
             v-model="editUserInfo.userName"
@@ -217,7 +217,9 @@ export default {
       remoteObjects: [], // 以守护进程为主键的列表
       instances: [], // 以实例为主键的列表
       multipleSelection: [], // 表格多选属性
+
       readonly: true,
+
       businessWarningDialog: false
     };
   },

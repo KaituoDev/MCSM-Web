@@ -1,28 +1,22 @@
 <!--
-  Copyright (C) 2022 Suwings(https://github.com/Suwings)
+  Copyright (C) 2022 Suwings <Suwings@outlook.com>
 
   This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
+  it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
-  
-  According to the GPL, it is forbidden to delete all copyright notices, 
+  According to the AGPL, it is forbidden to delete all copyright notices,
   and if you modify the source code, you must open source the
   modified source code.
 
-  版权所有 (C) 2022 Suwings(https://github.com/Suwings)
+  版权所有 (C) 2022 Suwings <Suwings@outlook.com>
 
-  本程序为自由软件，你可以依据 GPL 的条款（第三版或者更高），再分发和/或修改它。
-  该程序以具有实际用途为目的发布，但是并不包含任何担保，
-  也不包含基于特定商用或健康用途的默认担保。具体细节请查看 GPL 协议。
+  该程序是免费软件，您可以重新分发和/或修改据 GNU Affero 通用公共许可证的条款，
+  由自由软件基金会，许可证的第 3 版，或（由您选择）任何更高版本。
 
-  根据协议，您必须保留所有版权声明，如果修改源码则必须开源修改后的源码。
-  前往 https://mcsmanager.com/ 申请闭源开发授权或了解更多。
+  根据 AGPL 与用户协议，您必须保留所有版权声明，如果修改源代码则必须开源修改后的源代码。
+  可以前往 https://mcsmanager.com/ 阅读用户协议，申请闭源开发授权等。
 -->
 
 <template>
@@ -38,7 +32,7 @@
         <div class="sub-title">
           <div class="sub-title">关于配置文件</div>
           <div class="sub-title-info">
-            此文件是 Paper 服务端软件专用配置文件, 有近 400 行的服务器具体参数配置, Paper
+            此文件是 Paper 服务端软件专用配置文件，有近 400 行的服务器具体参数配置，Paper
             每个版本的各个参数都可能有细节变化从而导致翻译工作及其困难，部分参数可能不会有中文翻译。
           </div>
         </div>
@@ -90,7 +84,7 @@ export default {
           "console-has-all-permissions": "是否允许服务端控制台获得所有权限",
           "use-alternative-luck-formula":
             "使用 Aikar 的运气公式替换原版运气公式。（或许对钓鱼有帮助）",
-          "chunk-tasks-per-tick": "每 Tick 中可以完成多少区块任务。这有助于渲染和块生成。",
+          "chunk-tasks-per-tick": "每tick中可以完成多少区块任务。这有助于渲染和块生成。",
           "save-empty-scoreboard-teams": "是否保留空的计分板团队数据",
           "enable-player-collisions": "是否启用玩家碰撞",
           "player-auto-save-rate": "设置玩家应该被保存的频率",
@@ -113,7 +107,7 @@ export default {
           "use-versioned-world": "",
           "unsupported-settings": {
             "allow-permanent-block-break-exploits": "是否可以使用原版漏洞破坏不可破坏的方块",
-            "allow-piston-duplication": "是否允许刷方块, 例如复制 TNT、刷地毯和铁轨",
+            "allow-piston-duplication": "是否允许刷方块，例如复制 TNT、刷地毯和铁轨",
             "allow-headless-pistons": "是否允许无头活塞，通常用于破坏基岩等方块",
             "allow-permanent-block-break-exploits-readme": "",
             "allow-piston-duplication-readme": "",
@@ -145,19 +139,19 @@ export default {
           },
           "velocity-support": {
             enabled:
-              "如果此服务器被 Velocity 代理之后, 则将此设置为 true 。如果将此设置为 true, 请不要在 spigot.yml 中启用 bungeecord 设置。",
+              "如果此服务器被Velocity代理之后，则将此设置为 true 。如果这是真的，请不要在 spigot.yml 中启用 bungeecord 设置。",
             "online-mode": "",
             secret:
               "Velocity 代理和此服务器共享的密钥。这需要与你代理的 forwarding-secret 设置相匹配。"
           },
           "item-validation": {
-            "display-name": "物品显示名称长度的限制 ( 覆盖 Spigot.yml )",
-            "loc-name": "loc-name长度的限制 ( 覆盖 Spigot.yml )",
-            "lore-line": "物品Lore长度的限制 ( 覆盖 Spigot.yml )",
+            "display-name": "物品显示名称长度的限制（覆盖 Spigot.yml）",
+            "loc-name": "loc-name 长度的限制（覆盖 Spigot.yml）",
+            "lore-line": "物品 Lore 长度的限制（覆盖 Spigot.yml）",
             book: {
-              title: "书名长度限制 ( 覆盖 Spigot.yml )",
-              author: "作者名字长度限制 ( 覆盖 Spigot.yml )",
-              page: "单个书页长度限制 ( 覆盖 Spigot.yml )"
+              title: "书名长度限制（覆盖 Spigot.yml）",
+              author: "作者名字长度限制（覆盖 Spigot.yml）",
+              page: "单个书页长度限制（覆盖 Spigot.yml）"
             },
             console: {
               "enable-brigadier-highlighting":
@@ -215,10 +209,10 @@ export default {
               "Sets whether the server should use follow range when targeting entities",
             "non-player-arrow-despawn-rate":
               "从非玩家实体（发射器）射出的箭消失的速率，以 Tick 为单位",
-            "creative-arrow-despawn-rate": "玩家在创造模式下射出的箭消失的速率, 以 Tick 为单位",
+            "creative-arrow-despawn-rate": "玩家在创造模式下射出的箭消失的速率，以 Tick 为单位",
             "zombies-target-turtle-eggs": "设置僵尸和僵尸猪灵是否以海龟蛋为目标",
             "zombie-villager-infection-chance":
-              "设置村民转换为僵尸村民的变化，根据游戏难度设置。默认为 -1.0;设置为 0 始终让村民在被僵尸杀死时死亡; 设置为 100 则始终将村民转换为僵尸村民",
+              "设置村民转换为僵尸村民的变化，根据游戏难度设置。默认为 -1.0，设置为0始终让村民在被僵尸杀死时死亡；设置为 100 则始终将村民转换为僵尸村民",
             "all-chunks-are-slime-chunks":
               "是否允许服务器将所有区块视为史莱姆区块（可能并不会增加生成史莱姆的几率）",
             "mob-spawner-tick-rate": "刷怪笼应该多久计算一次可用的生成区域并将新实体生成到该区域中",
@@ -244,7 +238,7 @@ export default {
             "keep-spawn-loaded": "保持出生点区块加载",
             "armor-stands-do-collision-entity-lookups":
               "Instructs armor stand entities to do entity collision checks",
-            "grass-spread-tick-rate": "草每 Tick 的生长速度",
+            "grass-spread-tick-rate": "草这种植物每 Tick 的生长速度",
             "should-remove-dragon":
               "Sets whether or not to remove the dragon if it exists without a portal.",
             "use-vanilla-world-scoreboard-name-coloring": "使用原版世界记分板名称着色",
@@ -255,7 +249,7 @@ export default {
             "count-all-mobs-for-spawning": "刷怪笼和其他生物是否计入全局生物限制",
             "optimize-explosions": "优化 TNT/苦力怕等爆炸",
             "duplicate-uuid-resolver":
-              "指定服务器用于解析具有重复 UUID 的实体的方法 ( saferegen: 为实体重新生成一个UUID; delete: 删除实体; silent: 什么都不做, 不打印日志: warn: 什么都不做,打印日志）",
+              "指定服务器用于解析具有重复 UUID 的实体的方法（saferegen：为实体重新生成一个UUID；delete：删除实体；silent：什么都不做，不打印日志；warn：什么都不做，打印日志）",
             "duplicate-uuid-saferegen-delete-range":
               "If multiple entities with duplicate UUIDs are within this many blocks, saferegen will delete all but 1 of them",
             "disable-creeper-lingering-effect": "随机禁用苦力怕，留下一个挥之不去的区域效果云",
@@ -272,46 +266,46 @@ export default {
               "Whether commands executed by sign click should show failure messages to players",
             "fix-items-merging-through-walls":
               "是否禁止物品穿过墙壁合并（启用后可能会导致性能下降）",
-            "fix-climbing-bypassing-cramming-rule": "设置攀爬是否应绕过Cramming限制",
+            "fix-climbing-bypassing-cramming-rule": "设置攀爬是否应绕过 Cramming 限制",
             "only-players-collide":
               "Only calculate collisions if a player is one of the two entities colliding",
             "allow-vehicle-collisions": "允许车辆碰撞",
             "portal-search-vanilla-dimension-scaling":
               "Whether to apply vanilla dimension scaling to portal-search-radius",
             "seed-based-feature-search-loads-chunks":
-              "基于种子的特征搜索加载区块（禁用后会提高性能，但会影响 /locate 指令)",
+              "基于种子的特征搜索加载区块（禁用后会提高性能，但会影响 /locate 指令）",
             "max-leash-distance": "配置拴绳的最大距离，如果超过这个距离则断开",
-            "fix-wither-targeting-bug": "修复凋零目标错误 (MC-29274)",
+            "fix-wither-targeting-bug": "修复凋零目标错误（MC-29274）",
             "allow-player-cramming-damage":
               "允许玩家在游戏规则设置中的更多的实体发生碰撞时受到的来自 maxEntityCramming 的伤害",
             "update-pathfinding-on-block-update":
-              "控制在世界中更新区块时是否更新怪物的寻路 balabala( 禁用此选项可以显着提高服务器性能) ",
+              "控制在世界中更新区块时是否更新怪物的寻路 balabala（禁用此选项可以显着提高服务器性能）",
             "map-item-frame-cursor-limit": "每个地图在展示框的光标限制（就是绿色那个箭头），",
             "ender-dragons-death-always-places-dragon-egg": "末影龙死亡是否掉落龙蛋",
             "allow-using-signs-inside-spawn-protection": "允许玩家在出生点保护区内使用告示牌",
             "bed-search-radius": "",
             "allow-leashing-undead-horse": "",
             "baby-zombie-movement-speed":
-              "修改小僵尸移动的速度(0.5 表示比基本速度快50%, -0.4 会慢 40%)",
+              "修改小僵尸移动的速度（0.5 表示比基本速度快 50%，-0.4 会慢 40%）",
             "door-breaking-difficulty": {
               zombie: "列出僵尸能够破门的难度列表",
               vindicator: "列出卫道士能够破门的难度列表"
             },
             "mobs-can-always-pick-up-loot": {
               zombies:
-                "设置僵尸是否可以捡起物品。如果设置为 false, 那么僵尸捡起物品的概率取决于世界的难度",
+                "设置僵尸是否可以捡起物品。如果设置为 false，那么僵尸捡起物品的概率取决于世界的难度",
               skeletons:
-                "设置骷髅是否可以捡起物品。如果设置为 false,那么僵尸捡起物品的概率取决于世界的难度"
+                "设置骷髅是否可以捡起物品。如果设置为 false，那么僵尸捡起物品的概率取决于世界的难度"
             },
             "spawn-limits": {
-              monsters: "每个世界可以生成的怪物数量（ 如果为 -1,则使用 bukkit.yml 中的设置,下同 )",
+              monsters: "每个世界可以生成的怪物数量（如果为 -1，则使用 bukkit.yml 中的设置，下同）",
               animals: "每个世界可以生成的动物数量",
               "water-animals": "每个世界可以生成的水生动物的数量",
               "water-ambient": "每个世界可以生成的 water-ambient 数量",
-              ambient: "每个世界可以生成的 ambient 数量"
+              ambient: "每个世界可以生成的ambient数量"
             },
             "entity-per-chunk-save-limit": {
-              experience_orb: "限制每个区块保存/加载的 经验球 数量（-1 则禁用此限制, 下同）",
+              experience_orb: "限制每个区块保存/加载的 经验球 数量（-1 则禁用此限制，下同）",
               snowball: "限制每个区块保存/加载的 雪球 数量",
               ender_pearl: "限制每个区块保存/加载的 末影珍珠 数量",
               fireball: "限制每个区块保存/加载的 火焰弹 数量",
@@ -351,7 +345,7 @@ export default {
               }
             },
             "game-mechanics": {
-              "disable-pillager-patrols": "禁用掠夺者巡逻和相关的 AI",
+              "disable-pillager-patrols": "禁用掠夺者巡逻和相关的AI",
               "disable-relative-projectile-velocity": "",
               "disable-unloaded-chunk-enderpearl-exploit": "防止末影珍珠在未加载的区块中存放投掷器",
               "disable-chest-cat-detection": "箱子上面有猫时是否可以打开",
@@ -385,13 +379,13 @@ export default {
             "anti-xray": {
               enabled: "是否启用反Xray",
               "engine-mode":
-                "设置反Xray引擎模式。其中 1 是用石头替换隐藏方块, 2 是用随机方块数据替换所有方块",
+                "设置反Xray引擎模式。其中 1 是用石头替换隐藏方块，2 是用随机方块数据替换所有方块",
               "max-chunk-section-index": "",
               "update-radius":
                 "Controls the distance in blocks from air or water that hidden-blocks are hidden by the anti-xray engine",
               "lava-obscures": "是否混淆接触岩浆的方块",
               "max-block-height":
-                "设置反Xray尝试隐藏矿石的最大高度( 只允许 16 的倍数, 若输入其他值则向下舍入为 16 的倍数 )",
+                "设置反Xray尝试隐藏矿石的最大高度（只允许16的倍数，若输入其他值则向下舍入为 16 的倍数）",
               "use-permission": "是否允许有 paper.antixray.bypass 权限的玩家 绕过反 Xray",
               "chunk-edge-mode": "",
               "replacement-blocks": "在引擎模式 2 中应该被隐藏方块替换的方块列表",
@@ -427,7 +421,7 @@ export default {
               "cooldown-when-full":
                 "设置服务器在漏斗已满时应用短暂的冷却时间，而不是不断尝试拉出新物品",
               "disable-move-event":
-                "完全禁用漏斗的 InventoryMoveItemEvent,显着提高漏斗性能。但会破坏保护插件和任何其他依赖于此事件的插件",
+                "完全禁用漏斗的InventoryMoveItemEvent，显着提高漏斗性能。但会破坏保护插件和任何其他依赖于此事件的插件",
               "disable-move-event-quickshop-tips": ""
             },
             "alt-item-despawn-rate": {
@@ -442,15 +436,15 @@ export default {
               flash: "玩家看到闪电在天空中的距离"
             },
             "wandering-trader": {
-              "spawn-minute-length": "流浪商人刷新分钟的长度 ( 以 Tick 为单位 )",
-              "spawn-day-length": "流浪商人生成之间的时间间隔( 以 Tick 为单位 )",
+              "spawn-minute-length": "流浪商人刷新分钟的长度（以 Tick 为单位）",
+              "spawn-day-length": "流浪商人生成之间的时间间隔（以 Tick 为单位）",
               "spawn-chance-failure-increment":
                 "How much the spawn chance will be increased on every failed wandering trader spawn.",
               "spawn-chance-min": "生成流浪商人的最小机会",
               "spawn-chance-max": "生成流浪商人的最大机会"
             },
             "unsupported-settings": {
-              "fix-invulnerable-end-crystal-exploit": "修复无敌的末影水晶漏洞利用 (MC-108513)"
+              "fix-invulnerable-end-crystal-exploit": "修复无敌的末影水晶漏洞利用（MC-108513）"
             }
           }
         }

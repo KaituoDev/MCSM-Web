@@ -10,6 +10,51 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <link rel="icon" href="favicon.ico" />
   <link rel="stylesheet" href="./static/setting.css" />
+  <style>
+    #_app-loading {
+      background-color: rgb(0,0,0,0.8);
+      backdrop-filter: blur(4px);
+      position: fixed;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      top: 0px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #_app-loading-text {
+      text-align: center;
+    }
+
+    ._nb-spinner {
+      width: 32px;
+      height: 32px;
+      margin: 0 auto;
+      background: transparent;
+      border-top: 4px solid #90efcc;
+      border-right: 4px solid transparent;
+      border-radius: 50%;
+      animation: 1s _spin linear infinite;
+    }
+
+    @keyframes _spin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+  <script>
+    window.addEventListener("load", function () {
+      document.getElementById("_app-loading").setAttribute("style", "display: none;");
+    });
+  </script>
   <title>管理面板 | 无限开拓</title>
 </head>
 
@@ -20,7 +65,14 @@
     <p>推荐使用 <a href="https://www.google.cn/chrome/">Chrome</a> 现代浏览器</p>
   </div>
 </noscript>
-<div id="app" class="app"></div>
+  <div id="_app-loading" data-component-type="loading">
+    <div id="_app-loading-text">
+      <div class="_nb-spinner"></div>
+      <!--<img src="https://store-g1.seewo.com/0a533be125d04b318a6029ef9016422e15927297713026">-->
+      <div style="margin: 12px; color:#aaa">少女祈祷中...</div>
+    </div>
+  </div>
+  <div id="app" class="app" data-component-type="vue-root"></div>
 </body>
 
 <!-- 编辑器依赖库 -->

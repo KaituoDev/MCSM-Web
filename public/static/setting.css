@@ -15,13 +15,13 @@
     /*鼠标选择后的 文本颜色*/
 
     /*登陆/安装界面背景图片*/
-    --background-login-image: url(//api.imlazy.ink/img);
+    --background-login-image: url(https://api.imlazy.ink/img);
     /*电脑端登录页背景图（来自 雫 API 的随机图片 API）*/
-    --background-image: url(//tva4.sinaimg.cn/large/006MpbfMgy1gsiwf1tnt6j31be0qoqdm.jpg);
+    --background-image: url(https://tva4.sinaimg.cn/large/006MpbfMgy1gsiwf1tnt6j31be0qoqdm.jpg);
     /*电脑端首页背景图*/
-    --background-login-image-phone: url(//api.imlazy.ink/img-phone);
+    --background-login-image-phone: url(https://api.imlazy.ink/img-phone);
     /*手机端登录页背景图（来自 雫 API 的随机图片 API）*/
-    --background-image-phone: url(//tvax2.sinaimg.cn/large/008qLT8ggy1gxqzv16v0sj31m02oo4qt.jpg);
+    --background-image-phone: url(https://tvax2.sinaimg.cn/large/008qLT8ggy1gxqzv16v0sj31m02oo4qt.jpg);
     /*手机端首页背景图*/
 
     /*终端*/

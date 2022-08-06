@@ -5,7 +5,7 @@
   it under the terms of the GNU Affero General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
-
+  
   According to the AGPL, it is forbidden to delete all copyright notices, 
   and if you modify the source code, you must open source the
   modified source code.
@@ -55,7 +55,7 @@ export function initTerminalWindow(elem, { fontSize }) {
     cursorStyle: "underline",
     cursorBlink: true,
     fontSize,
-    fontFamily: "Cascadia Code, Menlo, consolas, monospace",
+    fontFamily: "Cascadia Code, Menlo, consolas,monospace,MiSans",
     allowTransparency: true,
     theme: {
       background: "rgba(0,0,0,0)"
@@ -68,7 +68,10 @@ export function initTerminalWindow(elem, { fontSize }) {
 
   term.open(elem);
   term.writeln(
-    `${termColor.TERM_TEXT_GREEN}[TERM] ${termColor.TERM_TEXT_DARK_AQUA}[Powered by Term.js]`
+    `${termColor.TERM_TEXT_GREEN}[TERM] ${termColor.TERM_TEXT_GRAY}Welcome to instance terminal.${termColor.TERM_TEXT_DARK_AQUA}`
+  );
+  term.writeln(
+    `${termColor.TERM_TEXT_GREEN}[TERM] ${termColor.TERM_TEXT_GRAY}Powered by MCSManager.${termColor.TERM_RESET}\r\n`
   );
   term.info = (msg) => {
     term.writeln(`\r\n${termColor.TERM_TEXT_GREEN}[TERM] ${msg}${termColor.TERM_RESET}`);

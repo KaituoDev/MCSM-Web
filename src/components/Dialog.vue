@@ -47,7 +47,7 @@
 
 <script>
 import Panel from "./Panel";
-// 使用 v-model 指令实现双向数据传递
+
 export default {
   props: {
     modelValue: Boolean,
@@ -81,6 +81,7 @@ export default {
   overflow-y: auto;
 }
 .component-dialog-wrapper {
+  text-align: left;
   position: fixed;
   top: 0;
   bottom: 0;

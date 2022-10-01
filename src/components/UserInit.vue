@@ -51,8 +51,8 @@
 </template>
 
 <script>
-import { API_USER_UPDATE } from "@/app/service/common";
-import { request } from "@/app/service/protocol";
+import { API_USER_UPDATE } from "../app/service/common";
+import { request } from "../app/service/protocol";
 import Dialog from "./Dialog";
 
 export default {

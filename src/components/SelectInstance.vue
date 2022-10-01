@@ -22,31 +22,41 @@
 <template>
   <div v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.5)">
     <div style="display: block">
-      <el-select
-        v-model="selectedServiceUuid"
-        filterable
-        :placeholder="$t('instances.selectDaemon')"
-        size="small"
-        style="margin-right: 10px"
-        @change="remoteSelectHandle"
-      >
-        <el-option
-          v-for="item in serviceList"
-          :key="item.value"
-          :label="item.label"
-          :value="item.value"
-        >
-        </el-option>
-      </el-select>
-      <el-input
-        v-model="instanceNameKeyword"
-        :placeholder="$t('instances.instanceName')"
-        size="small"
-        style="width: 180px; margin-right: 10px"
-      ></el-input>
-      <el-button size="small" @click="remoteSelectHandle">
-        <i class="el-icon-search"></i> {{ $t("general.search") }}
-      </el-button>
+      <el-row :gutter="20">
+        <el-col :span="24" :offset="0">
+          <FunctionGroup :container="true">
+            <FunctionComponent>
+              <el-select
+                v-model="selectedServiceUuid"
+                filterable
+                :placeholder="$t('instances.selectDaemon')"
+                size="small"
+                @change="remoteSelectHandle"
+              >
+                <el-option
+                  v-for="item in serviceList"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                >
+                </el-option>
+              </el-select>
+            </FunctionComponent>
+            <FunctionComponent>
+              <el-input
+                v-model="instanceNameKeyword"
+                :placeholder="$t('instances.instanceName')"
+                size="small"
+              ></el-input>
+            </FunctionComponent>
+            <FunctionComponent>
+              <el-button size="small" @click="remoteSelectHandle">
+                <i class="el-icon-search"></i> {{ $t("general.search") }}
+              </el-button>
+            </FunctionComponent>
+          </FunctionGroup>
+        </el-col>
+      </el-row>
     </div>
     <div class="row-mt">
       <el-pagination
@@ -61,10 +71,16 @@
     </div>
     <div class="row-mt">
       <el-table :data="instances" stripe style="width: 100%" size="mini">
-        <el-table-column prop="nickname" :label="$t('instances.instanceName')" min-width="240"></el-table-column>
+        <el-table-column
+          prop="nickname"
+          :label="$t('instances.instanceName')"
+          min-width="240"
+        ></el-table-column>
         <el-table-column :label="$t('general.operate')" style="text-align: right" width="180">
           <template #default="scope">
-            <el-button size="small" @click="callback(scope.row)"> {{ $t("userResources.select") }} </el-button>
+            <el-button size="small" @click="callback(scope.row)">
+              {{ $t("userResources.select") }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -73,9 +89,9 @@
 </template>
 
 <script>
-import { API_SERVICE_INSTANCES, API_SERVICE_LIST } from "@/app/service/common";
-import { statusCodeToText } from "@/app/service/instance_tools";
-import { request } from "@/app/service/protocol";
+import { API_SERVICE_INSTANCES, API_SERVICE_LIST } from "../app/service/common";
+import { statusCodeToText } from "../app/service/instance_tools";
+import { request } from "../app/service/protocol";
 
 export default {
   props: {
@@ -114,7 +130,7 @@ export default {
             const ip = `${service.ip}:${service.port}`;
             this.serviceList.push({
               value: `${service.uuid} ${ip}`,
-              label: `${ip} ${remarks} (`+this.$t("overview.offline")+')'
+              label: `${ip} ${remarks} (` + this.$t("overview.offline") + ")"
             });
           }
         }

@@ -21,7 +21,7 @@
 <template>
   <div>
     <div class="logo-wrapper" :style="{ margin }">
-      <img class="logo-img" :src="require('../assets/logo.png')" width="172" />
+      <img class="logo-img" :src="require('../assets/logo.png')" width="172"  alt=""/>
     </div>
   </div>
 </template>

@@ -58,9 +58,15 @@ export default {
 };
 </script>
 
+<style>
+.box-card-shadow p:first-child {
+  margin-top: 0px;
+}
+</style>
+
 <style scoped>
 .box-card-title {
-  font-weight: 800;
+  font-weight: 600;
   margin-bottom: 12px;
   font-size: 14px;
   display: inline-block;
@@ -85,8 +91,7 @@ export default {
   margin-bottom: 2px;
   /* margin-top: 2px; */
   border-radius: 2px;
-  color: #409eff;
-  background-color: var(--tip-color);
+  background-color: var(--tip-color);;
   height: 14px;
   width: 6px;
   vertical-align: middle;

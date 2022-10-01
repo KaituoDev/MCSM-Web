@@ -6,7 +6,7 @@
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  According to the AGPL, it is forbidden to delete all copyright notices, 
+  According to the AGPL, it is forbidden to delete all copyright notices,
   and if you modify the source code, you must open source the
   modified source code.
 
@@ -24,75 +24,119 @@
     <template #title>{{ $t("instances.instancesList") }}</template>
     <template #default>
       <el-row :gutter="20" justify="space-between" class="row-mb">
-        <el-col :md="12" :offset="0">
-          <ItemGroup>
-            <el-select
-              style="width: 320px"
-              v-model="currentRemoteUuid"
-              filterable
-              :placeholder="$t('instances.selectDaemon')"
-              size="small"
-              @change="remoteSelectHandle"
-            >
-              <el-option
-                v-for="item in remoteList"
-                :key="item.value"
-                :label="item.label"
-                :value="item.value"
+        <el-col :md="24" :offset="0">
+          <FunctionGroup :container="true">
+            <FunctionComponent>
+              <el-select
+                style="width: 320px"
+                v-model="currentRemoteUuid"
+                filterable
+                :placeholder="$t('instances.selectDaemon')"
+                size="small"
+                @change="remoteSelectHandle"
               >
-              </el-option>
-            </el-select>
-            <el-input
-              v-model="query.instanceName"
-              :placeholder="$t('instances.selectDaemon')"
-              size="small"
-              style="width: 160px"
-            ></el-input>
-            <el-button size="small" @click="refresh" type="primary">
-              <i class="el-icon-refresh"></i> {{ $t("general.search") }}
-            </el-button>
-          </ItemGroup>
-        </el-col>
-        <el-col :md="12" :offset="0">
-          <ItemGroup style="text-align: right">
-            <el-button
-              type="primary"
-              size="small"
-              @click="changeView(1)"
-              v-show="showTableList"
-              >{{ $t("instances.showCardList") }}</el-button
-            >
-            <el-button
-              type="primary"
-              size="small"
-              @click="changeView(2)"
-              v-show="!showTableList"
-              >{{ $t("instances.showTableList") }}</el-button
-            >
-            <el-button size="small" type="success" @click="toNewInstance">
-              <i class="el-icon-plus"></i> {{ $t("instances.newInstance") }}
-            </el-button>
-            <el-button size="small" @click="batOpen" v-if="showTableList">
-              <i class="el-icon-video-play"></i> {{ $t("instances.start") }}
-            </el-button>
-            <el-button size="small" @click="batStop" v-if="showTableList">
-              <i class="el-icon-video-pause"></i> {{ $t("instances.stop") }}
-            </el-button>
-            <el-button size="small" @click="batKill" v-if="showTableList">
-              <i class="el-icon-video-pause"></i> {{ $t("instances.kill") }}
-            </el-button>
-            <el-button size="small" type="danger" plain @click="batDelete(1)" v-if="showTableList">
-              <i class="el-icon-delete"></i> {{ $t("instances.remove") }}
-            </el-button>
-            <el-button size="small" type="danger" @click="batDelete(2)" v-if="showTableList">
-              <i class="el-icon-delete"></i> {{ $t("instances.delete") }}
-            </el-button>
-          </ItemGroup>
+                <el-option
+                  v-for="item in remoteList"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                >
+                </el-option>
+              </el-select>
+            </FunctionComponent>
+            <FunctionComponent>
+              <el-input
+                v-model="query.instanceName"
+                :placeholder="$t('instances.searchInstanceName')"
+                size="small"
+                style="width: 160px"
+              ></el-input>
+            </FunctionComponent>
+            <FunctionComponent>
+              <el-button size="small" @click="refresh" type="primary">
+                <i class="el-icon-refresh"></i> {{ $t("general.search") }}
+              </el-button>
+            </FunctionComponent>
+            <FunctionGroup align="right">
+              <FunctionComponent
+                component="button"
+                type="success"
+                size="small"
+                v-if="showTableList"
+                @click="changeView(1)"
+              >
+                {{ $t("instances.showCardList") }}
+              </FunctionComponent>
+
+              <FunctionComponent
+                component="button"
+                size="small"
+                type="primary"
+                v-if="!showTableList"
+                @click="changeView(2)"
+              >
+                {{ $t("instances.showTableList") }}
+              </FunctionComponent>
+
+              <FunctionComponent
+                component="button"
+                size="small"
+                type="success"
+                @click="toNewInstance"
+              >
+                <i class="el-icon-plus"></i> {{ $t("instances.newInstance") }}
+              </FunctionComponent>
+
+              <FunctionComponent
+                component="button"
+                size="small"
+                v-if="showTableList"
+                @click="batOpen"
+              >
+                <i class="el-icon-video-play"></i> {{ $t("instances.start") }}
+              </FunctionComponent>
+              <FunctionComponent
+                component="button"
+                size="small"
+                v-if="showTableList"
+                @click="batStop"
+              >
+                <i class="el-icon-video-pause"></i> {{ $t("instances.stop") }}
+              </FunctionComponent>
+              <FunctionComponent
+                component="button"
+                size="small"
+                v-if="showTableList"
+                @click="batKill"
+              >
+                <i class="el-icon-video-pause"></i> {{ $t("instances.kill") }}
+              </FunctionComponent>
+              <FunctionComponent
+                component="button"
+                size="small"
+                type="danger"
+                :plain="true"
+                v-if="showTableList"
+                @click="batDelete(1)"
+              >
+                <i class="el-icon-delete"></i> {{ $t("instances.remove") }}
+              </FunctionComponent>
+              <FunctionComponent
+                component="button"
+                size="small"
+                :plain="true"
+                v-if="showTableList"
+                @click="batDelete(2)"
+              >
+                <i class="el-icon-delete"></i> {{ $t("instances.delete") }}
+              </FunctionComponent>
+            </FunctionGroup>
+          </FunctionGroup>
         </el-col>
       </el-row>
 
       <div>
-        <div class="instance-table-warpper">
+        <div class="instance-table-wrapper">
           <div>
             <div class="color-red" v-if="!currentRemoteUuid">
               &nbsp;Error: {{ $t("instances.selectRemoteError") }}
@@ -111,7 +155,7 @@
           </div>
         </div>
 
-        <!-- 未选择守护进程时显示 -->
+        <!-- Display when no daemon is selected -->
         <div v-show="!currentRemoteUuid">
           <div class="notAnyInstanceTip">
             <div class="sub-title">
@@ -123,7 +167,7 @@
           </div>
         </div>
 
-        <!-- 第一页且无任何数据时显示 -->
+        <!-- Display when the first page has no data -->
         <div v-show="notAnyInstance && page === 1">
           <div class="notAnyInstanceTip">
             <div class="sub-title">
@@ -138,14 +182,14 @@
     </template>
   </Panel>
 
-  <!-- 卡片显示风格 -->
+  <!-- Card display style -->
   <el-row :gutter="20" class="row-mb" v-show="!showTableList">
     <el-col :md="6" :offset="0" v-for="(item, index) in instances" :key="index">
       <Panel
         :class="{
           instanceStatusGreen: item.status === 3,
           instanceStatusGray: item.status !== 3,
-          CradInstance: true
+          runningInstanceCard: true
         }"
         :tipType="0"
       >
@@ -165,10 +209,6 @@
               </span>
               <template #dropdown>
                 <el-dropdown-menu>
-                  <!-- <el-dropdown-item>开启实例</el-dropdown-item>
-                  <el-dropdown-item>关闭实例</el-dropdown-item>
-                  <el-dropdown-item>重启实例</el-dropdown-item>
-                  <el-dropdown-item>终止实例</el-dropdown-item> -->
                   <el-dropdown-item @click="editInstance(item.serviceUuid, item.instanceUuid)">{{
                     $t("instances.card.editConfig")
                   }}</el-dropdown-item>
@@ -192,7 +232,7 @@
             @click="toInstance(item.serviceUuid, item.instanceUuid)"
           >
             <div>
-              {{ $t("instances.status.title") }}：
+              {{ $t("instances.status.title") }}:
               <span class="color-gray" v-if="item.status == 0">{{
                 $t("instances.status.die")
               }}</span>
@@ -211,15 +251,15 @@
               <span class="color-red" v-else>{{ $t("instances.status.busy") }}</span>
             </div>
             <div>
-              <span>{{ $t("instances.lastDatetime") }}：</span>
+              <span>{{ $t("instances.lastDatetime") }}:</span>
               <span>{{ item.config.lastDatetime }}</span>
             </div>
             <div>
-              <span>{{ $t("instances.endTime") }}：</span>
+              <span>{{ $t("instances.endTime") }}:</span>
               <span>{{ item.config.endTime }}</span>
             </div>
             <div>
-              <span>{{ $t("instances.otherInfo") }}：</span>
+              <span>{{ $t("instances.otherInfo") }}:</span>
               <span>
                 <span v-if="item.info && item.info.currentPlayers >= 0">
                   {{ $t("instances.playerCount") }} {{ item.info.currentPlayers }}/{{
@@ -239,13 +279,13 @@
     </el-col>
   </el-row>
 
-  <!-- 表格显示风格 -->
+  <!-- Table display style -->
   <el-row :gutter="20" class="row-mb" v-show="showTableList">
     <el-col :span="24" :offset="0">
       <Panel>
         <template #title>{{ $t("instances.table.instancesList") }}</template>
         <template #default>
-          <!-- 表格显示 -->
+          <!-- table display -->
           <el-table
             :data="instances"
             stripe
@@ -280,7 +320,7 @@
                 </div>
               </template>
             </el-table-column>
-            <el-table-column prop="status" :label="$t('instances.status.runStatus')" width="120">
+            <el-table-column prop="status" :label="$t('instances.status.runStatus')" width="180">
               <template #default="scope">
                 <div class="color-gray" v-if="scope.row.status == 0">
                   <i class="el-icon-video-pause"></i>
@@ -298,17 +338,17 @@
                 }}</span>
 
                 <span class="color-red" v-else-if="scope.row.status == -1">{{
-                  $t("instances.status.budy")
+                  $t("instances.status.busy")
                 }}</span>
-                <span class="color-red" v-else>{{ $t("instances.status.budy") }}</span>
+                <span class="color-red" v-else>{{ $t("instances.status.busy") }}</span>
               </template>
             </el-table-column>
             <el-table-column
               prop="type"
               :label="$t('instances.table.instanceType')"
-              width="140"
+              width="220"
             ></el-table-column>
-            <el-table-column :label="$t('general.operate')" style="text-align: center" width="180">
+            <el-table-column :label="$t('general.operate')" style="text-align: center" width="240">
               <template #default="scope">
                 <el-button
                   size="mini"
@@ -329,6 +369,29 @@
       </Panel>
     </el-col>
   </el-row>
+
+  <el-row :gutter="20">
+    <el-col :span="24" :offset="0">
+      <div class="instance-table-wrapper">
+        <div>
+          <div class="color-red" v-if="!currentRemoteUuid">
+            &nbsp;Error: {{ $t("instances.selectRemoteError") }}
+          </div>
+        </div>
+        <div>
+          <el-pagination
+            background
+            layout="prev, pager, next"
+            :total="maxPage"
+            v-model:currentPage="page"
+            :page-size="1"
+            @current-change="handleCurrentChange"
+            small
+          ></el-pagination>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <style scoped>
@@ -342,6 +405,7 @@
 .notAnyInstanceTip {
   text-align: center;
   margin: 100px 0px;
+  color: #7f7f7f;
 }
 
 .instanceStatusGreen {
@@ -352,13 +416,13 @@
   filter: var(--card-instance-gray-filter);
 }
 
-.CradInstance {
+.runningInstanceCard {
   overflow: hidden;
   cursor: pointer;
   transition: all 1s;
   height: 146px;
 }
-.CradInstance:hover {
+.runningInstanceCard:hover {
   background: var(--card-instance-bg-hover);
   box-shadow: var(--card-instance-shadow-hover);
 }
@@ -385,13 +449,14 @@ export default {
       remoteList: [],
       currentRemoteUuid: null,
       instances: [],
-      multipleSelection: [], // 表格多选属性
+      multipleSelection: [], // table multiple selection properties
       startedInstance: 0,
       loading: true,
-      availableService: [], // 可用和不可用守护进程列表
+      // list of available and unavailable daemons
+      availableService: [],
       unavailableService: [],
 
-      notAnyInstance: false, // 无任何实例
+      notAnyInstance: false,
 
       page: 1,
       maxPage: 1,
@@ -400,18 +465,18 @@ export default {
         instanceName: ""
       },
 
-      // 批量处理模式
+      // batch mode
       showTableList: false
     };
   },
   async mounted() {
-    // 初始化数据读取
+    // Initialize data read
     this.showTableList = Number(localStorage.getItem("InstanceView")) === 2;
     await this.render();
   },
   beforeUnmount() {},
   methods: {
-    // 获取分布式服务列表（不包括具体实例列表）
+    // Get the list of distributed services (excluding the list of specific instances)
     async displayRemoteServiceList() {
       const data = await request({
         method: "GET",
@@ -437,7 +502,7 @@ export default {
         }
       }
 
-      // 如果存在上次的选择记录，那么直接跳转到上次记录
+      // if existsselect the next record, then jump directly to the previous record
       const lastSelected = localStorage.getItem("pageSelectedRemoteUuid");
       if (lastSelected) {
         this.remoteList.forEach((v) => {
@@ -449,7 +514,7 @@ export default {
       } else {
         this.remoteList.forEach((v) => {
           if (v.available) {
-            // 默认取第一个开启的实例
+            // By default, the first open instance is taken
             this.currentRemoteUuid = v.value;
 
           }
@@ -457,7 +522,7 @@ export default {
         this.remoteSelectHandle();
       }
     },
-    // 获取守护进程具体实例列表
+    // Get a list of specific instances of the daemon process
     async remoteSelectHandle() {
       try {
         if (!this.currentRemoteUuid) throw new Error(this.$t("instances.selectRemoteError"));
@@ -474,16 +539,16 @@ export default {
             instance_name: this.query.instanceName
           }
         });
-        // 页码调整
+        // page number adjustment
         this.page = result.page;
         this.maxPage = result.maxPage;
         const instances = result.data;
         instances.forEach((instance) => {
           const status = instance.status;
           const type = typeTextToReadableText(instance.config.type);
-          // 计算正在运行的实例
+          // Calculate the running instance
           if (instance.status != 0) this.startedInstance++;
-          // 压入所有实例
+          // push all instances
           this.instances.push({
             instanceUuid: instance.instanceUuid,
             serviceUuid: this.currentRemoteUuid,
@@ -498,10 +563,10 @@ export default {
         });
         console.log(this.instances);
         this.loading = false;
-        // 记录当前选择的守护进程，方便下次直接加载
+        // Record the currently selected daemon process, so that it can be loaded directly next time
         localStorage.setItem("pageSelectedRemoteUuid", this.currentRemoteUuid);
 
-        // 无任何实例时，显示快速创建界面
+        // When there is no instance, display the quick creation interface
         this.notAnyInstance = this.instances.length === 0;
       } catch (error) {
         this.$notify({
@@ -511,7 +576,7 @@ export default {
         });
       }
     },
-    // 分页改变
+    // pagination change
     handleCurrentChange() {
       this.refresh();
     },
@@ -521,7 +586,7 @@ export default {
     async render() {
       await this.displayRemoteServiceList();
     },
-    // 表格多选函数
+    // table multi-select function
     selectionChange(v) {
       this.canInterval = v.length == 0;
       this.multipleSelection = v;
@@ -534,7 +599,7 @@ export default {
       if (!this.currentRemoteUuid) {
         return this.$message({ type: "info", message: this.$t("instances.selectRemoteTitle") });
       }
-      router.push({ path: `/new_instace/${this.currentRemoteUuid}` });
+      router.push({ path: `/new_instance/${this.currentRemoteUuid}` });
     },
     toInstance(serviceUuid, instanceUuid) {
       console.log("View Instance:", serviceUuid, instanceUuid);
@@ -559,7 +624,7 @@ export default {
         message: this.$t("notify.Success")
       });
     },
-    // 批量删除
+    // batch deletion
     async batDelete(type) {
       if (type === 1) {
         await this.$confirm(

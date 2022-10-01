@@ -6,7 +6,7 @@
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  According to the AGPL, it is forbidden to delete all copyright notices, 
+  According to the AGPL, it is forbidden to delete all copyright notices,
   and if you modify the source code, you must open source the
   modified source code.
 
@@ -26,12 +26,20 @@
       <div class="flex flex-space-between flex-align-items-center">
         <div>
           <ItemGroup>
-            <el-button type="success" size="small" @click="toNewImage"> {{ $t("imageManager.newImage") }} </el-button>
-            <el-button type="" size="small" @click="refresh"> {{ $t("general.refresh") }} </el-button>
-            <el-button type="" size="small" @click="back"> {{ $t("instancesDetail.back") }} </el-button>
+            <el-button type="success" size="small" @click="toNewImage">
+              {{ $t("imageManager.newImage") }}
+            </el-button>
+            <el-button type="" size="small" @click="refresh">
+              {{ $t("general.refresh") }}
+            </el-button>
+            <el-button type="" size="small" @click="back">
+              {{ $t("instancesDetail.back") }}
+            </el-button>
           </ItemGroup>
         </div>
-        <span class="color-gray hidden-md-and-down">{{ $t("imageManager.needTime") }}&nbsp;&nbsp;</span>
+        <span class="color-gray hidden-md-and-down"
+          >{{ $t("imageManager.needTime") }}&nbsp;&nbsp;</span
+        >
       </div>
     </template>
   </Panel>
@@ -46,18 +54,26 @@
             <span class="text-overflow-ellipsis">{{ scope.row.Id }}</span>
           </template>
         </el-table-column>
-        <el-table-column prop="RepoTags" :label="$t('userResources.name')" width="120px"></el-table-column>
+        <el-table-column
+          prop="RepoTags"
+          :label="$t('userResources.name')"
+          width="200px"
+        ></el-table-column>
 
-        <el-table-column :label="$t('imageManager.storage')" width="100px">
+        <el-table-column :label="$t('imageManager.storage')" width="140px">
           <template #default="scope">
             <span>{{ parseInt(scope.row.Size / 1024 / 1024) }}MB</span>
           </template>
         </el-table-column>
 
-        <el-table-column :label="$t('general.operate')" style="text-align: center" width="160px">
+        <el-table-column :label="$t('general.operate')" style="text-align: center" width="210px">
           <template #default="scope">
-            <el-button size="mini" @click="toDetail(scope.row)">{{ $t("imageManager.details") }}</el-button>
-            <el-button type="danger" size="mini" @click="deleteImage(scope.row)">{{ $t("general.delete") }}</el-button>
+            <el-button size="mini" @click="toDetail(scope.row)">{{
+              $t("imageManager.details")
+            }}</el-button>
+            <el-button type="danger" size="mini" @click="deleteImage(scope.row)">{{
+              $t("general.delete")
+            }}</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -82,20 +98,13 @@
           </template>
         </el-table-column>
         <el-table-column prop="Image" :label="$t('imageManager.useImage')"></el-table-column>
-        <!-- <el-table-column prop="Ports" label="端口开放">
-          <template #default="scope">
-            <div v-if="scope.row.Ports">
-              <span v-for="(item,index) in scope.row.Ports" :key="index">
-                {{item.PublicPort}}:{{item.PrivatePort}}&nbsp;
-              </span>
-            </div>
-          </template>
-        </el-table-column> -->
         <el-table-column prop="State" :label="$t('imageManager.status')"></el-table-column>
         <el-table-column prop="Status" :label="$t('imageManager.situation')"></el-table-column>
-        <el-table-column :label="$t('general.operate')" style="text-align: center" width="90px">
+        <el-table-column :label="$t('general.operate')" style="text-align: center" width="100px">
           <template #default="scope">
-            <el-button size="mini" @click="toDetail(scope.row)">{{ $t("imageManager.details") }}</el-button>
+            <el-button size="mini" @click="toDetail(scope.row)">
+              {{ $t("imageManager.details") }}
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -200,7 +209,7 @@ export default {
         });
         this.$notify({
           title: this.$t("imageManager.sendDelCmd"),
-          message: this.$t("imageManager.waitForDel"),
+          message: this.$t("imageManager.waitForDel")
         });
       } catch (error) {
         this.$notify({

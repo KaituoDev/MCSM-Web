@@ -174,20 +174,6 @@
           <template #title>{{ $t("terminal.functionGroup") }}</template>
           <template #default>
             <el-row :gutter="10">
-              <!-- <el-col :span="12" :offset="0">
-              <el-button style="width: 100%" size="small">自动重启 <span class="color-green">开启</span>
-              </el-button>
-            </el-col> -->
-              <el-col :lg="12" :offset="0" class="row-mb">
-                <el-button
-                  :disabled="!instanceInfo.config.type"
-                  icon="el-icon-s-operation"
-                  style="width: 100%"
-                  size="small"
-                  @click="toProcessConfig"
-                  >{{ $t("terminal.processConfig") }}
-                </el-button>
-              </el-col>
               <el-col :lg="12" :offset="0" class="row-mb">
                 <el-button
                   :disabled="!available"
@@ -229,7 +215,7 @@
                   >{{ $t("terminal.eventTask") }}
                 </el-button>
               </el-col>
-              <el-col :lg="12" :offset="0" class="row-mb">
+              <el-col :lg="24" :offset="0" class="row-mb">
                 <el-button
                   :disabled="!available"
                   icon="el-icon-folder-opened"
@@ -237,6 +223,16 @@
                   size="small"
                   @click="toFileManager"
                   >{{ $t("instancesDetail.fileManager") }}
+                </el-button>
+              </el-col>
+              <el-col :lg="24" :offset="0" class="row-mb" v-iszh>
+                <el-button
+                  :disabled="!instanceInfo.config.type"
+                  icon="el-icon-s-operation"
+                  style="width: 100%"
+                  size="small"
+                  @click="toProcessConfig"
+                  >{{ $t("terminal.processConfig") }}
                 </el-button>
               </el-col>
               <el-col :lg="24" :offset="0" v-if="isTopPermission">
@@ -275,11 +271,7 @@
               </LineInfo>
               <LineInfo>
                 <i class="el-icon-date"></i> {{ $t("instances.endTime") }}:
-                {{
-                  instanceInfo.config.endTime
-                    ? new Date(instanceInfo.config.endTime).toLocaleDateString()
-                    : $t("instancesDetail.unlimited")
-                }}
+                {{ instanceInfo.config.endTime || $t("instancesDetail.unlimited") }}
               </LineInfo>
               <LineInfo>
                 <i class="el-icon-date"></i> {{ $t("instancesDetail.createDateTime") }}:
@@ -289,7 +281,6 @@
                 <i class="el-icon-date"></i> {{ $t("terminal.lastDatetime") }}:
                 {{ instanceInfo.config.lastDatetime }}
               </LineInfo>
-              <!-- <LineInfo><i class="el-icon-document"></i> 标签: {{ instanceInfo.tag }}</LineInfo> -->
               <LineInfo
                 ><i class="el-icon-document"></i> {{ $t("terminal.ie") }}:
                 {{ instanceInfo.config.ie }} {{ $t("terminal.oe") }}:
@@ -329,11 +320,11 @@
             </div>
           </template>
           <template #default>
-            <!-- 全屏模式下的 Logo 显示 -->
+            <!-- Logo display in full screen mode -->
             <!-- <div v-if="isFull" class="full-terminal-logo only-pc-display">
-            <Logo></Logo>
-          </div> -->
-            <!-- 全屏模式下的操作按钮 -->
+             <Logo></Logo>
+           </div> -->
+            <!-- Action button in full screen mode -->
             <div v-show="isFull" class="full-terminal-button-wrapper">
               <div class="full-terminal-button" @click="openInstance">
                 {{ $t("instances.start") }}
@@ -351,7 +342,7 @@
                 {{ $t("terminal.exit") }}
               </div>
             </div>
-            <!-- 全屏与非全屏的终端窗口 -->
+            <!-- Fullscreen and non-fullscreen terminal windows -->
             <div :class="{ 'terminal-wrapper': true, 'full-terminal-wrapper': isFull }">
               <div id="terminal-container"></div>
             </div>
@@ -370,6 +361,11 @@
         </Panel>
         <Panel>
           <template #title>{{ $t("terminal.cmdHistory") }}</template>
+          <template #rtitle>
+            <span class="terminal-right-botton" @click="deleteCommandHistory">
+              <i class="el-icon-delete"></i>
+            </span>
+          </template>
           <template #default>
             <div v-if="commandhistory.length > 0">
               <ItemGroup>
@@ -502,7 +498,7 @@
           <p class="sub-title-info">
             {{ $t("terminal.unavailableTerminal.maybe") }}
           </p>
-          <div>
+          <div style="text-align: center; margin: 20px">
             <img
               :src="require('@/assets/daemon_connection_error.png')"
               alt=""
@@ -518,7 +514,7 @@
       </template>
     </Dialog>
 
-    <!-- 终端设置对话框 -->
+    <!-- Terminal Settings Dialog -->
     <TermSetting
       v-model:visible="terminalSettingPanel.visible"
       v-model:config="terminalSettingPanel"
@@ -628,7 +624,7 @@ export default {
     }
   },
   methods: {
-    // 请求数据源(Ajax)
+    // request data source (Ajax)
     async renderFromAjax() {
       try {
         const result = await request({
@@ -637,19 +633,18 @@ export default {
           params: { uuid: this.instanceUuid, remote_uuid: this.serviceUuid }
         });
         this.instanceInfo = result;
-        // console.log("实例信息:", this.instanceInfo);
       } catch (err) {
         console.log("Error", err);
       }
     },
-    // 请求数据源（Websocket）
+    // Request data source (Websocket)
     async renderFromSocket() {
       this.sendResize(this.terminalWidth, this.terminalHeight);
       this.socket.emit("stream/detail", {});
     },
-    // 与守护进程建立连接
+    // establish a connection with the daemon
     async setUpWebsocket() {
-      // 向面板端请求任务护照来获取直连守护进程的准许
+      // Request a task passport from the panel to get permission to connect directly to the daemon
       let res = null;
       try {
         res = await request({
@@ -669,7 +664,7 @@ export default {
         return;
       }
 
-      // 直接与守护进程建立频道
+      // Establish a channel directly with the daemon
       const password = res.password;
       const addr = parseforwardAddress(res.addr, "ws");
       this.socket = connectRemoteService(
@@ -678,7 +673,7 @@ export default {
         () => {
           this.unavailableIp = null;
           this.unavailableTerminal = false;
-          // 获取一次系统日志
+          // Get a system log
           this.syncLog();
         },
         () => {
@@ -687,7 +682,7 @@ export default {
         }
       );
 
-      // 监听输出流
+      // listen to the output stream
       this.socket.on("instance/stdout", (packet) => {
         if (this.instanceInfo?.config?.terminalOption?.haveColor) {
           this.term.write(encodeConsoleColor(packet.data.text));
@@ -695,20 +690,19 @@ export default {
           this.term.write(textToTermText(packet.data.text));
         }
       });
-      // 监听实例详细信息
+      // Monitor instance details
       this.socket.on("stream/detail", (packet) => {
         this.instanceInfo = packet.data;
-        console.log("instanceInfo", this.instanceInfo);
         this.resizePtyTerminalWindow();
         this.initChart();
       });
-      // 断开事件
+      // disconnect event
       this.socket.on("disconnect", () => {
         this.available = false;
       });
-      // 返回异步等待
+      // return async await
       return new Promise((r) => {
-        // 连接事件
+        // connect event
         this.socket.on("connect", () => {
           this.available = true;
           r();
@@ -724,14 +718,18 @@ export default {
     },
     pushHistoryCommand(cmd) {
       if (cmd.trim().length <= 0) return;
-      // 清除重复的记录和当前指令一样的记录
+      // Clear duplicate records with the same record as the current command
       this.commandhistory = Array.from(new Set(this.commandhistory)).filter((r) => r != cmd);
-      // 往前方插入当前输入的指令
+      // Insert the currently entered command forward
       this.commandhistory.unshift(cmd);
       if (this.commandhistory.length > 40) {
         this.commandhistory.pop();
       }
       localStorage.setItem("CommandHistory", JSON.stringify(this.commandhistory));
+    },
+    deleteCommandHistory() {
+      localStorage.setItem("CommandHistory", JSON.stringify([]));
+      this.commandhistory = [];
     },
     startInterval() {
       if (!this.renderTask) this.renderTask = setInterval(this.renderFromSocket, 1000);
@@ -739,9 +737,9 @@ export default {
     stopInterval() {
       clearInterval(this.renderTask);
     },
-    // 初始化 Terminal 窗口
+    // Initialize the Terminal window
     initTerm() {
-      // 创建窗口与输入事件传递
+      // Create window and pass input event
       const terminalContainer = document.getElementById("terminal-container");
 
       this.term = initTerminalWindow(terminalContainer, {
@@ -751,7 +749,7 @@ export default {
       this.onChangeTerminalContainerHeight();
     },
 
-    // PTY 模式下的基于后端配置设定的固定高宽大小
+    // Fixed height and width based on backend configuration settings in PTY mode
     resizePtyTerminalWindow() {
       if (this.instanceInfo.config?.terminalOption?.pty) {
         this.term.resize(
@@ -761,9 +759,9 @@ export default {
       }
     },
 
-    // 开启实例（Ajax）
+    // Open the instance (Ajax)
     async openInstance() {
-      // this.busy = true;
+      // this. busy = true;
       try {
         await request({
           method: "GET",
@@ -776,9 +774,9 @@ export default {
         setTimeout(() => (this.busy = false), 200);
       }
     },
-    // 关闭实例（Ajax）
+    // Close the instance (Ajax)
     async stopInstance() {
-      // this.busy = true;
+      // this. busy = true;
       try {
         await request({
           method: "GET",
@@ -791,7 +789,7 @@ export default {
         setTimeout(() => (this.busy = false), 200);
       }
     },
-    // 终止正在进行异步任务（如更新）
+    // Terminate an ongoing asynchronous task (such as an update)
     async stopAsynchronousTask() {
       try {
         await request({
@@ -805,7 +803,7 @@ export default {
         setTimeout(() => (this.busy = false), 200);
       }
     },
-    // 更新实例
+    // update instance
     async updateInstace() {
       try {
         await request({
@@ -822,9 +820,9 @@ export default {
         setTimeout(() => (this.busy = false), 200);
       }
     },
-    // 终止实例（Ajax）
+    // Terminate the instance (Ajax)
     async killInstance() {
-      // this.busy = true;
+      // this. busy = true;
       try {
         await request({
           method: "GET",
@@ -837,9 +835,9 @@ export default {
         setTimeout(() => (this.busy = false), 200);
       }
     },
-    // 重启实例（Ajax）
+    // Restart the instance (Ajax)
     async restartInstance() {
-      // this.busy = true;
+      // this. busy = true;
       try {
         await request({
           method: "GET",
@@ -860,9 +858,9 @@ export default {
         data: { w, h }
       });
     },
-    // 使用Websocket发送输入
+    // Send input using Websocket
     sendInput(input) {
-      // 当终端处于 PTY 或其他类型时，支持完全数据模式
+      // When the terminal is in PTY or other type, support full data mode
       if (this.isPty) {
         if (!this.socket || !this.available || !this.isStarted)
           return console.log("!this.socket || !this.available || !this.isStarted");
@@ -871,19 +869,25 @@ export default {
         });
       }
     },
-    // 使用Websocket发送命令
+    // Send commands using Websocket
     sendCommand(command, method) {
       if (!this.socket || !this.available)
-        return this.$message({ message: this.$t("terminal.cantSendCmdBecauseData"), type: "error" });
+        return this.$message({
+          message: this.$t("terminal.cantSendCmdBecauseData"),
+          type: "error"
+        });
       if (!this.isStarted)
-        return this.$message({ message: this.$t("terminal.cantSendCmdBecauseNotRun"), type: "error" });
+        return this.$message({
+          message: this.$t("terminal.cantSendCmdBecauseNotRun"),
+          type: "error"
+        });
       if (method !== 1) this.pushHistoryCommand(command);
       this.socket.emit("stream/input", {
         data: { command }
       });
       this.command = "";
     },
-    // 前往文件管理界面
+    // Go to the file management interface
     toFileManager() {
       router.push({ path: `/file/${this.serviceUuid}/${this.instanceUuid}/` });
     },
@@ -940,7 +944,7 @@ export default {
         this.term.write(error);
       }
     },
-    // 普通用户更新配置
+    // Ordinary user update configuration
     async instanceConfigUpdate() {
       try {
         await request({
@@ -972,7 +976,7 @@ export default {
     },
     initStorage() {
       const ch = localStorage.getItem("CommandHistory");
-      // 记录已执行命令历史
+      // record the history of executed commands
       if (ch) {
         this.commandhistory = JSON.parse(ch);
       } else {
@@ -983,14 +987,14 @@ export default {
       this.$router.push({ path: `/instance_detail/${this.serviceUuid}/${this.instanceUuid}/` });
     },
     /**
-     * 初始化人数显示报表
+     * Initialize the number of people to display the report
      */
     initChart() {
       if (!this.instanceInfo.info.playersChart || !this.instanceInfo.info.playersChart.length) {
         return;
       }
       if (!this.playersChart) {
-        // 判断div是否存在（要下次执行的时候才会渲染）
+        // Determine whether the div exists (it will be rendered the next time it is executed)
         const echartDiv = document.getElementById("echart-wrapper-players");
         if (!echartDiv) {
           return;
@@ -1003,7 +1007,7 @@ export default {
       }
     },
     /**
-     * 设置人数显示报表显示值
+     * Set the number of people to display the report display value
      */
     setPlayersChart() {
       if (!this.playersChart) return;
@@ -1021,7 +1025,7 @@ export default {
       });
     },
     /**
-     * 处理人数显示报表横坐标时间显示值
+     * The number of people processed shows the time display value of the horizontal axis of the report
      */
     showTimeStr(time, now) {
       const date = new Date(now - time);
@@ -1053,7 +1057,7 @@ export default {
       });
     },
 
-    // 终端窗口大小自适应事件
+    // Terminal window size adaptation event
     onChangeTerminalContainerHeight() {
       const terminalContainer = document.getElementById("terminal-container");
       if (this.isFull) {
@@ -1073,13 +1077,12 @@ export default {
       }
     }
   },
-  // 装载事件
   async mounted() {
     try {
-      // 初始化Web本地储存
+      // Initialize web local storage
       this.initStorage();
 
-      // 初始化终端窗口
+      // Initialize the terminal window
       this.initTerm();
       this.term.onResize((size) => {
         this.terminalHeight = size.rows;
@@ -1087,38 +1090,38 @@ export default {
         this.sendResize(size.cols, size.rows);
       });
 
-      // 与守护进程建立 Websocket 连接
+      // Establish a Websocket connection with the daemon
       await this.setUpWebsocket();
-      // 请求数据 & 启用状态获取定时器
+      // request data & enable status get timer
       await this.renderFromSocket();
       this.startInterval();
     } catch (error) {
       console.error(error);
-      // 忽略
+      // neglect
     }
 
-    // 监听窗口变化事件
+    // Listen for window change events
     window.addEventListener("resize", this.onChangeTerminalContainerHeight);
   },
-  // 卸载事件
+  // unload event
   beforeUnmount() {
-    // 卸载监听浏览器窗口改变时间
+    // Uninstall monitor browser window change time
     window.removeEventListener("resize", this.onChangeTerminalContainerHeight);
 
     try {
-      // 停止定时器
+      // stop the timer
       this.stopInterval();
-      // 断开与守护进程联系
+      // disconnect from the daemon
       this.socket.disconnect();
-      // 卸载终端窗口
+      // Uninstall the terminal window
       this.term.dispose();
-      // 卸载人数报表
+      // Unload the count report
       if (this.playersChart) {
         this.playersChart.dispose();
         this.playersChart = null;
       }
     } catch (error) {
-      // 忽略
+      // neglect
       console.error(error);
     }
   }
@@ -1140,8 +1143,8 @@ export default {
 .cmdhistory:hover {
   border: 1px solid #4eff42;
   box-shadow: 0 0 5px #42ff85;
-  padding: 6px 11px 6px 11px;
-  transition: all 0.5s;
+  padding: 5px 12px 5px 12px;
+  transition: all 0.3s;
 }
 .terminal-wrapper {
   backdrop-filter: var(--terminal-backdrop-filter);
@@ -1169,6 +1172,7 @@ export default {
 }
 
 .full-terminal-wrapper {
+  background-color: #171717;
   background-image: var(--terminal-full-bg);
   background-size: cover;
   background-repeat: no-repeat;
@@ -1181,15 +1185,9 @@ export default {
   z-index: 99;
 }
 
-@media (max-width:790px) {
-	.full-terminal-wrapper {
-		background-image: var(--terminal-full-bg-phone)!important;
-	}
-}
-
 .terminal-right-botton {
   font-size: 14px;
-  padding: 0 6px;
+  padding: 2px 6px;
   margin: 0 2px;
   cursor: pointer;
   transition: all 0.5s;
@@ -1238,5 +1236,11 @@ export default {
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+@media (max-width:790px) {
+	.full-terminal-wrapper {
+		background-image: var(--terminal-full-bg-phone)!important;
+	}
 }
 </style>

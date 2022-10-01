@@ -292,6 +292,7 @@
                       @focus="loadImages"
                       style="width: 100%"
                       v-loading="imageListLoading"
+                      element-loading-background="rgba(0, 0, 0, 0.5)"
                       @change="selectImage"
                     >
                       <el-option
@@ -386,6 +387,7 @@
                       @focus="loadNetworkModes"
                       style="width: 100%"
                       v-loading="networkModeListLoading"
+                      element-loading-background="rgba(0, 0, 0, 0.5)"
                     >
                       <el-option
                         v-for="item in networkModes"
@@ -767,13 +769,15 @@ export default {
       this.instanceInfo.config.docker.extraVolumes =
         this.instanceInfo.config.docker.extraVolumes.join(" ");
     }
+    let DEF_CODE = "UTF-8";
+    if (this.$i18n.locale == "zh_cn") DEF_CODE = "GBK";
     this.instanceInfo.config = {
       ...this.instanceInfo.config,
-      ie: this.instanceInfo.config.ie ? this.instanceInfo.config.ie.toUpperCase() : "GBK",
-      oe: this.instanceInfo.config.oe ? this.instanceInfo.config.oe.toUpperCase() : "GBK",
+      ie: this.instanceInfo.config.ie ? this.instanceInfo.config.ie.toUpperCase() : DEF_CODE,
+      oe: this.instanceInfo.config.oe ? this.instanceInfo.config.oe.toUpperCase() : DEF_CODE,
       fileCode: this.instanceInfo.config.fileCode
         ? this.instanceInfo.config.fileCode.toUpperCase()
-        : "GBK"
+        : DEF_CODE
     };
     this.loading = false;
   }
@@ -782,6 +786,6 @@ export default {
 
 <style scoped>
 .bt {
-  font-weight: 800;
+  font-weight: 600;
 }
 </style>

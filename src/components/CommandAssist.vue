@@ -99,7 +99,9 @@
               </el-col>
               <el-col :md="24">
                 <div class="row-mt">
-                  <el-button size="small" @click="generate">{{ $t("cmdAssist.generate") }}</el-button>
+                  <el-button size="small" @click="generate">{{
+                    $t("cmdAssist.generate")
+                  }}</el-button>
                 </div>
               </el-col>
             </el-row>
@@ -114,7 +116,11 @@
                     {{ $t("cmdAssist.inputBinaryFileName") }}
                   </p>
                 </div>
-                <el-input size="small" :placeholder="$t('general.required')" v-model="command.programName"></el-input>
+                <el-input
+                  size="small"
+                  :placeholder="$t('general.required')"
+                  v-model="command.programName"
+                ></el-input>
               </el-col>
               <el-col :md="24">
                 <div class="row-mt">
@@ -140,7 +146,11 @@
                     {{ $t("cmdAssist.programName2Info") }}
                   </p>
                 </div>
-                <el-input size="small" :placeholder="$t('general.required')" v-model="command.programName"></el-input>
+                <el-input
+                  size="small"
+                  :placeholder="$t('general.required')"
+                  v-model="command.programName"
+                ></el-input>
               </el-col>
               <el-col :md="24" :offset="0">
                 <div class="sub-title row-mt">
@@ -157,7 +167,9 @@
               </el-col>
               <el-col :md="24">
                 <div class="row-mt">
-                  <el-button size="small" @click="generate3">{{ $t("cmdAssist.generate") }}</el-button>
+                  <el-button size="small" @click="generate3">{{
+                    $t("cmdAssist.generate")
+                  }}</el-button>
                 </div>
               </el-col>
             </el-row>
@@ -171,7 +183,6 @@
 <script>
 import Dialog from "./Dialog";
 
-// 使用 v-model 指令实现双向数据传递
 export default {
   props: {
     modelValue: Boolean,
@@ -189,12 +200,21 @@ export default {
         programName: "",
         maxMemory: "",
         minMemory: "",
-        additional: "-Dfile.encoding=UTF-8 -Duser.language=cn -Duser.country=ZH",
+        additional: "-Dfile.encoding=UTF-8 -Duser.language=zh -Duser.country=CN",
         suffix: "nogui"
       }
     };
   },
   watch: {
+    activeName() {
+      if (this.activeName === "program" || this.activeName === "bds") {
+        this.command.additional = "";
+        this.command.suffix = "";
+      } else {
+        this.command.additional = "-Dfile.encoding=UTF-8 -Duser.language=zh -Duser.country=CN";
+        this.command.suffix = "nogui";
+      }
+    },
     defaultProgramName() {
       this.command.programName = this.defaultProgramName;
     },

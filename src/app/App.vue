@@ -2,7 +2,7 @@
 Copyright (C) 2022 MCSManager <mcsmanager-dev@outlook.com>
 -->
 <template>
-  <el-container>
+  <el-container v-loading="viewLoading">
     <!-- Manage users phone screen menu bar -->
     <el-drawer
       v-if="isTopPermission"
@@ -31,7 +31,7 @@ Copyright (C) 2022 MCSManager <mcsmanager-dev@outlook.com>
               <Header v-bind:breadcrumbsList="breadCrumbs" :aside="toAside" />
             </el-col>
           </el-row>
-          <div v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.5)" style="min-height: 50px">
+          <div v-loading="loading" style="min-height: 50px" element-loading-background="rgba(0, 0, 0, 0.5)">
             <router-view v-if="!loading"></router-view>
           </div>
         </div>
@@ -44,18 +44,27 @@ Copyright (C) 2022 MCSManager <mcsmanager-dev@outlook.com>
 import Aside from "../components/Aside";
 import Header from "../components/Header";
 // eslint-disable-next-line no-unused-vars
-import { requestPanelStatus, setupUserInfo } from "./service/protocol.js";
+import { setupUserInfo } from "./service/protocol.js";
 import router from "./router";
+import store from "./store";
 
 export default {
   name: "App",
   components: { Aside, Header },
-  data: function () {
+  data() {
     return {
       loading: true,
+      viewLoading: false,
       breadCrumbs: [],
       mode: 1,
       drawer: false
+    };
+  },
+  provide() {
+    return {
+      appLoading: (v) => {
+        this.viewLoading = v;
+      }
     };
   },
   computed: {
@@ -75,23 +84,12 @@ export default {
   async created() {
     let needToRoot = false;
 
-    try {
-      // Get current panel status information
-      const statusInfo = await requestPanelStatus();
-      if (statusInfo.language) {
-        console.log("SET_LANGUAGE:", statusInfo.language, statusInfo);
-        this.$i18n.locale = statusInfo.language;
-      } else {
-        this.$i18n.locale = "en_us";
-      }
-      // If not installed, must route to /install
-      if (statusInfo?.isInstall === false) {
-        this.loading = false;
-        setTimeout(() => router.push({ path: "/install" }), 1200);
-        return;
-      }
-    } catch (error) {
-      alert(`Err: ${error}, Please refresh!`);
+    // If not installed, must route to /install
+    const statusInfo = store.state.panelStatus;
+    if (statusInfo?.isInstall === false) {
+      this.loading = false;
+      setTimeout(() => router.push({ path: "/install" }), 1200);
+      return;
     }
 
     try {

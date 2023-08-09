@@ -29,7 +29,7 @@
           <p class="sub-title-info" style="font-size: 12px">{{ subTitle }}</p>
           <div class="guser-top-info-text">
             <i :class="fontClass"></i>
-            <div v-if="$slots.default" style="padding: 8px 0px">
+            <div v-if="$slots.default" style="padding: 8px 0">
               <slot></slot>
             </div>
             <div v-else>

@@ -1,22 +1,5 @@
 <!--
-  Copyright (C) 2022 Suwings <Suwings@outlook.com>
-
-  This program is free software: you can redistribute it and/or modify
-  it under the terms of the GNU Affero General Public License as published by
-  the Free Software Foundation, either version 3 of the License, or
-  (at your option) any later version.
-
-  According to the AGPL, it is forbidden to delete all copyright notices,
-  and if you modify the source code, you must open source the
-  modified source code.
-
-  版权所有 (C) 2022 Suwings <Suwings@outlook.com>
-
-  该程序是免费软件，您可以重新分发和/或修改据 GNU Affero 通用公共许可证的条款，
-  由自由软件基金会，许可证的第 3 版，或（由您选择）任何更高版本。
-
-  根据 AGPL 与用户协议，您必须保留所有版权声明，如果修改源代码则必须开源修改后的源代码。
-  可以前往 https://mcsmanager.com/ 阅读用户协议，申请闭源开发授权等。
+  Copyright (C) 2022 MCSManager <mcsmanager-dev@outlook.com>
 -->
 
 <template>
@@ -62,6 +45,7 @@
                 component="button"
                 type="success"
                 size="small"
+                :plain="true"
                 v-if="showTableList"
                 @click="changeView(1)"
               >
@@ -72,6 +56,7 @@
                 component="button"
                 size="small"
                 type="primary"
+                :plain="true"
                 v-if="!showTableList"
                 @click="changeView(2)"
               >
@@ -124,6 +109,7 @@
               <FunctionComponent
                 component="button"
                 size="small"
+                type="danger"
                 :plain="true"
                 v-if="showTableList"
                 @click="batDelete(2)"
@@ -194,9 +180,13 @@
         :tipType="0"
       >
         <template #title>
-          <span style="font-size: 13px" class="only-line-text">
+          <div
+            style="font-size: 13px"
+            class="only-line-text"
+            @click="toInstance(item.serviceUuid, item.instanceUuid)"
+          >
             {{ item.nickname }}
-          </span>
+          </div>
         </template>
         <template #rtitle>
           <div>
@@ -369,42 +359,27 @@
       </Panel>
     </el-col>
   </el-row>
-
-  <el-row :gutter="20">
-    <el-col :span="24" :offset="0">
-      <div class="instance-table-wrapper">
-        <div>
-          <div class="color-red" v-if="!currentRemoteUuid">
-            &nbsp;Error: {{ $t("instances.selectRemoteError") }}
-          </div>
-        </div>
-        <div>
-          <el-pagination
-            background
-            layout="prev, pager, next"
-            :total="maxPage"
-            v-model:currentPage="page"
-            :page-size="1"
-            @current-change="handleCurrentChange"
-            small
-          ></el-pagination>
-        </div>
-      </div>
-    </el-col>
-  </el-row>
 </template>
 
 <style scoped>
+.only-line-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.only-line-text:hover {
+  filter: sepia(1);
+}
+
 .instanceTitle {
   cursor: pointer;
 }
 
-.instanceTitle:hover {
-  color: rgb(20, 128, 230);
-}
 .notAnyInstanceTip {
   text-align: center;
-  margin: 100px 0px;
+  margin: 100px 0;
   color: #7f7f7f;
 }
 
@@ -519,7 +494,7 @@ export default {
 
           }
         });
-        this.remoteSelectHandle();
+        await this.remoteSelectHandle();
       }
     },
     // Get a list of specific instances of the daemon process
@@ -606,11 +581,27 @@ export default {
       router.push({ path: `/terminal/${serviceUuid}/${instanceUuid}/` });
     },
     async unlinkInstance(uuid, deleteFile = false) {
-      await this.$confirm(this.$t("notify.confirmDelContent"), this.$t("notify.confirmDelTitle"), {
-        confirmButtonText: this.$t("general.confirm"),
-        cancelButtonText: this.$t("general.cancel"),
-        type: "warning"
-      });
+      if (deleteFile) {
+        await this.$confirm(
+          this.$t("notify.confirmDelContent2"),
+          this.$t("notify.confirmDelTitle"),
+          {
+            confirmButtonText: this.$t("general.confirm2"),
+            cancelButtonText: this.$t("general.cancel"),
+            type: "warning"
+          }
+        );
+      } else {
+        await this.$confirm(
+          this.$t("notify.confirmDelContent"),
+          this.$t("notify.confirmDelTitle"),
+          {
+            confirmButtonText: this.$t("general.confirm"),
+            cancelButtonText: this.$t("general.cancel"),
+            type: "warning"
+          }
+        );
+      }
       await axios.request({
         method: "DELETE",
         url: API_INSTANCE,
@@ -638,10 +629,10 @@ export default {
         );
       } else {
         await this.$confirm(
-          this.$t("notify.confirmBatchDelFileContent"),
+          this.$t("notify.confirmDelContent2"),
           this.$t("notify.confirmDelTitle"),
           {
-            confirmButtonText: this.$t("general.confirm"),
+            confirmButtonText: this.$t("general.confirm2"),
             cancelButtonText: this.$t("general.cancel"),
             type: "warning"
           }

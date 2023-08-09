@@ -4,15 +4,20 @@
 
 <template>
   <div class="contanier">
+    <el-skeleton :rows="5" animated />
+    <br />
+    <el-skeleton :rows="8" animated />
+    <br />
+    <el-skeleton :rows="4" animated />
     <div class="bg"></div>
 
-    <div class="panel-wrapper" v-if="step == -1">
+    <!-- <div class="panel-wrapper" v-if="step == -1">
       <Panel class="panel tc" body-style="padding:40px;">
         <h1 class="title">
           <i class="el-icon-guide"></i>
           Select Language
         </h1>
-        <div style="margin-top: 48px" v-loading="isLoading" element-loading-background="rgba(0, 0, 0, 0.5)">
+        <div style="margin-top: 48px" v-loading="isLoading">
           <ItemGroup>
             <SelectBlock
               v-for="(item, index) in language"
@@ -24,21 +29,30 @@
           </ItemGroup>
         </div>
       </Panel>
-    </div>
+    </div>-->
 
     <div class="panel-wrapper" v-if="step == 0">
       <Panel class="panel tc" body-style="padding:40px;">
         <h1 class="title">{{ $t("install.welcome") }}</h1>
         <p>{{ $t("install.desc") }}</p>
         <div style="margin-top: 48px">
-          <el-button type="primary" @click="next" v-loading="isLoading" element-loading-background="rgba(0, 0, 0, 0.5)">{{
+          <el-button
+            type="primary"
+            @click="next"
+            v-loading="isLoading"
+            element-loading-background="rgba(0, 0, 0, 0.5)"
+          >
+            {{
             $t("install.start")
-          }}</el-button>
+            }}
+          </el-button>
         </div>
         <div class="panel-bottom">
-          <a href="https://mcsmanager.com/" target="_blank" rel="noopener noreferrer">
-            Reference: https://mcsmanager.com/
-          </a>
+          <a
+            href="https://mcsmanager.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >Reference: https://mcsmanager.com/</a>
           <br />
           <span>Released under the Apache-2.0 License.</span>
         </div>
@@ -57,10 +71,13 @@
             <el-form-item :label="$t('install.passWord')" prop="passWord">
               <el-input v-model="initUser.passWord" />
             </el-form-item>
-            <el-form-item label="">
-              <el-button type="primary" @click="createUser" v-loading="isLoading" element-loading-background="rgba(0, 0, 0, 0.5)">
-                {{ $t("install.createAccount") }}
-              </el-button>
+            <el-form-item label>
+              <el-button
+                type="primary"
+                @click="createUser"
+                v-loading="isLoading"
+                element-loading-background="rgba(0, 0, 0, 0.5)"
+              >{{ $t("install.createAccount") }}</el-button>
             </el-form-item>
           </el-form>
         </div>
@@ -68,17 +85,24 @@
     </div>
 
     <div class="panel-wrapper" v-if="step == 2">
-      <Panel class="panel" body-style="padding:40px;" v-loading="isLoading" element-loading-background="rgba(0, 0, 0, 0.5)">
+      <Panel
+        class="panel"
+        body-style="padding:40px;"
+        v-loading="isLoading"
+        element-loading-background="rgba(0, 0, 0, 0.5)"
+      >
         <h1 class="title">{{ $t("install.ohhh") }}</h1>
         <p>{{ $t("install.ohhhInfo") }}</p>
         <ItemGroup>
           <SelectBlock @click="toQuickStart">
             <template #title>{{ $t("install.firstTime") }}</template>
+            <template #info>{{ $t("install.firstTimeInfo") }}</template>
           </SelectBlock>
         </ItemGroup>
         <ItemGroup>
           <SelectBlock @click="toOverview">
             <template #title>{{ $t("install.oldUSer") }}</template>
+            <template #info>{{ $t("install.oldUSerInfo") }}</template>
           </SelectBlock>
         </ItemGroup>
       </Panel>
@@ -96,7 +120,7 @@ export default {
   data: function () {
     return {
       isLoading: false,
-      step: -1,
+      step: 0,
       initUser: {
         userName: "",
         passWord: ""
@@ -124,6 +148,14 @@ export default {
         }
       }
     };
+  },
+  mounted() {
+    const language = window.navigator.language;
+    if (language.includes("zh")) {
+      this.selectLanguage("zh_cn");
+    } else {
+      this.selectLanguage("en_us");
+    }
   },
   methods: {
     next() {
@@ -153,10 +185,10 @@ export default {
       });
     },
     toQuickStart() {
-      window.location.href = "/#/quickstart?from_install=1";
+      window.location.href = "./#/quickstart?from_install=1";
     },
     toOverview() {
-      window.location.href = "/#/overview?from_install=1";
+      window.location.href = "./#/overview?from_install=1";
     },
     installLib() {
       this.next();
@@ -165,9 +197,7 @@ export default {
       try {
         this.isLoading = true;
         await this.updateSettings({ language: lang });
-        this.$message({ message: this.$t("settings.settingUpdate"), type: "success" });
         this.$i18n.locale = lang;
-        this.next();
       } catch (error) {
         this.$message({ message: error, type: "error" });
       } finally {
@@ -192,19 +222,19 @@ export default {
   background-repeat: no-repeat;
   background-size: cover;
   position: fixed;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .panel-wrapper {
   position: fixed;
   z-index: 999;
-  top: 0px;
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 
   display: flex;
   align-items: center;
@@ -217,7 +247,6 @@ export default {
 }
 
 .panel {
-  background-color: white;
   min-height: 340px;
   width: 520px;
   transition: all 0.4s;
@@ -237,16 +266,10 @@ export default {
   /* width: 540px; */
 }
 
-@media (max-width: 780px) {
-  .bg {
-    background-image: var(--background-login-image-phone);
-  }
-}
-
 .panel-bottom {
   position: absolute;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   right: 0;
   text-align: center;
   padding-bottom: 20px;
@@ -255,6 +278,12 @@ export default {
 .title {
   font-weight: 400;
   font-size: 24px;
-  margin: 0px 0px 12px 0px;
+  margin: 0 0 12px 0;
+}
+
+@media (max-width: 780px) {
+  .bg {
+    background-image: var(--background-login-image-phone);
+  }
 }
 </style>

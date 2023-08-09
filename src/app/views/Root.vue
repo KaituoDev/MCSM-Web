@@ -41,12 +41,12 @@ export default {
       } catch (error) {
         console.log("Root.vue setupUserInfo() err:");
         console.log(error);
-        router.push({ path: "/login" });
+        await router.push({path: "/login"});
       }
     }
   },
   async mounted() {
-    this.init();
+    await this.init();
   }
 };
 </script>

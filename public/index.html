@@ -6,27 +6,31 @@
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="Content-Language" content="zh-CN" />
   <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="renderer" content="webkit" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <link rel="icon" href="favicon.ico" />
-  <link rel="stylesheet" href="./static/setting.css" />
+  <link rel="icon" href="./favicon.ico" />
+  <link
+    href="https://font.sec.miui.com/font/css?family=MiSans:400,500,600,700:Chinese_Simplify,Latin,Chinese_Traditional&amp;display=swap"
+    rel="stylesheet" />
   <style>
-    #_app-loading {
-      background-color: rgb(0,0,0,0.8);
+    #before-app-mount {
+      background-color: rgb(0, 0, 0, 0.8);
       backdrop-filter: blur(4px);
       position: fixed;
-      left: 0px;
-      right: 0px;
-      bottom: 0px;
-      top: 0px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
       z-index: 9999;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    #_app-loading-text {
+    #before-app-mount-text {
       text-align: center;
+      color: #c1c1c1;
     }
 
     ._nb-spinner {
@@ -51,32 +55,32 @@
     }
   </style>
   <script>
-    window.addEventListener("load", function () {
-      document.getElementById("_app-loading").setAttribute("style", "display: none;");
-    });
+    window.removeLoadingPage = function () {
+      document.getElementById("before-app-mount").setAttribute("style", "display: none;");
+    }
   </script>
   <title>管理面板 | 无限开拓</title>
 </head>
 
 <body>
-<noscript>
-  <div style="text-align: center;margin-top: 10%;">
-    <h2>很抱歉，网页需要 Javascript 运行时环境，请准许运行脚本或使用新版现代浏览器。</h2>
-    <p>推荐使用 <a href="https://www.google.cn/chrome/">Chrome</a> 现代浏览器</p>
-  </div>
-</noscript>
-  <div id="_app-loading" data-component-type="loading">
-    <div id="_app-loading-text">
+  <skin id="linkSkinCss"></skin>
+  <noscript>
+    <div style="text-align: center;margin-top: 10%;">
+      <h4>很抱歉，网页需要 Javascript 运行时环境，请准许运行脚本或使用新版现代浏览器。</h4>
+      <p>推荐使用 <a href="https://www.google.cn/chrome/">Chrome</a> 现代浏览器</p>
+    </div>
+  </noscript>
+  <div id="before-app-mount" data-component-type="loading">
+    <div id="before-app-mount-text">
       <div class="_nb-spinner"></div>
-      <!--<img src="https://store-g1.seewo.com/0a533be125d04b318a6029ef9016422e15927297713026">-->
-      <div style="margin: 12px; color:#aaa">少女祈祷中...</div>
+      <div style="margin-top: 15px;">加载中...</div>
     </div>
   </div>
   <div id="app" class="app" data-component-type="vue-root"></div>
 </body>
 
 <!-- Editor dependency library -->
-<script src="/static/editor/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="./static/editor/ace.js" type="text/javascript" charset="utf-8"></script>
 <!-- Sponsors -->
-<script async="true" src="https://mcsmanager.com/sponsor.js" type="text/javascript" charset="utf-8"></script>
+<script async="async" src="https://mcsmanager.com/sponsor.js" type="text/javascript" charset="utf-8"></script>
 </html>

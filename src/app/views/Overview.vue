@@ -35,8 +35,7 @@
               font-class="el-icon-s-data"
               v-loading="loading"
               element-loading-background="rgba(0, 0, 0, 0.5)"
-            >
-            </ValueCard>
+            ></ValueCard>
           </el-col>
           <el-col :md="6" :xs="12" :offset="0">
             <ValueCard
@@ -47,8 +46,7 @@
               font-class="el-icon-s-promotion"
               v-loading="loading"
               element-loading-background="rgba(0, 0, 0, 0.5)"
-            >
-            </ValueCard>
+            ></ValueCard>
           </el-col>
           <el-col :md="6" :xs="12" :offset="0">
             <ValueCard
@@ -59,8 +57,7 @@
               font-class="el-icon-upload"
               v-loading="loading"
               element-loading-background="rgba(0, 0, 0, 0.5)"
-            >
-            </ValueCard>
+            ></ValueCard>
           </el-col>
           <el-col :md="6" :xs="12" :offset="0">
             <ValueCard
@@ -71,8 +68,7 @@
               font-class="el-icon-s-flag"
               v-loading="loading"
               element-loading-background="rgba(0, 0, 0, 0.5)"
-            >
-            </ValueCard>
+            ></ValueCard>
           </el-col>
         </el-row>
       </div>
@@ -80,28 +76,26 @@
       <Panel v-loading="loading" element-loading-background="rgba(0, 0, 0, 0.5)">
         <template #title>{{ $t("overview.daemonOverview") }}</template>
         <template #default>
-          <p
-            v-html="$t('overview.daemonOverviewInfo', { panelVersion, specifiedDaemonVersion })"
-          ></p>
+          <p v-html="$t('overview.daemonOverviewInfo', { panelVersion, specifiedDaemonVersion })"></p>
           <el-table :data="servicesStatus" style="width: 100%" size="small">
-            <el-table-column prop="ip" :label="$t('overview.addr')" width="180"> </el-table-column>
-            <el-table-column prop="remarks" :label="$t('overview.remarks')"> </el-table-column>
-            <el-table-column prop="port" :label="$t('overview.port')" width="180">
+            <el-table-column prop="ip" :label="$t('overview.addr')" width="180"></el-table-column>
+            <el-table-column prop="port" :label="$t('overview.port')" width="90"></el-table-column>
+            <el-table-column prop="remarks" :label="$t('overview.remarks')"></el-table-column>
+
+            <el-table-column prop="cpu" label="CPU" width="90"></el-table-column>
+            <el-table-column prop="mem" :label="$t('overview.mem')" width="130"></el-table-column>
+            <el-table-column prop="instance" :label="$t('overview.runningInstance')" width="140">
+              <template #default="scope">{{ scope.row.started }}/{{ scope.row.instance }}</template>
             </el-table-column>
-            <el-table-column prop="cpu" label="CPU"> </el-table-column>
-            <el-table-column prop="mem" :label="$t('overview.mem')"> </el-table-column>
-            <el-table-column prop="instance" :label="$t('overview.instance')" width="160">
-            </el-table-column>
-            <el-table-column prop="started" :label="$t('overview.runningInstance')" width="160">
-            </el-table-column
-            >0
-            <el-table-column prop="version" :label="$t('overview.daemonVersion')" width="160">
+
+            <el-table-column prop="version" :label="$t('overview.daemonVersion')" width="120">
               <template #default="scope">
                 <span
                   class="color-green"
                   v-if="scope.row.version && scope.row.version === specifiedDaemonVersion"
                 >
-                  <i class="el-icon-circle-check"></i> {{ scope.row.version }}
+                  <i class="el-icon-circle-check"></i>
+                  {{ scope.row.version }}
                 </span>
                 <span class="color-red">
                   <el-tooltip
@@ -110,21 +104,26 @@
                     placement="top"
                     :content="$t('overview.lowDaemonVersion')"
                   >
-                    <span><i class="el-icon-warning-outline"></i> {{ scope.row.version }}</span>
+                    <span>
+                      <i class="el-icon-warning-outline"></i>
+                      {{ scope.row.version }}
+                    </span>
                   </el-tooltip>
                 </span>
-              </template> </el-table-column
-            >0
+              </template>
+            </el-table-column>
             <el-table-column prop="status" :label="$t('overview.connectStatus')" width="160">
               <template #default="scope">
                 <span class="color-green" v-if="scope.row.status">
-                  <i class="el-icon-circle-check"></i> {{ $t("overview.online") }}
+                  <i class="el-icon-circle-check"></i>
+                  {{ $t("overview.online") }}
                 </span>
                 <span class="color-red" v-if="!scope.row.status">
                   <el-tooltip effect="dark" :content="$t('overview.errorConnect')" placement="top">
-                    <span
-                      ><i class="el-icon-warning-outline"></i> {{ $t("overview.offline") }}</span
-                    >
+                    <span>
+                      <i class="el-icon-warning-outline"></i>
+                      {{ $t("overview.offline") }}
+                    </span>
                   </el-tooltip>
                 </span>
               </template>
@@ -323,11 +322,11 @@ export default {
         },
         {
           name: this.$t("overview.webPanelTime"),
-          value: system.time
+          value: new Date(system.time).toLocaleString()
         },
         {
           name: this.$t("overview.localTime"),
-          value: new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString()
+          value: new Date().toLocaleString()
         },
         {
           name: this.$t("overview.computerName"),
@@ -430,7 +429,26 @@ export default {
           source
         },
         //接口请求量
-        color: ["#fff493"]
+        series: [
+          {
+            lineStyle: {
+              color: "#fff493",
+              width: 1
+            },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgb(255,244,147)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(255,244,147,0.3)"
+                }
+              ])
+            }
+          }
+        ]
       });
       this.systemChart4.setOption({
         textStyle: { color: "#dad6a1" },
@@ -441,8 +459,27 @@ export default {
           dimensions: ["time", "runningInstance"],
           source
         },
-        //总数，运行数
-        color: ["#99f5bd", "#dbff95"]
+        //实例运行量
+        series: [
+          {
+            lineStyle: {
+              color: "#99f5bd",
+              width: 1
+            },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgb(153,245,189)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(153,245,189,0.3)"
+                }
+              ])
+            }
+          }
+        ]
       });
     },
     setSystemChart() {
@@ -458,7 +495,26 @@ export default {
           source
         },
         //CPU
-        color: ["#87c2fe"]
+        series: [
+          {
+            lineStyle: {
+              color: "#87c2fe",
+              width: 1
+            },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgb(135,194,254)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(135,194,254,0.3)"
+                }
+              ])
+            }
+          }
+        ]
       });
       this.systemChart2.setOption({
         textStyle: { color: "#d79aff" },
@@ -467,7 +523,26 @@ export default {
           source
         },
         ///面板段内存使用率
-        color: ["#d58dff"]
+        series: [
+          {
+            lineStyle: {
+              color: "#d58dff",
+              width: 1
+            },
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgb(213,141,255)"
+                },
+                {
+                  offset: 1,
+                  color: "rgba(213,141,255,0.3)"
+                }
+              ])
+            }
+          }
+        ]
       });
     },
     setChartSource() {

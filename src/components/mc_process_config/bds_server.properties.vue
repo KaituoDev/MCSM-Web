@@ -1,8 +1,3 @@
-<!--
-  Copyright (C) 2022 MCSManager <mcsmanager-dev@outlook.com>
-  This page is for Chinese users only
--->
-
 <template>
   <!-- 当前文件的说明，请根据需要自定义修改文字 -->
   <LineOption :custom="true">
@@ -55,6 +50,12 @@ export default {
         "compression-threshold": "要压缩的原始网络有效负载的最小大小",
         "server-authoritative-movement": "是否启用服务端权威性移动",
         "player-movement-score-threshold": "报告异常行为之前所需的数据不一致的数量",
+        "enable-lan-visibility": "开启局域网可见",
+        "compression-algorithm": "压缩算法",
+        "player-movement-action-direction-threshold": "玩家运动方向阈值",
+        "chat-restriction": "聊天限制",
+        "disable-player-interaction": "禁用玩家互动",
+        "client-side-chunk-generation-enabled": "启用客户端块生成",
         "player-movement-distance-threshold": "在检测到异常行为之前，服务端与客户端数值之差",
         "player-movement-duration-threshold-in-ms":
           "服务端和客户端位置的时间长度可能不同步 (在 server-authoritative-movement 选项为 false 时失效)",
@@ -67,7 +68,7 @@ export default {
         "enable-query": "是否允许使用 GameSpy4 协议的服务器监听器",
         "allow-flight": "是否允许玩家飞行（在任何游戏模式下）",
         "server-port": "服务器端口",
-        "level-type": "地图的生成类型",
+        "level-type": "地图的生成类型（默认：default，超平坦：flat）",
         "enable-rcon": "是否允许远程访问服务器控制台（RCON）",
         "force-gamemode": "强制玩家加入时为默认游戏模式",
         "level-seed": "地图种子 默认留空",
@@ -82,15 +83,15 @@ export default {
         "texture-pack": "材质包",
         "online-mode": "在线正版验证",
         pvp: "是否允许玩家互相攻击",
-        difficulty: "游戏难度",
+        difficulty: "游戏难度（peaceful, easy, normal,hard）",
         "player-idle-timeout": "允许的挂机时间，单位为分钟 超过限制后自动踢出服务器",
-        gamemode: "游戏模式 0=生存 1=创造 2=冒险 3=旁观",
+        gamemode: "游戏模式（survival，creative，adventure，spectator）",
         "max-players": "服务器最大玩家数限制",
         "spawn-monsters": "生成攻击型生物（怪物）",
         "view-distance": "服务器发送给客户端的数据量，决定玩家能设置的视野",
         "generate-structures": "生成世界时生成结构（如村庄）禁止后地牢和地下要塞仍然生成",
         motd: "服务器信息展示 若使用 ColorMotd 等插件可留空该选项",
-        "op-permission-level": "OP权限等级 ",
+        "op-permission-level": "OP权限等级 (1-4)",
         "announce-player-achievements": "玩家获得成就时，是否在服务器聊天栏显示（是否允许其装X）",
         "network-compression-threshold": "网络压缩阈值",
         "resource-pack-sha1": "资源包的 SHA-1 值，必须为小写十六进制，不是必填选项",

@@ -60,15 +60,15 @@ export default {
 }
 
 .line-label-margin-24 {
-  margin: 24px 0px;
+  margin: 24px 0;
 }
 
 .line-label-margin-12 {
-  margin: 12px 0px;
+  margin: 12px 0;
 }
 
 .line-label-margin-4 {
-  margin: 4px 0px;
+  margin: 4px 0;
 }
 
 .line-label-title-120px {

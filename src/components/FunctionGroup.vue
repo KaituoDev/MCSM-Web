@@ -87,7 +87,7 @@ export default {
   overflow: hidden;
   display: block;
 
-  margin: 0px 5px;
+  margin: 0 5px;
 }
 
 .phone-operation-btn button {
@@ -95,7 +95,7 @@ export default {
 }
 
 .function-group {
-  margin: 0px;
+  margin: 0;
   display: inline-block;
 }
 .function-group-container {

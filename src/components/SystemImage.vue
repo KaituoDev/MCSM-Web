@@ -48,7 +48,7 @@ export default {
   align-items: center;
 }
 .component-system-img-wrapper {
-  margin: 0px;
+  margin: 0;
   overflow: hidden;
   border-radius: 2px;
 }
@@ -67,7 +67,7 @@ export default {
 .component-system-title {
   font-size: 18px;
   font-weight: 600;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .component-system-subtitle {
   font-size: 12px;

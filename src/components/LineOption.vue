@@ -25,7 +25,7 @@
     <el-card
       class=""
       shadow="hover"
-      style="margin-bottom: 0px; border-radius: 4px"
+      style="margin-bottom: 0; border-radius: 4px"
       :body-style="{ padding: '14px' }"
     >
       <div class="line-option" v-if="!custom">

@@ -1,6 +1,6 @@
 // Copyright (C) 2022 MCSManager <mcsmanager-dev@outlook.com>
 
-export const API_URL = "//" + window.location.host;
+export const API_URL = (window.location.pathname.length > 1) ? "//" + window.location.host + window.location.pathname : "//" + window.location.host;
 
 export const API_SERVICE_INSTANCES = `${API_URL}/api/service/remote_service_instances`;
 export const API_SERVICE_LIST = `${API_URL}/api/service/remote_services_list`;
@@ -13,6 +13,8 @@ export const API_FILE_URL = `${API_URL}/api/files`;
 export const API_FILE_LIST = `${API_URL}/api/files/list`;
 export const API_FILE_DOWNLOAD = `${API_URL}/api/files/download/`;
 export const API_FILE_UPLOAD = `${API_URL}/api/files/upload/`;
+export const API_FILE_TOUCH = `${API_URL}/api/files/touch`;
+export const API_FILE_CHMOD = `${API_URL}/api/files/chmod`;
 export const API_FILE_MKDIR = `${API_URL}/api/files/mkdir`;
 export const API_FILE_COPY = `${API_URL}/api/files/copy`;
 export const API_FILE_MOVE = `${API_URL}/api/files/move`;
@@ -46,6 +48,7 @@ export const API_INSTANCE_UPDATE = `${API_URL}/api/protected_instance/instance_u
 export const API_INSTANCE_RESTART = `${API_URL}/api/protected_instance/restart`;
 export const API_INSTANCE_OUTPUT = `${API_URL}/api/protected_instance/outputlog`;
 export const API_INSTANCE_ASYNC_TASK = `${API_URL}/api/protected_instance/asynchronous`;
+export const API_INSTANCE_ASYNC_QUERY = `${API_URL}/api/protected_instance/query_asynchronous`;
 export const API_INSTANCE_ASYNC_STOP = `${API_URL}/api/protected_instance/stop_asynchronous`;
 
 export const API_PROCESS_CONFIG_LIST = `${API_URL}/api/protected_instance/process_config/list`;
@@ -62,6 +65,14 @@ export const API_PROGRESS = `${API_URL}/api/environment/progress`;
 
 export const API_PANEL_STATUS = `${API_URL}/api/auth/status`;
 export const API_PANEL_INSTALL = `${API_URL}/api/auth/install`;
+
+export const API_GET_QUICK_INSTALL_LIST_ADDR = `${API_URL}/api/instance/quick_install_list`;
+
+export const API_FORWARD_REQUEST = `${API_URL}/api/instance/forward`;
+
+export const QUERY_PUBLIC_IP = "http://statistics.mcsmanager.com/ip";
+
+export const GLOBAL_INSTANCE_UUID = "global0001";
 
 export const TERMINAL_CODE = [
   { label: "UTF-8", value: "UTF-8" },
@@ -173,8 +184,8 @@ export function jsonToMap(json, topTitle = "", map = {}) {
 }
 
 export function toUnicode(str) {
-    let value = "";
-    for (let i = 0; i < str.length; i++) {
+  let value = "";
+  for (let i = 0; i < str.length; i++) {
     if (/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g.test(str[i])) {
       value += "\\u" + leftZero4(parseInt(str.charCodeAt(i)).toString(16));
     } else {

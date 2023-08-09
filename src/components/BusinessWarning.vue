@@ -63,6 +63,6 @@ export default {
   max-width: 500px;
 }
 .title {
-  margin: 8px 0px;
+  margin: 8px 0;
 }
 </style>

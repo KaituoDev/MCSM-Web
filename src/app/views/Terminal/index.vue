@@ -1011,10 +1011,9 @@ export default {
     },
     // Go to the file management interface
     toFileManager() {
-      // router.push({
-      //   path: `/file/${this.serviceUuid}/${this.instanceUuid}/`
-      // });
-      window.open(`#/file/${this.serviceUuid}/${this.instanceUuid}/`);
+      router.push({
+        path: `/file/${this.serviceUuid}/${this.instanceUuid}/`
+      });
     },
     toProcessConfig() {
       router.push({

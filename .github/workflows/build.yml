@@ -46,7 +46,7 @@ jobs:
       - name: Remove legacy Javascript references from index.html
         run:  python3 Helper.py
 
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v4
         name: Upload Artifact
         with:
           name: MCSM-Web-v${{ github.event.inputs.tag }}-${{ steps.short_sha.outputs.short_sha }}
